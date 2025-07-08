@@ -12,10 +12,10 @@ export const DATA = {
   summary:
     "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](#projects), experimenting with new technologies, and continuously refining my [skills](#skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise.",
   avatarUrl: "/me.png",
-  skills: ["Javascript","Typescript","Python","Java","Go","C++","C","HTML","CSS","SQL",
-    "ExpressJs","Flask","SpringBoot","FastAPI","React","Angular","Tailwind CSS", "Bootstrap",
-    "PostgreSQL","MySQL","Oracle SQL","MongoDB","Redis","Firestore","BigQuery",
-    "Cloud Functions","PubSub","Cloud Run","GKE","Cloud Storage","Kafka","Docker","Kubernetes","Terraform","Github Actions","Jenkins",
+  skills: ["Python","Javascript","Typescript","Java","C++","HTML","CSS","SQL",
+    "FastAPI","ExpressJs","SpringBoot","React","Angular","Tailwind CSS", "Bootstrap",
+    "PostgreSQL","MySQL","Oracle SQL","MongoDB","Redis","Firestore","BigQuery","Pinecone",
+    "Cloud Functions","PubSub","Cloud Run","GKE","Cloud Storage","Kafka","Elastic Search","Docker","Kubernetes",
     "Junit","Pytest","Jest","Selenium","Behave",
     "Git","Figma","Postman","Dbeaver","Canva","Jira"
   ],
@@ -32,6 +32,12 @@ export const DATA = {
         url: "https://github.com/Aditya-Dawadikar",
         icon: Icons.github,
 
+        navbar: true,
+      },
+      Medium: {
+        name: "Medium",
+        url: "https://medium.com/@aditya-dawadikar",
+        icon: Icons.medium,
         navbar: true,
       },
       LinkedIn: {
@@ -53,6 +59,18 @@ export const DATA = {
 
   work: [
     {
+      company: "BreakThroughTech, Cornell University",
+      href: "https://www.sjsu.edu/cs/",
+      badges: [],
+      location: "Remote",
+      title: "ML Instructor",
+      logoUrl: "/cornell.png",
+      start: "May 2025",
+      end: "August 2025",
+      description:
+        "As an Instructional Student Assistant (ISA), I teach ML fundamentals to freshman students from all over the USA. I mentored a batch of 60 students, taught the ML workflows from Preliminary Data Exploration to Model Selection, Training and Deployment.",
+    },
+    {
       company: "Dept. Computer Science, San Jose State University",
       href: "https://www.sjsu.edu/cs/",
       badges: [],
@@ -60,7 +78,7 @@ export const DATA = {
       title: "Java Instructor",
       logoUrl: "/sjsu.png",
       start: "Jan 2025",
-      end: "Present",
+      end: "May 2025",
       description:
         "As an Instructional Student Assistant (ISA), I teach Java fundamentals to sophomore students, focusing on object-oriented programming, data structures, and problem-solving. I design interactive lessons, mentor students through coding challenges, and provide hands-on debugging support to strengthen their programming skills. By fostering a practical, project-based learning approach, I help students build a strong foundation in Java and prepare them for real-world software development.",
     },
@@ -109,12 +127,87 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "CellCraft-AI",
+      href: "https://github.com/Aditya-Dawadikar/cell-craft-ai",
+      dates: "June 2025",
+      active: false,
+      description:
+        "CellCraft-AI is an intelligent, version-controlled data cleaning assistant built for structured CSV files. It combines large language models (LLMs), commit-based checkpoints, and cloud-native architecture to help users transform, explore, and branch CSV data with traceability and reproducibility.",
+      technologies: [
+        "LangChain",
+        "FastAPI",
+        "ReactJs",
+        "AWS S3",
+        "MongoDB",
+        "Redis",
+        "Python",
+        "Gemini 2.5 Flash"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/cell-craft-ai",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: 
+      "/CellCraftAI-Demo.gif",
+      video:
+      "",
+    },{
+      title: "SAGE-AI",
+      href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
+      dates: "June 2025",
+      active: false,
+      description:
+        "A powerful voice-augmented AI assistant for developers and researchers, built for UCBerkeleyHackathon2025. SAGE AI helps users converse and brainstorm on the content they browse online. It combines real-time web summarization, semantic memory, and natural voice interaction.",
+      technologies: [
+        "Google Gemini 2.5 Flash",
+        "PineCone",
+        "Vapi",
+        "GCS"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: 
+      "/sage-ai.jpg",
+      video:
+      "",
+    },{
+      title: "Neuronite - C++ Library for Neural Networks",
+      href: "https://github.com/Aditya-Dawadikar/Neuronite",
+      dates: "April 2025",
+      active: false,
+      description:
+        "Neuronite is a lightweight neural network library written from scratch in C++ — built for learning, experimentation, and full transparency into how neural networks work at the bare metal level.",
+      technologies: [
+        "C++",
+        "Cmake",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/Neuronite",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: 
+      "/neuronite.png",
+      video:
+      "",
+    },
+    {
       title: "Realtime LogManager",
       href: "https://github.com/Aditya-Dawadikar/RealtimeLogManager",
       dates: "Feb 2025",
       active: false,
       description:
-        "",
+        "This project simulates a real-time log streaming system using Kafka, FastAPI, and WebSockets. It consists of multiple components to generate, process, and consume logs.",
       technologies: [
         "Kafka",
         "React",
@@ -139,7 +232,7 @@ export const DATA = {
       dates: "June 2021 - March 2022",
       active: false,
       description:
-        "",
+        "This repository contains a deep learning-based solution for classifying pulmonary diseases using lung auscultation audio. The project leverages Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) to extract spatial and temporal features from lung sounds to detect respiratory anomalies.",
       technologies: [
         "React",
         "Redux",
@@ -165,7 +258,7 @@ export const DATA = {
       dates: "September 2024 - December 2024",
       active: false,
       description:
-        "",
+        "This project is a lightweight, terminal-based relational database management system (RDBMS) implemented in C++. Designed for simplicity and extensibility, the system supports essential database operations such as creating tables, inserting, updating, and deleting records, and executing queries with filtering, aggregation, and sorting.",
       technologies: [
         "C",
         "C++",
@@ -186,17 +279,22 @@ export const DATA = {
       "",
     },
   ],
-  // hackathons: [
-  //   {
-  //     title: "Hack Western 5",
-  //     dates: "November 23rd - 25th, 2018",
-  //     location: "London, Ontario",
-  //     description:
-  //       "Developed a mobile application which delivered bedtime stories to children using augmented reality.",
-  //     image:
-  //       "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
-  //     mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-  //     links: [],
-  //   },
-  // ],
+  hackathons: [
+    {
+      title: "SAGE-AI, Calhacks 2025",
+      dates: "June 22nd - 23th, 2025",
+      location: "UC Berkeley, California, USA",
+      description:
+        "A powerful voice-augmented AI assistant for developers and researchers, built for UCBerkeleyHackathon2025. SAGE AI helps users converse and brainstorm on the content they browse online. It combines real-time web summarization, semantic memory, and natural voice interaction.",
+      image:
+        "/sage-ai.jpg",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    },
+  ],
 } as const;
