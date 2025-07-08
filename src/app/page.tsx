@@ -10,6 +10,7 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
+const iconSize = 30;
 
 export default function Page() {
   return (
@@ -47,6 +48,36 @@ export default function Page() {
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
+          <br/>
+          <div className="flex items-center gap-4">
+            <a href="https://medium.com/@aditya-dawadikar" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/medium.svg"
+                alt="Medium"
+                width={iconSize}
+                height={iconSize}
+                className="hover:opacity-80"
+              />
+            </a>
+            <a href="https://linkedin.com/in/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+                alt="LinkedIn"
+                width={iconSize}
+                height={iconSize}
+                className="hover:opacity-80"
+              />
+            </a>
+            <a href="https://github.com/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+                alt="GitHub"
+                width={iconSize}
+                height={iconSize}
+                className="hover:opacity-80"
+              />
+            </a>
+        </div>
         </BlurFade>
       </section>
       <section id="work">
@@ -120,7 +151,7 @@ export default function Page() {
                   My Projects
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
+                  I like building things
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from AI Powered Inference-tools 
@@ -152,7 +183,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* <section id="hackathons">
+      <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -161,16 +192,8 @@ export default function Page() {
                   Hackathons
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
+                  Some of my collaborations...
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  {DATA.hackathons.length}+ hackathons. People from around the
-                  country would come together and build incredible things in 2-3
-                  days. It was eye-opening to see the endless possibilities
-                  brought to life by a group of motivated and passionate
-                  individuals.
-                </p>
               </div>
             </div>
           </BlurFade>
@@ -194,7 +217,7 @@ export default function Page() {
             </ul>
           </BlurFade>
         </div>
-      </section> */}
+      </section>
       {/* <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
