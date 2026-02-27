@@ -142,3 +142,63 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+
+/* Scrolling skills marquee */
+.skill-marquee {
+  position: relative;
+  overflow: hidden;
+}
+.skill-marquee-track {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  animation: scroll-left 40s linear infinite;
+}
+.skill-card {
+  min-width: 260px;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Flip card styles */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-checkbox {
+  display: none;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  display: block;
+}
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: relative;
+  display: block;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  inset: 0;
+}
+.flip-checkbox:checked + .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card .skill-card {
+  min-height: 6.5rem;
+}
