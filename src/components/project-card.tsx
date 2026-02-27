@@ -52,14 +52,40 @@ export function ProjectCard({
         className={cn("block cursor-pointer", className)}
       >
         {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
-          />
+          // If `video` is a YouTube/embed URL render an iframe, otherwise render native video
+          /(youtube|youtu\.be|youtube-nocookie)\/|youtube\.com\/embed/.test(video) ? (
+            <div className="mx-auto h-40 w-full overflow-hidden rounded">
+                {(() => {
+                  let iframeSrc = video;
+                  try {
+                    const u = new URL(video);
+                    u.searchParams.set("autoplay", "1");
+                    u.searchParams.set("mute", "1");
+                    iframeSrc = u.toString();
+                  } catch (e) {
+                    iframeSrc = video + (video.includes("?") ? "&autoplay=1&mute=1" : "?autoplay=1&mute=1");
+                  }
+                  return (
+                    <iframe
+                      src={iframeSrc}
+                      className="h-40 w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+                      allowFullScreen
+                      title={title + " video"}
+                    />
+                  );
+                })()}
+              </div>
+          ) : (
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
+            />
+          )
         )}
         {image && (
           <Image

@@ -12,24 +12,25 @@ export const DATA = {
   summary:
     "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](#projects), experimenting with new technologies, and continuously refining my [skills](#skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise.",
   avatarUrl: "/me.png",
-  skills: ["Python","Javascript","Typescript","Java","C++","HTML","CSS","SQL",
-    "FastAPI","ExpressJs","SpringBoot","React","Angular","Tailwind CSS", "Bootstrap",
-    "PostgreSQL","MySQL","Oracle SQL","MongoDB","Redis","Firestore","BigQuery","Pinecone",
-    "Cloud Functions","PubSub","Cloud Run","GKE","Cloud Storage","Kafka","Elastic Search","Docker","Kubernetes",
-    "Junit","Pytest","Jest","Selenium","Behave",
-    "Git","Figma","Postman","Dbeaver","Canva","Jira"
+  skills: ["Python", "Javascript", "Typescript", "Java", "C++", "HTML", "CSS", "SQL",
+    "FastAPI", "ExpressJs", "SpringBoot", "React", "Angular", "Tailwind CSS", "Bootstrap",
+    "PostgreSQL", "MySQL", "Oracle SQL", "MongoDB", "Redis", "Firestore", "BigQuery", "Pinecone",
+    "Cloud Functions", "PubSub", "Cloud Run", "GKE", "Cloud Storage", "Kafka", "Elastic Search", "Docker", "Kubernetes",
+    "Junit", "Pytest", "Jest", "Selenium", "Behave",
+    "Git", "Figma", "Postman", "Dbeaver", "Canva", "Jira"
   ],
-  programmingLanguages: ["Python","Javascript","Typescript", "Go", "Java","C++",,"SQL"],
-  frontend: ["React", "Redux", "Zustand", "Angular","Tailwind CSS", "Bootstrap", "HTML", "CSS"],
-  backend: ["FastAPI","ExpressJs", "Fastify", "SpringBoot"],
-  database: ["PostgreSQL","MySQL","Oracle SQL","MongoDB","Redis","Firestore","BigQuery","Pinecone"],
-  cloud: ["Cloud Functions","PubSub","Cloud Run","GKE","Cloud Storage", "AWS Lambda", "AWS S3", "AWS EC2", "AWS RDS", "AWS DynamoDB", "SQS", "SNS"],
-  dataprocessing:["Apache Spark", "Apache Flink", "Kafka", "Elastic Search"],
-  cicd: ["Git", "Docker","Kubernetes"],
-  testing: ["Junit","Pytest","Jest","Selenium","Behave"],
-  tools: ["Figma","Postman","Dbeaver","Canva","Jira"],
-  genAIskills: ["LangChain", "LangGraph", "RAG", "AgenticAI","LLMs", "Prompt Engineering", "Context Engineering", "Image Generation", "Voice Generation"],
-  mlResearchSkills: ["TensorFlow", "PyTorch", "Transformers", "Huggingface", "Fine Tuning", "Distributed Data Parallelism", "Tensor Parallelism", "AI workload deployment","Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+  programmingLanguages: ["Python", "Javascript", "Typescript", "Go", "Java", "C++", , "SQL"],
+  frontend: ["React", "Redux", "Zustand", "Angular", "Tailwind CSS", "Bootstrap", "HTML", "CSS"],
+  backend: ["FastAPI", "ExpressJs", "Fastify", "SpringBoot"],
+  database: ["PostgreSQL", "MySQL", "Oracle SQL", "MongoDB", "Redis", "Firestore", "BigQuery", "Pinecone"],
+  cloud: ["Cloud Functions", "PubSub", "Cloud Run", "GKE", "Cloud Storage", "AWS Lambda", "AWS S3", "AWS EC2", "AWS RDS", "AWS DynamoDB", "SQS", "SNS"],
+  dataprocessing: ["Apache Spark", "Apache Flink", "Kafka", "Elastic Search"],
+  cicd: ["Git", "Github Actions", "Docker", "Kubernetes", "Prometheus", "Grafana"],
+  testing: ["Junit", "Pytest", "Jest", "Selenium", "Behave"],
+  tools: ["Figma", "Postman", "Dbeaver", "Canva", "Jira"],
+  genAIskills: ["LangChain", "LangGraph", "RAG", "AgenticAI", "LLMs", "Prompt Engineering", "Context Engineering", "Image Generation", "Voice Generation"],
+  mlResearchSkills: ["TensorFlow", "PyTorch", "Transformers", "Huggingface", "Fine Tuning", "Distributed Data Parallelism", "Tensor Parallelism", "AI workload deployment"],
+  mlBasics:["Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
@@ -150,6 +151,194 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "BMC Management Agentic System",
+      href: "https://github.com/Aditya-Dawadikar/BMC_Management_Agentic_System",
+      dates: "2025",
+      active: false,
+      description:
+        "An agentic, AI-powered platform that combines deep infrastructure observability with autonomous control. It ingests hardware telemetry, uses LLM-based reasoning to interpret data, and can trigger automated control actions while providing real-time visualization and conversational insights.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React",
+        "MongoDB",
+        "AWS S3",
+        "Grafana",
+        "Prometheus",
+        "LangChain",
+        "Gemini AI",
+        "Redfish API"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/BMC_Management_Agentic_System",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "",
+      video:
+        "https://www.youtube.com/embed/YqEp3CP8ePM?si=G6tQfBazmQbMuK9U",
+    }, {
+      title: "Conway’s Game of Life",
+      href: "https://github.com/Aditya-Dawadikar/ConwaysGameOfLife",
+      dates: "2025",
+      active: false,
+      description:
+        "A GPU-accelerated implementation of Conway’s Game of Life, simulating cellular automata on large grids in real time using CUDA and SDL2 for interactive rendering and controls. Conway’s Game of Life is a classic zero-player simulation where patterns evolve over discrete generations based on simple neighbor rules.",
+      technologies: [
+        "CUDA",
+        "C++",
+        "SDL2",
+        "CMake",
+        "GPU Acceleration",
+        "Cellular Automata"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/ConwaysGameOfLife",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "/conways_game_of_life.gif",
+      video:
+        "",
+    }, {
+      title: "Pingu",
+      href: "https://github.com/Aditya-Dawadikar/Pingu",
+      dates: "2025",
+      active: false,
+      description:
+        "Pingu is a lightweight CLI tool for testing REST APIs and validating JSON responses. It offers structured JSON diffs, parallel test execution, customizable test suites, and concise CLI output — making API testing fast and developer-friendly.",
+      technologies: [
+        "C++17",
+        "CMake",
+        "libcurl",
+        "nlohmann/json",
+        "CLI Tooling",
+        "REST API Testing"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/Pingu",
+          icon: <Icons.github className="size-3" />,
+    },
+      ],
+      image:
+        "/pingu.gif",
+      video:
+        "",
+    },
+    {
+      title: "RayFlux",
+      href: "https://github.com/Aditya-Dawadikar/RayFlux",
+      dates: "July 2025",
+      active: true,
+      description:
+        "RayFlux is a distributed, S3-backed real-time messaging system designed with consistent hashing and stateless routing. It supports publisher-subscriber architecture with WebSocket streaming, JSONL log batching, and horizontal scalability via FluxNodes and a custom load balancer.",
+      technologies: [
+        "Go",
+        "WebSockets",
+        "AWS S3",
+        "Kubernetes",
+        "Consistent Hashing",
+        "JSONL",
+        "Distributed Systems"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/RayFlux",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "/rayflux.gif",
+      video:
+        "",
+    }, {
+      title: "BotTalk",
+      href: "https://github.com/Aditya-Dawadikar/BotTalk",
+      dates: "July 2025",
+      active: false,
+      description:
+        "BotTalk is an AI-powered podcast generation system built using multi-agent orchestration. It simulates structured conversations between a host and guest using LLM-driven planning, flow control, and script refinement, enabling automated content generation pipelines.",
+      technologies: [
+        "LangChain",
+        "Python",
+        "LLMs",
+        "Multi-Agent Systems",
+        "Prompt Engineering",
+        "Gemini",
+        "Text-to-Speech"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/BotTalk",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "https://www.youtube.com/embed/EowingvpOEM?si=AdSeqGyISB3WDLmR",
+    }, {
+      title: "BanyanTree",
+      href: "https://github.com/Aditya-Dawadikar/BanyanTree",
+      dates: "June 2025",
+      active: false,
+      description:
+        "BanyanTree is a Kubernetes-based distributed microservices architecture that integrates Raft consensus, Kafka log streaming, Elasticsearch indexing, and real-time dashboards. It demonstrates fault-tolerant cluster coordination and cloud-native deployment workflows.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "Raft Consensus",
+        "Kafka",
+        "Elasticsearch",
+        "Kubernetes",
+        "Docker",
+        "AWS ECR"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/BanyanTree",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/banyantree.gif",
+      video:
+        "",
+    }, {
+      title: "EVBnB",
+      href: "https://github.com/Aditya-Dawadikar/SFHacks2026",
+      dates: "2026",
+      active: false,
+      description:
+        "SFHacks 2026 Project is a hackathon-built full-stack system focused on rapid prototyping with AI integration. It combines frontend interaction, backend APIs, and intelligent automation to deliver a functional MVP within limited time constraints.",
+      technologies: [
+        "React",
+        "Python",
+        "FastAPI",
+        "LLMs",
+        "MongoDB",
+        "Cloud Deployment"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/SFHacks2026",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://www.youtube.com/embed/XenX8vnUOwc?si=Yoqx3gKSVnBhDFEL",
+    },
+    {
       title: "CellCraft-AI",
       href: "https://github.com/Aditya-Dawadikar/cell-craft-ai",
       dates: "June 2025",
@@ -173,11 +362,11 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/CellCraftAI-Demo.gif",
+      image:
+        "/CellCraftAI-Demo.gif",
       video:
-      "",
-    },{
+        "",
+    }, {
       title: "SAGE-AI",
       href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
       dates: "June 2025",
@@ -197,11 +386,11 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/sage-ai.jpg",
+      image:
+        "/sage-ai.jpg",
       video:
-      "",
-    },{
+        "",
+    }, {
       title: "Neuronite - C++ Library for Neural Networks",
       href: "https://github.com/Aditya-Dawadikar/Neuronite",
       dates: "April 2025",
@@ -219,10 +408,10 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/neuronite.png",
+      image:
+        "/neuronite.png",
       video:
-      "",
+        "",
     },
     {
       title: "Realtime LogManager",
@@ -245,11 +434,11 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/real-time-log-demo.gif",
+      image:
+        "/real-time-log-demo.gif",
       video:
-      "",
-    },{
+        "",
+    }, {
       title: "Pulmonary Disease Prediction",
       href: "https://github.com/Aditya-Dawadikar/Pulmonary-Disease-Classification",
       dates: "June 2021 - March 2022",
@@ -271,11 +460,11 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/pulmonary-disease-prediction-demo.gif",
+      image:
+        "/pulmonary-disease-prediction-demo.gif",
       video:
-      "",
-    },{
+        "",
+    }, {
       title: "C++ SQL Database",
       href: "https://github.com/Aditya-Dawadikar/cpp_sql_database",
       dates: "September 2024 - December 2024",
@@ -296,10 +485,10 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: 
-      "/cpp-sql-db-demo.gif",
+      image:
+        "/cpp-sql-db-demo.gif",
       video:
-      "",
+        "",
     },
   ],
   hackathons: [
