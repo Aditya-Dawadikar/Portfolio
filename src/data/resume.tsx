@@ -30,7 +30,7 @@ export const DATA = {
   tools: ["Figma", "Postman", "Dbeaver", "Canva", "Jira"],
   genAIskills: ["LangChain", "LangGraph", "RAG", "AgenticAI", "LLMs", "Prompt Engineering", "Context Engineering", "Image Generation", "Voice Generation"],
   mlResearchSkills: ["TensorFlow", "PyTorch", "Transformers", "Huggingface", "Fine Tuning", "Distributed Data Parallelism", "Tensor Parallelism", "AI workload deployment"],
-  mlBasics:["Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+  mlBasics: ["Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
@@ -226,7 +226,7 @@ export const DATA = {
           type: "Source",
           href: "https://github.com/Aditya-Dawadikar/Pingu",
           icon: <Icons.github className="size-3" />,
-    },
+        },
       ],
       image:
         "/pingu.gif",
@@ -494,8 +494,9 @@ export const DATA = {
   hackathons: [
     {
       title: "SAGE-AI, Calhacks 2025",
-      dates: "June 22nd - 23th, 2025",
+      dates: "June, 2025",
       location: "UC Berkeley, California, USA",
+      result: "participant",
       description:
         "A powerful voice-augmented AI assistant for developers and researchers, built for UCBerkeleyHackathon2025. SAGE AI helps users converse and brainstorm on the content they browse online. It combines real-time web summarization, semantic memory, and natural voice interaction.",
       image:
@@ -504,6 +505,103 @@ export const DATA = {
         {
           title: "Source",
           href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    },
+    {
+      title: "SFHacks 2026 Project",
+      description:
+        "A hackathon-built full-stack system focused on rapid prototyping with AI integration. It combines frontend interaction, backend APIs, and intelligent automation to deliver a functional MVP within limited time constraints.",
+      dates: "February, 2026",
+      location: "San Francisco State University, California, USA",
+      result: "winner",
+      image:
+        "/SFHacks2026-Demo.gif",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/SFHacks2026",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    }, {
+      title: "Pump.co",
+      description:
+        "Pump.co is a lightweight tool designed for efficient resource monitoring and notification workflows. It integrates REST API testing, customizable alerts, and structured reporting to help developers keep track of service health.",
+      dates: "November, 2025",
+      location: "Pump.co HQ, San Francisco, California, USA",
+      result: "winner",
+      image:
+        "/PumpCo-Demo.gif",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/T-mon",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    }, {
+      title: "A10 Hackathon Project",
+      dates: "October, 2025",
+      location: "A10 HQ, Santa Clara, California, USA",
+      result: "participant",
+      description:
+        "A10 Hackathon Project is a rapid prototype built during a competitive hackathon. It focuses on building scalable backend services with real-time interaction and cloud deployment, demonstrating fast iteration, team collaboration, and production-ready architecture under time constraints.",
+      image:
+        "/A10Hackathon-Demo.gif",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/A10_hackathon",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    }, {
+      title: "Axiado — BMC Management Agentic System",
+      dates: "September, 2025",
+      location: "Remote",
+      result: "winner",
+      description:
+        "An agentic, AI-powered platform that combines deep infrastructure observability with autonomous control. It ingests hardware telemetry, uses LLM-based reasoning to interpret data, and can trigger automated control actions while providing real-time visualization and conversational insights.",
+      image:
+        "/BMCManagementAgenticSystem-AppView.png",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/BMC_Management_Agentic_System",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    }, {
+      title: "AWS MCP Hackathon — BotTalk",
+      description:
+        "BotTalk is an AI-powered podcast generation system built using multi-agent orchestration. It simulates structured conversations between a host and guest using LLM-driven planning, flow control, and script refinement, enabling automated content generation pipelines.",
+      dates: "August, 2025",
+      location: "San Francisco State University, California, USA",
+      result: "winner",
+      image:
+        "/BotTalk-Demo.gif",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/BotTalk",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    }, {
+      title: "PCCOE Hackathon — Pulmonary Disease Classification",
+      description:
+        "A machine learning classification system for pulmonary diseases, designed as a rapid-build hackathon project. It focuses on ingesting medical imaging data, extracting features, and applying predictive modeling to assist in early disease indication.",
+      dates: "March, 2022",
+      location: "PCCOE, Pune, Maharashtra, India",
+      result: "winner",
+      image:
+        "/PulmonaryDiseaseClassification-Demo.gif",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/Pulmonary-Disease-Classification",
           icon: <Icons.github className="size-3" />,
         },
       ],
