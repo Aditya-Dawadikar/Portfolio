@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Full-Stack Developer. Exploring, Experimenting, and Engineering Software Solutions",
   summary:
-    "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](#projects), experimenting with new technologies, and continuously refining my [skills](#skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise.",
+    "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](projects), experimenting with new technologies, and continuously refining my [skills](skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise.",
   avatarUrl: "/me.png",
   skills: ["Python", "Javascript", "Typescript", "Java", "C++", "HTML", "CSS", "SQL",
     "FastAPI", "ExpressJs", "SpringBoot", "React", "Angular", "Tailwind CSS", "Bootstrap",
