@@ -27,7 +27,7 @@ export default function SideNav() {
           </li>
           <li>
             <Link href="/blog" className="block px-3 py-2 rounded hover:bg-muted">
-              Blog
+              Blogs
             </Link>
           </li>
         </ul>
