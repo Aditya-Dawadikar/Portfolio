@@ -19,6 +19,17 @@ export const DATA = {
     "Junit","Pytest","Jest","Selenium","Behave",
     "Git","Figma","Postman","Dbeaver","Canva","Jira"
   ],
+  programmingLanguages: ["Python","Javascript","Typescript", "Go", "Java","C++",,"SQL"],
+  frontend: ["React", "Redux", "Zustand", "Angular","Tailwind CSS", "Bootstrap", "HTML", "CSS"],
+  backend: ["FastAPI","ExpressJs", "Fastify", "SpringBoot"],
+  database: ["PostgreSQL","MySQL","Oracle SQL","MongoDB","Redis","Firestore","BigQuery","Pinecone"],
+  cloud: ["Cloud Functions","PubSub","Cloud Run","GKE","Cloud Storage", "AWS Lambda", "AWS S3", "AWS EC2", "AWS RDS", "AWS DynamoDB", "SQS", "SNS"],
+  dataprocessing:["Apache Spark", "Apache Flink", "Kafka", "Elastic Search"],
+  cicd: ["Git", "Docker","Kubernetes"],
+  testing: ["Junit","Pytest","Jest","Selenium","Behave"],
+  tools: ["Figma","Postman","Dbeaver","Canva","Jira"],
+  genAIskills: ["LangChain", "LangGraph", "RAG", "AgenticAI","LLMs", "Prompt Engineering", "Context Engineering", "Image Generation", "Voice Generation"],
+  mlResearchSkills: ["TensorFlow", "PyTorch", "Transformers", "Huggingface", "Fine Tuning", "Distributed Data Parallelism", "Tensor Parallelism", "AI workload deployment","Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
@@ -59,6 +70,18 @@ export const DATA = {
 
   work: [
     {
+      company: "PlanetBee",
+      href: "https://www.planetbee.org/",
+      badges: [],
+      location: "San Jose, CA",
+      title: "Programming Instructor",
+      logoUrl: "/planetbee.png",
+      start: "March 2026",
+      end: "May 2026",
+      description:
+        "As an Instructional Student Assistant (ISA), I teach programming fundamentals to middle school students, focusing on basic programming constructs like conditions and loops. I design interactive lessons, mentor students through coding challenges, and provide hands-on debugging support to strengthen their programming skills. I developed the study materials, code samples and delivered lectures on MicroBit programming for processing sensor data.",
+    },
+    {
       company: "BreakThroughTech, Cornell University",
       href: "https://www.sjsu.edu/cs/",
       badges: [],
@@ -78,7 +101,7 @@ export const DATA = {
       title: "Java Instructor",
       logoUrl: "/sjsu.png",
       start: "Jan 2025",
-      end: "May 2025",
+      end: "May 2026",
       description:
         "As an Instructional Student Assistant (ISA), I teach Java fundamentals to sophomore students, focusing on object-oriented programming, data structures, and problem-solving. I design interactive lessons, mentor students through coding challenges, and provide hands-on debugging support to strengthen their programming skills. By fostering a practical, project-based learning approach, I help students build a strong foundation in Java and prepare them for real-world software development.",
     },
