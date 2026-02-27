@@ -510,9 +510,9 @@ export const DATA = {
       ],
     },
     {
-      title: "SFHacks 2026 Project",
+      title: "SFHacks 2026",
       description:
-        "A hackathon-built full-stack system focused on rapid prototyping with AI integration. It combines frontend interaction, backend APIs, and intelligent automation to deliver a functional MVP within limited time constraints.",
+        "We built a platform for renting private EV charging stations, with features like real-time availability, booking, and AI-powered recommendations. The system was designed for rapid prototyping with a focus on user experience and seamless integration of AI capabilities.",
       dates: "February, 2026",
       location: "San Francisco State University, California, USA",
       result: "winner",
@@ -528,7 +528,7 @@ export const DATA = {
     }, {
       title: "Pump.co",
       description:
-        "Pump.co is a lightweight tool designed for efficient resource monitoring and notification workflows. It integrates REST API testing, customizable alerts, and structured reporting to help developers keep track of service health.",
+        "We developed an AI-powered content creation platform to help onboard new employees at Pump.co. The system uses LLMs to generate personalized onboarding materials, interactive tutorials, and a Q&A assistant to facilitate a smooth transition for new hires. It was designed for rapid prototyping with a focus on user experience and seamless integration of AI capabilities.",
       dates: "November, 2025",
       location: "Pump.co HQ, San Francisco, California, USA",
       result: "winner",
@@ -547,7 +547,7 @@ export const DATA = {
       location: "A10 HQ, Santa Clara, California, USA",
       result: "participant",
       description:
-        "A10 Hackathon Project is a rapid prototype built during a competitive hackathon. It focuses on building scalable backend services with real-time interaction and cloud deployment, demonstrating fast iteration, team collaboration, and production-ready architecture under time constraints.",
+        "We developed an AI prompt injection safety tool which can be integrated on the Load Balancer level to detect and mitigate prompt injection attacks in real time. The system uses a combination of pattern recognition, anomaly detection, and LLM-based analysis to identify malicious inputs and prevent them from reaching the backend services.",
       image:
         "/A10Hackathon-Demo.gif",
       links: [
