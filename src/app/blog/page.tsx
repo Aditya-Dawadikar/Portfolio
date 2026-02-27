@@ -1,46 +1,32 @@
-import BlurFade from "@/components/magicui/blur-fade";
-import { getBlogPosts } from "@/data/blog";
-import Link from "next/link";
+import BlogCard from "@/components/blog-card";
+import BLOG_LINKS from "@/data/blog-links";
 
 export const metadata = {
   title: "Blog",
-  description: "My thoughts on software development, life, and more.",
+  description: "External blog posts and Medium articles.",
 };
 
-const BLUR_FADE_DELAY = 0.04;
-
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
-
+export default function BlogPage() {
   return (
-    <section>
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
-      </BlurFade>
-      {posts
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((post, id) => (
-          <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
-            <Link
-              className="flex flex-col space-y-1 mb-4"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col">
-                <p className="tracking-tight">{post.metadata.title}</p>
-                <p className="h-6 text-xs text-muted-foreground">
-                  {post.metadata.publishedAt}
-                </p>
-              </div>
-            </Link>
-          </BlurFade>
-        ))}
-    </section>
+    <main className="py-8">
+      <div className="mx-auto max-w-7xl px-4">
+        <h1 className="mb-6 text-3xl font-semibold">Blogs</h1>
+        {BLOG_LINKS.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No external blog links yet. Add Medium URLs to <code>src/data/blog-links.ts</code>.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {BLOG_LINKS.slice()
+              .sort((a, b) => {
+                const da = a.date ? new Date(a.date) : new Date(0);
+                const db = b.date ? new Date(b.date) : new Date(0);
+                return db.getTime() - da.getTime();
+              })
+              .map((b) => (
+                <BlogCard key={b.href} title={b.title} href={b.href} date={b.date} category={b.category} />
+              ))}
+          </div>
+        )}
+      </div>
+    </main>
   );
 }
