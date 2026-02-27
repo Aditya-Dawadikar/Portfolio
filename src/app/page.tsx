@@ -12,6 +12,20 @@ import Markdown from "react-markdown";
 const BLUR_FADE_DELAY = 0.04;
 const iconSize = 30;
 
+const SKILL_CARDS = [
+  { keys: ["programmingLanguages"], label: "Languages" },
+  { keys: ["frontend"], label: "Frontend" },
+  { keys: ["backend"], label: "Backend" },
+  { keys: ["database"], label: "Database" },
+  { keys: ["testing"], label: "Testing" },
+  { keys: ["cicd"], label: "CI / CD" },
+  { keys: ["cloud"], label: "Cloud" },
+  { keys: ["dataprocessing"], label: "Data" },
+  { keys: ["tools"], label: "Tools" },
+  { keys: ["genAIskills"], label: "Generative AI" },
+  { keys: ["mlResearchSkills"], label: "ML Research" },
+];
+
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -129,16 +143,39 @@ export default function Page() {
         </div>
       </section>
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
+
+          {/* Detailed categories */}
+          <div className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {SKILL_CARDS.map((card, idx) => {
+                const items = card.keys.flatMap((k) => (DATA as any)[k] ?? []);
+                if (!items || items.length === 0) return null;
+                const id = `flip-${idx}`;
+                return (
+                  <div className="flip-card" key={card.label + idx}>
+                    <input id={id} className="flip-checkbox" type="checkbox" />
+                    <label htmlFor={id} className="flip-card-inner">
+                      <div className="skill-card flip-card-front">
+                        <div className="mb-2 text-sm font-medium text-muted-foreground">{card.label}</div>
+                        <div className="flex flex-wrap gap-1">
+                          {items.map((it: string) => (
+                            <Badge key={it}>{it}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="skill-card flip-card-back">
+                        <div className="mb-2 text-sm font-medium text-muted-foreground">More about {card.label}</div>
+                        <div className="text-sm text-muted-foreground">Click again to flip back. You can add details here.</div>
+                      </div>
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
