@@ -491,6 +491,24 @@ export const DATA = {
         "",
     },
   ],
+  papers: [
+    // Add your published papers here
+    // Example:
+    // {
+    //   title: "Paper Title",
+    //   authors: "Your Name, Co-author",
+    //   venue: "Conference/Journal Name",
+    //   date: "2024",
+    //   description: "Brief description of the paper",
+    //   links: [
+    //     {
+    //       type: "PDF",
+    //       href: "https://link-to-paper",
+    //       icon: <Icons.github className="size-3" />,
+    //     },
+    //   ],
+    // }
+  ],
   hackathons: [
     {
       title: "SAGE-AI, Calhacks 2025",
