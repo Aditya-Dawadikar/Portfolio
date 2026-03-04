@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="py-8">
+    <main className="py-8 mt-4 md:mt-0">
       <div className="mx-auto max-w-7xl px-4">
         <h1 className="mb-6 text-3xl font-semibold">Blogs</h1>
         {BLOG_LINKS.length === 0 ? (

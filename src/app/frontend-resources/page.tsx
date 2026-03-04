@@ -36,7 +36,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto py-8">
+    <div className="max-w-3xl mx-auto py-8 mt-4 md:mt-0">
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <h1 className="text-2xl font-semibold">Frontend Resources</h1>
         <p className="text-sm text-muted-foreground">
