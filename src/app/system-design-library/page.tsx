@@ -56,7 +56,7 @@ export default function Page() {
 
       <article className="prose prose-lg dark:prose-invert bg-panel p-6 rounded">
         {readme ? (
-          <ReactMarkdown components={globalComponents}>{readme}</ReactMarkdown>
+          <ReactMarkdown components={globalComponents as any}>{readme}</ReactMarkdown>
         ) : (
           <p>Loading...</p>
         )}
