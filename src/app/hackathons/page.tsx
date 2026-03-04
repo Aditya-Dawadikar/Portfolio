@@ -42,7 +42,7 @@ export default function Page() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mt-4 md:mt-0">
       <h1 className="text-3xl font-bold">Hackathons</h1>
       <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
         {sorted.map((event) => (
