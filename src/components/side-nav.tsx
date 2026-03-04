@@ -30,6 +30,21 @@ export default function SideNav() {
               Blogs
             </Link>
           </li>
+          <li className="px-3 py-2">
+            <div className="text-sm font-medium text-black mb-2">Resources</div>
+            <ul className="flex flex-col ml-2">
+              <li>
+                <Link href="/system-design-library" className="block px-3 py-2 rounded hover:bg-muted">
+                  System Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/frontend-resources" className="block px-3 py-2 rounded hover:bg-muted">
+                  Frontend Engineering
+                </Link>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </aside>

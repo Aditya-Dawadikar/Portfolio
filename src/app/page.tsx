@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import FeatureCard from "@/components/feature-card";
 
 // blur animation removed
 const iconSize = 30;
@@ -112,7 +113,24 @@ export default function Page() {
           ))}
         </div>
       </section>
-      
+      <section id="explore">
+        <div className="mx-auto w-full max-w-4xl">
+          <h2 className="text-xl font-bold mb-4">Explore</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FeatureCard title="Hackathons" description="View past hackathons and results" href="/hackathons">
+            </FeatureCard>
+
+            <FeatureCard title="Blogs" description="Read featured and recent blog posts" href="/blog">
+            </FeatureCard>
+
+            <FeatureCard title="Projects" description="Explore projects and demos" href="/projects">
+            </FeatureCard>
+
+            <FeatureCard title="Resources" description="System design & frontend resources" href="/system-design-library">
+            </FeatureCard>
+          </div>
+        </div>
+      </section>
       
       
       {/* <section id="contact">
