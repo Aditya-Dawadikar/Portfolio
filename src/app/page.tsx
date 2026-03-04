@@ -116,17 +116,20 @@ export default function Page() {
       <section id="explore">
         <div className="mx-auto w-full max-w-4xl">
           <h2 className="text-xl font-bold mb-4">Explore</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FeatureCard title="Hackathons" description="View past hackathons and results" href="/hackathons">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <FeatureCard title="My Hackathons" description="View past hackathons and results" href="/hackathons">
             </FeatureCard>
 
-            <FeatureCard title="Blogs" description="Read featured and recent blog posts" href="/blog">
+            <FeatureCard title="My Blogs" description="Read featured and recent blog posts" href="/blog">
             </FeatureCard>
 
-            <FeatureCard title="Projects" description="Explore projects and demos" href="/projects">
+            <FeatureCard title="My Projects" description="Explore projects and demos" href="/projects">
             </FeatureCard>
 
-            <FeatureCard title="Resources" description="System design & frontend resources" href="/system-design-library">
+            <FeatureCard title="Resources | System Design" description="System Design Interview Preparation Kit" href="/system-design-library">
+            </FeatureCard>
+
+            <FeatureCard title="Resources | Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources">
             </FeatureCard>
           </div>
         </div>
