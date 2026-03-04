@@ -32,7 +32,7 @@ export default function Page() {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {sortedStories.map((story) => (
+                    {sortedStories.map((story:any) => (
                         <StoryCard
                             key={story.title}
                             title={story.title}
