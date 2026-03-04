@@ -53,6 +53,11 @@ export default function SideNav() {
                   Frontend Engineering
                 </Link>
               </li>
+              <li>
+                <Link href="/ai-engineering" className="block px-3 py-2 rounded hover:bg-muted">
+                  AI Engineering
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
