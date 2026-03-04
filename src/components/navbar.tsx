@@ -213,6 +213,15 @@ export default function Navbar() {
                   >
                     <span>Frontend Engineering</span>
                   </button>
+                  <button
+                    onClick={() => handleNavigation("/ai-engineering")}
+                    className={cn(
+                      buttonVariants({ variant: "ghost" }),
+                      "w-full justify-start text-sm"
+                    )}
+                  >
+                    <span>AI Engineering</span>
+                  </button>
                 </div>
               </div>
               
