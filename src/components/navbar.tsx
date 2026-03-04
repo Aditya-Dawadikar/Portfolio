@@ -182,6 +182,16 @@ export default function Navbar() {
                 <span>Research Publication</span>
               </button>
               
+              <button
+                onClick={() => handleNavigation("/stories")}
+                className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  "w-full justify-start"
+                )}
+              >
+                <span>Stories</span>
+              </button>
+              
               <div className="px-3 py-2 mt-2">
                 <div className="text-sm font-medium text-muted-foreground mb-2">Resources</div>
                 <div className="flex flex-col space-y-1">

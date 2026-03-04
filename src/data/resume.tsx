@@ -509,6 +509,17 @@ export const DATA = {
     //   ],
     // }
   ],
+  stories: [
+    // Add your work experience stories here
+    // Example:
+    // {
+    //   title: "Story title or accomplishment",
+    //   company: "Company name",
+    //   date: "2024",
+    //   description: "Detailed story about what you built or optimized. Can include challenges, solutions, and impact.",
+    //   tags: ["Optimization", "Performance", "Architecture"],
+    // }
+  ],
   hackathons: [
     {
       title: "SAGE-AI, Calhacks 2025",

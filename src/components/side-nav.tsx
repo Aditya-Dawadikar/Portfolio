@@ -35,6 +35,11 @@ export default function SideNav() {
               Research Publication
             </Link>
           </li>
+          <li>
+            <Link href="/stories" className="block px-3 py-2 rounded hover:bg-muted">
+              Stories
+            </Link>
+          </li>
           <li className="px-3 py-2">
             <div className="text-sm font-medium text-black mb-2">Resources</div>
             <ul className="flex flex-col ml-2">
