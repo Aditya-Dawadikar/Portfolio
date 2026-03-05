@@ -131,6 +131,9 @@ export default function Page() {
 
             <FeatureCard title="Resources | Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources">
             </FeatureCard>
+
+            <FeatureCard title="Resources | AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering">
+            </FeatureCard>
           </div>
         </div>
       </section>
