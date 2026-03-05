@@ -15,13 +15,7 @@ export default function Page() {
     const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
     const navType = navEntries.length ? navEntries[0].type : (performance as any).navigation?.type === 1 ? "reload" : "navigate";
 
-    const loadFromLocal = () => {
-      const cached = localStorage.getItem(storageKey);
-      if (cached) setReadme(cached);
-      else setReadme("No cached content. Reload the page to fetch the README.");
-    };
-
-    if (navType === "reload") {
+    const fetchReadme = () => {
       fetch(`/api/readme?url=${encodeURIComponent(RAW_URL)}`)
         .then(async (res) => {
           if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
@@ -30,8 +24,20 @@ export default function Page() {
           setReadme(text);
         })
         .catch((err) => setReadme(`Error fetching README: ${String(err)}`));
+    };
+
+    if (navType === "reload") {
+      // Always fetch on full page reload
+      fetchReadme();
     } else {
-      loadFromLocal();
+      // On client-side navigation, check cache first
+      const cached = localStorage.getItem(storageKey);
+      if (cached) {
+        setReadme(cached);
+      } else {
+        // If no cache, fetch it
+        fetchReadme();
+      }
     }
   }, []);
 
