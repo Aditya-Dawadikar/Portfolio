@@ -1,6 +1,15 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
+import { useState } from "react";
 
 export function PaperCard({
   title,
@@ -21,41 +30,45 @@ export function PaperCard({
     icon: React.ReactNode;
   }>;
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <Card className="flex flex-col overflow-hidden border hover:shadow-lg transition-shadow p-3">
-      <CardHeader>
-        <div className="space-y-2">
-          <CardTitle className="text-lg">{title}</CardTitle>
-          <CardDescription className="text-xs font-medium">{authors}</CardDescription>
-          <div className="flex items-center justify-between gap-2">
-            <Badge variant="outline" className="text-xs">
-              {venue}
-            </Badge>
-            <span className="text-xs text-muted-foreground">{date}</span>
-          </div>
+    <Card className="flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full">
+      <CardHeader className="px-2">
+        <div className="space-y-1">
+          <CardTitle className="mt-1 text-base">{title}</CardTitle>
+          <p className="font-sans text-xs text-muted-foreground">{authors}</p>
+          <p className="font-sans text-xs text-muted-foreground">{venue}</p>
+          <time className="font-sans text-xs">{date}</time>
         </div>
       </CardHeader>
       {description && (
-        <CardContent className="flex-1">
-          <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
+        <CardContent className="px-2 text-pretty font-sans text-xs text-muted-foreground">
+          <p className={!isExpanded ? "line-clamp-1" : ""}>
+            Description: {description}
+          </p>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="font-semibold hover:underline cursor-pointer text-xs"
+          >
+            {isExpanded ? "Show less" : "Read more..."}
+          </button>
         </CardContent>
       )}
-      <CardContent className="pt-0">
-        <div className="flex gap-2 flex-wrap">
-          {links.map((link) => (
-            <Link
-              key={link.type}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium hover:bg-muted transition-colors"
-            >
-              {link.icon}
-              <span>{link.type}</span>
-            </Link>
-          ))}
-        </div>
-      </CardContent>
+      <CardFooter className="mt-auto px-2 pb-2">
+        {links && links.length > 0 && (
+          <div className="flex flex-row flex-wrap items-start gap-1">
+            {links?.map((link, idx) => (
+              <Link href={link?.href} key={idx} target="_blank">
+                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+                  {link.icon}
+                  {link.type}
+                </Badge>
+              </Link>
+            ))}
+          </div>
+        )}
+      </CardFooter>
     </Card>
   );
 }

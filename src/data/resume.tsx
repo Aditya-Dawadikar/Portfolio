@@ -491,46 +491,58 @@ export const DATA = {
         "",
     },
   ],
+  scholarProfiles: {
+    googleScholar: "https://scholar.google.com/citations?user=w1AsakoAAAAJ&hl=en",
+    orcid: "https://orcid.org/0000-0001-7208-6681",
+  },
   papers: [
-    // Add your published papers here
-    // Example:
+    {
+      title: "Survey of Techniques for Pulmonary Disease Classification using Deep Learning",
+      authors: "A. Dawadikar, A. Srivastava, N. Shelar, G. Gaikwad and A. Pawar",
+      venue: "2022 IEEE 7th International conference for Convergence in Technology (I2CT), Mumbai, India, 2022, pp. 1-5, doi: 10.1109/I2CT54291.2022.9824879",
+      date: "07-09 April 2022",
+      description: "The field of medical science is getting more effective with emerging trends of computer science technologies like AI, ML, and DL. The area where these technologies play an important role is the detection or recognition of diseases. This paper discusses existing methodologies and various steps involved in the process of detection/recognition of pulmonary diseases using lung sound. The paper is divided into 4 sections. These sections include general steps of any recognition system using lung sound and study of existing methods. The paper helps to overview the different approaches/experiments and build new and effective ones which can give better accuracy.",
+      links: [
+        {
+          type: "Paper",
+          href: "https://ieeexplore.ieee.org/document/9824879",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    }, {
+      title: "Three Feature Based Ensemble Deep Learning Model for Pulmonary Disease Classification",
+      authors: "Aditya Dawadikar, Anshu Srivastava, Neha Shelar, Gaurav Gaikwad, Prof. Atul Pawar",
+      venue: "International Research Journal of Engineering and Technology (IRJET), Volume: 10 Issue: 02",
+      date: "Feb 2023",
+      description: "In recent years there has been a rise in the number of patients suffering from acute and chronic pulmonary diseases because of varying reasons like pollution, lung damage, or infections. The following research is regarding a Neural Network based solution for the recognition of the abnormality and possible disease based on lung auscultation. The following paper depicts that RNN-LSTM and CNN were the best-performing techniques. Although a higher percentage of noise while capturing the auscultation audio and limited data leads to a saturation point for the models to improve. The dataset had over 5000 breathing cycles for COPD, whereas only about 100 breathing cycles for LRTI and URTI. This unbalanced data made it difficult for the models to perform well on test audio clips because of the bias introduced by the large count of COPD samples. We adopted a filter-based audio augmentation to rebalance the dataset. To get the most out of the data we had, we utilized multiple features like MFCC, Chromagram, and Spectrogram extracted from the same audio clip. Since these extracted features are not fathomable to humans, we used convolutional neural networks to perform primary feature extraction. Likewise, dedicated CNN models acted as feature extractors whereas the dense neural network served as the actual classifier. We developed multiple versions of the models with fine-tuned parameters. The ML models based on a single feature were considered the benchmark for evaluating more complex, multi-feature DL models.",
+      links: [
+        {
+          type: "Paper",
+          href: "https://www.irjet.net/archives/V10/i2/IRJET-V10I2102.pdf",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    },
     // {
-    //   title: "Paper Title",
-    //   authors: "Your Name, Co-author",
-    //   venue: "Conference/Journal Name",
-    //   date: "2024",
-    //   description: "Brief description of the paper",
+    //   title: "Activation-Guided Layer Selection for LoRA",
+    //   authors: "Aditya Dawadikar, Pooja Shyamsundar, Rashmi Vishwanath Bhat, Navrati Saxena",
+    //   venue: "MDPI Information, Modeling in the Era of Generative AI",
+    //   date: "May 2026",
+    //   description: "Low-Rank Adaptation (LoRA) has become a widely adopted parameter-efficient fine-tuning (PEFT) technique for large language models (LLMs). LoRA's benefits stem from its light weight and modular adapters. Standard LoRA applies adapters uniformly across all Transformer layers, implicitly assuming that each layer contributes equally to task adaptation. However, LLMs are found to have internal substructures that contribute in a disproportionate manner. In this work, we provide a theoretical analysis of how LoRA weight updates are influenced by a layer's activation magnitude. We propose Act-LoRA, a simple activation-guided layer selection strategy for selective Low-Rank Adaptation. We evaluate this strategy for both encoder-only and decoder-only architectures using the GLUE benchmark. Our method achieved a 20% GPUh saving with a 1% drop in GLUE score using DeBERTaV3-Base on a single-instance GPU with 50% less LoRA parameters. It also achieved 2% GPUh savings with a less than 0.15% drop in GLUE score with the Llama-3.1-8B model in Distributed Data Parallel mode with 25% fewer LoRA parameters. Our experiments and analysis show that the compute and memory requirements of LoRA adapters increase linearly with the number of selected layers. We further compare activation-guided selection against gradient-guided importance metrics and show that activation norms yield more stable and reproducible layer rankings across seeds and datasets. Overall, our results demonstrate that activation-guided layer selection is a practical and effective way to improve the efficiency of LoRA fine-tuning, making it immediately compatible with some existing PEFT techniques and distributed training frameworks.",
     //   links: [
     //     {
-    //       type: "PDF",
-    //       href: "https://link-to-paper",
-    //       icon: <Icons.github className="size-3" />,
+    //       type: "Paper",
+    //       href: "#",
+    //       icon: <Icons.globe className="size-3" />,
     //     },
     //   ],
-    // }
+    // },
   ],
   stories: [
-    // Add your work experience stories here
-    // Example:
-    // {
-    //   title: "Story title or accomplishment",
-    //   company: "Company name",
-    //   date: "2024",
-    //   description: "Detailed story about what you built or optimized. Can include challenges, solutions, and impact.",
-    //   tags: ["Optimization", "Performance", "Architecture"],
-    // }
-    // {
-    //   title: "Designing a Cost-Efficient Static Content Hosting Layer for an LMS",
-    //   company: "Quantiphi Analytics",
-    //   date: "2023",
-    //   description: "While building a Learning Management System serving more than 4,000 concurrent users and processing over 10,000 learning-content updates daily, we needed a scalable way to host static HTML course material stored in cloud buckets. Using a CDN to serve the HTML content would have significantly increased infrastructure costs at our scale. Signed URLs worked well for large media assets such as videos and PDFs, but they were not suitable for HTML learning modules because the pages relied heavily on relative imports (CSS, JavaScript, images). A single signed URL could not authorize all dependent assets, and generating signed URLs for each request would have added expensive compute overhead. To solve this, I designed a REST API layer to manage learning materials and mounted the cloud storage buckets as volumes on the application servers. The HTML files were then served locally from the mounted volumes, allowing relative imports to resolve naturally without generating multiple signed URLs. User authentication was enforced using secure cookies before serving the learning content. This approach enabled us to support thousands of concurrent learners while avoiding CDN overhead and keeping the platform responsive and cost-efficient.",
-    //   tags: ["Cloud Architecture", "Backend", "Storage Systems", "Cost Optimization"]
-    // },
     {
       title: "Designing a Secure and Cost-Efficient Static Content Hosting Layer for an LMS",
       company: "Quantiphi Analytics",
       date: "2023",
-      // description: "While building a Learning Management System serving more than 4,000 concurrent users and processing over 10,000 learning-content updates daily, we needed a scalable way to host thousands of static HTML learning modules stored in cloud buckets. The initial architecture assumed these files could be served directly from storage using signed URLs. However, as we approached the UAT phase we discovered a critical issue: the HTML learning modules contained multiple relative imports (CSS, JavaScript, images). A single signed URL could not authorize all dependent assets, and generating signed URLs for every asset would have been computationally expensive and difficult to maintain. Integrating a CDN at that stage of the project would also have introduced significant engineering overhead and operational cost while the system was close to release. We needed a solution that could be integrated quickly into the existing architecture, remain secure because the learning material was copyrighted, and avoid large infrastructure changes. I designed a REST-based virtual file system layer where cloud storage buckets were mounted as volumes on our application servers. The HTML files were served locally from these mounted volumes, allowing relative imports to resolve naturally without generating multiple signed URLs. Access control was enforced using authenticated cookies so only authorized users could access the learning content. This approach allowed us to deliver the feature in time for UAT, support thousands of concurrent learners, and avoid the complexity and cost of introducing a CDN late in the development cycle.",
       description: "While building a Learning Management System serving more than 4,000 concurrent users and processing over 10,000 learning-content updates daily, we needed a scalable way to host thousands of static HTML learning modules stored in cloud buckets. The initial architecture assumed these files could be served directly from storage using signed URLs or a CDN. However, as we approached the UAT phase we discovered a critical issue: the HTML learning modules contained multiple relative imports (CSS, JavaScript, images). A single signed URL could not authorize all dependent assets, and generating signed URLs for every imported file would have been computationally expensive and difficult to maintain. Integrating a CDN at that stage would also have required significant architectural changes and ongoing operational cost while the system was close to release. We needed a solution that could be integrated quickly into the existing architecture, remain secure because the learning material was copyrighted, and require minimal maintenance. I designed a REST-based virtual file system layer where cloud storage buckets were mounted as volumes on our application servers, allowing HTML files to be served locally so relative imports resolved naturally. To keep the application stateless while still managing access efficiently, we used our existing Redis cluster to cache signed URLs and file metadata such as age and expiry. Authentication was enforced through secure cookies so only authorized learners could access the content. This solution allowed us to deliver the feature before UAT, support thousands of concurrent learners, and avoid the complexity and cost of introducing a CDN late in the development cycle.",
       tags: ["Cloud Architecture", "Backend", "Storage Systems", "Cost Optimization"]
     },
