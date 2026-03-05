@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Full-Stack Developer. Exploring, Experimenting, and Engineering Software Solutions",
   summary:
-    "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](projects), experimenting with new technologies, and continuously refining my [skills](skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise.",
+    "My journey into coding started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](projects), experimenting with new technologies, and continuously refining my [skills](skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise. I learn, I teach, I collaborate, I compete & I build...",
   avatarUrl: "/me.png",
   skills: ["Python", "Javascript", "Typescript", "Java", "C++", "HTML", "CSS", "SQL",
     "FastAPI", "ExpressJs", "SpringBoot", "React", "Angular", "Tailwind CSS", "Bootstrap",
@@ -151,10 +151,41 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "KT - AI-Powered Podcast Generator",
+      href: "https://cf-ai-podcast-generator.pages.dev/",
+      dates: "December 2025",
+      active: false,
+      team: true,
+      hackathonWinner: true,
+      description:
+        "Generate professional podcasts on any topic in minutes with AI. Perfect for passive learning on the go.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React",
+        "Open AI GPT",
+        "Open AI Dall-E",
+        "Open AI TTS"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/siddharthck/cf_ai_podcast_generator",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "/generated podcasts.png",
+      video:
+        "",
+    },
+    {
       title: "BMC Management Agentic System",
       href: "https://github.com/Aditya-Dawadikar/BMC_Management_Agentic_System",
-      dates: "2025",
+      dates: "September 2025",
       active: false,
+      team: true,
+      hackathonWinner: true,
       description:
         "An agentic, AI-powered platform that combines deep infrastructure observability with autonomous control. It ingests hardware telemetry, uses LLM-based reasoning to interpret data, and can trigger automated control actions while providing real-time visualization and conversational insights.",
       technologies: [
@@ -183,9 +214,8 @@ export const DATA = {
     }, {
       title: "Conway’s Game of Life",
       href: "https://github.com/Aditya-Dawadikar/ConwaysGameOfLife",
-      dates: "2025",
-      active: false,
-      description:
+      dates: "May 2025",
+      active: false, team: false, description:
         "A GPU-accelerated implementation of Conway’s Game of Life, simulating cellular automata on large grids in real time using CUDA and SDL2 for interactive rendering and controls. Conway’s Game of Life is a classic zero-player simulation where patterns evolve over discrete generations based on simple neighbor rules.",
       technologies: [
         "CUDA",
@@ -209,8 +239,9 @@ export const DATA = {
     }, {
       title: "Pingu",
       href: "https://github.com/Aditya-Dawadikar/Pingu",
-      dates: "2025",
+      dates: "May 2025",
       active: false,
+      team: false,
       description:
         "Pingu is a lightweight CLI tool for testing REST APIs and validating JSON responses. It offers structured JSON diffs, parallel test execution, customizable test suites, and concise CLI output — making API testing fast and developer-friendly.",
       technologies: [
@@ -238,6 +269,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/RayFlux",
       dates: "July 2025",
       active: true,
+      team: false,
       description:
         "RayFlux is a distributed, S3-backed real-time messaging system designed with consistent hashing and stateless routing. It supports publisher-subscriber architecture with WebSocket streaming, JSONL log batching, and horizontal scalability via FluxNodes and a custom load balancer.",
       technologies: [
@@ -265,6 +297,8 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/BotTalk",
       dates: "July 2025",
       active: false,
+      team: true,
+      hackathonWinner: true,
       description:
         "BotTalk is an AI-powered podcast generation system built using multi-agent orchestration. It simulates structured conversations between a host and guest using LLM-driven planning, flow control, and script refinement, enabling automated content generation pipelines.",
       technologies: [
@@ -291,6 +325,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/BanyanTree",
       dates: "June 2025",
       active: false,
+      team: false,
       description:
         "BanyanTree is a Kubernetes-based distributed microservices architecture that integrates Raft consensus, Kafka log streaming, Elasticsearch indexing, and real-time dashboards. It demonstrates fault-tolerant cluster coordination and cloud-native deployment workflows.",
       technologies: [
@@ -316,8 +351,10 @@ export const DATA = {
     }, {
       title: "EVBnB",
       href: "https://github.com/Aditya-Dawadikar/SFHacks2026",
-      dates: "2026",
+      dates: "February 2026",
       active: false,
+      team: true,
+      hackathonWinner: true,
       description:
         "SFHacks 2026 Project is a hackathon-built full-stack system focused on rapid prototyping with AI integration. It combines frontend interaction, backend APIs, and intelligent automation to deliver a functional MVP within limited time constraints.",
       technologies: [
@@ -343,6 +380,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/cell-craft-ai",
       dates: "June 2025",
       active: false,
+      team: false,
       description:
         "CellCraft-AI is an intelligent, version-controlled data cleaning assistant built for structured CSV files. It combines large language models (LLMs), commit-based checkpoints, and cloud-native architecture to help users transform, explore, and branch CSV data with traceability and reproducibility.",
       technologies: [
@@ -371,6 +409,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/UCBerkeleyHackathon2025",
       dates: "June 2025",
       active: false,
+      team: true,
       description:
         "A powerful voice-augmented AI assistant for developers and researchers, built for UCBerkeleyHackathon2025. SAGE AI helps users converse and brainstorm on the content they browse online. It combines real-time web summarization, semantic memory, and natural voice interaction.",
       technologies: [
@@ -395,6 +434,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/Neuronite",
       dates: "April 2025",
       active: false,
+      team: false,
       description:
         "Neuronite is a lightweight neural network library written from scratch in C++ — built for learning, experimentation, and full transparency into how neural networks work at the bare metal level.",
       technologies: [
@@ -418,6 +458,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/RealtimeLogManager",
       dates: "Feb 2025",
       active: false,
+      team: false,
       description:
         "This project simulates a real-time log streaming system using Kafka, FastAPI, and WebSockets. It consists of multiple components to generate, process, and consume logs.",
       technologies: [
@@ -443,6 +484,8 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/Pulmonary-Disease-Classification",
       dates: "June 2021 - March 2022",
       active: false,
+      team: true,
+      hackathonWinner: true,
       description:
         "This repository contains a deep learning-based solution for classifying pulmonary diseases using lung auscultation audio. The project leverages Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) to extract spatial and temporal features from lung sounds to detect respiratory anomalies.",
       technologies: [
@@ -469,6 +512,7 @@ export const DATA = {
       href: "https://github.com/Aditya-Dawadikar/cpp_sql_database",
       dates: "September 2024 - December 2024",
       active: false,
+      team: false,
       description:
         "This project is a lightweight, terminal-based relational database management system (RDBMS) implemented in C++. Designed for simplicity and extensibility, the system supports essential database operations such as creating tables, inserting, updating, and deleting records, and executing queries with filtering, aggregation, and sorting.",
       technologies: [
@@ -628,7 +672,7 @@ export const DATA = {
       links: [
         {
           title: "Source",
-          href: "https://github.com/Aditya-Dawadikar/T-mon",
+          href: "https://github.com/siddharthck/cf_ai_podcast_generator",
           icon: <Icons.github className="size-3" />,
         },
       ],

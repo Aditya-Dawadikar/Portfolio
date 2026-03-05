@@ -18,7 +18,7 @@ export default function Page() {
             };
             return parse(b.dates).getTime() - parse(a.dates).getTime();
           })
-          .map((project) => (
+          .map((project:any) => (
             <ProjectCard
               key={project.title}
               href={project.href}
@@ -28,6 +28,9 @@ export default function Page() {
               tags={project.technologies}
               image={project.image}
               video={project.video}
+              embed={project.embed}
+              team={project.team}
+              hackathonWinner={project.hackathonWinner}
               links={project.links}
             />
           ))}

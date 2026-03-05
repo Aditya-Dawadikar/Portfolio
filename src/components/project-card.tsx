@@ -20,6 +20,9 @@ interface Props {
   link?: string;
   image?: string;
   video?: string;
+  embed?: string;
+  team?: boolean;
+  hackathonWinner?: boolean;
   links?: readonly {
     icon: React.ReactNode;
     type: string;
@@ -37,6 +40,9 @@ export function ProjectCard({
   link,
   image,
   video,
+  embed,
+  team,
+  hackathonWinner,
   links,
   className,
 }: Props) {
@@ -51,31 +57,43 @@ export function ProjectCard({
         target="_blank"
         className={cn("block cursor-pointer", className)}
       >
-        {video && (
+        {embed ? (
+          <div className="mx-auto h-40 w-full overflow-hidden rounded">
+            <iframe
+              src={embed}
+              className="h-40 w-full scale-100 origin-top-left"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+              allowFullScreen
+              scrolling="no"
+              title={title + " embed"}
+            />
+          </div>
+        ) : video ? (
           // If `video` is a YouTube/embed URL render an iframe, otherwise render native video
           /(youtube|youtu\.be|youtube-nocookie)\/|youtube\.com\/embed/.test(video) ? (
             <div className="mx-auto h-40 w-full overflow-hidden rounded">
-                {(() => {
-                  let iframeSrc = video;
-                  try {
-                    const u = new URL(video);
-                    u.searchParams.set("autoplay", "1");
-                    u.searchParams.set("mute", "1");
-                    iframeSrc = u.toString();
-                  } catch (e) {
-                    iframeSrc = video + (video.includes("?") ? "&autoplay=1&mute=1" : "?autoplay=1&mute=1");
-                  }
-                  return (
-                    <iframe
-                      src={iframeSrc}
-                      className="h-40 w-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
-                      allowFullScreen
-                      title={title + " video"}
-                    />
-                  );
-                })()}
-              </div>
+              {(() => {
+                let iframeSrc = video;
+                try {
+                  const u = new URL(video);
+                  u.searchParams.set("autoplay", "1");
+                  u.searchParams.set("mute", "1");
+                  iframeSrc = u.toString();
+                } catch (e) {
+                  iframeSrc = video + (video.includes("?") ? "&autoplay=1&mute=1" : "?autoplay=1&mute=1");
+                }
+                return (
+                  <iframe
+                    src={iframeSrc}
+                    className="h-40 w-full scale-100 origin-top-left"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+                    allowFullScreen
+                    scrolling="no"
+                    title={title + " video"}
+                  />
+                );
+              })()}
+            </div>
           ) : (
             <video
               src={video}
@@ -86,8 +104,7 @@ export function ProjectCard({
               className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
             />
           )
-        )}
-        {image && (
+        ) : image ? (
           <Image
             src={image}
             alt={title}
@@ -96,7 +113,7 @@ export function ProjectCard({
             unoptimized={true}
             className="h-40 w-full overflow-hidden object-cover object-top"
           />
-        )}
+        ) : null}
       </Link>
       <CardHeader className="px-2">
         <div className="space-y-1">
@@ -126,18 +143,30 @@ export function ProjectCard({
         )}
       </CardContent>
       <CardFooter className="px-2 pb-2">
-        {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                  {link.icon}
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-row flex-wrap items-start gap-1">
+          {links && links.length > 0 && (
+            <>
+              {links?.map((link, idx) => (
+                <Link href={link?.href} key={idx} target="_blank">
+                  <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+                    {link.icon}
+                    {link.type}
+                  </Badge>
+                </Link>
+              ))}
+            </>
+          )}
+          {team !== undefined && (
+            <Badge variant={team ? "default" : "secondary"} className="text-[10px] px-2 py-1">
+              {team ? "Team" : "Solo"}
+            </Badge>
+          )}
+          {hackathonWinner && (
+            <Badge className="text-[10px] px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white">
+              🏆 Winner
+            </Badge>
+          )}
+        </div>
       </CardFooter>
     </Card>
   );
