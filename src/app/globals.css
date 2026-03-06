@@ -147,13 +147,39 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .skill-marquee {
   position: relative;
   overflow: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
 }
 .skill-marquee-track {
-  display: flex;
-  gap: 1rem;
-  align-items: stretch;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  align-items: center;
+  width: max-content;
+  min-width: max-content;
   animation: scroll-left 40s linear infinite;
+  will-change: transform;
 }
+
+.skill-marquee-group {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.skill-marquee-track-reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-marquee-track {
+    animation: none;
+  }
+}
+
 .skill-card {
   min-width: 260px;
   background-color: hsl(var(--card));
@@ -165,8 +191,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 /* Flip card styles */
