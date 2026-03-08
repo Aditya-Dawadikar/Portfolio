@@ -119,7 +119,7 @@ export default function Page() {
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Projects</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-            Things I've Built
+            Things I&apos;ve Built
           </h2>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Projects where I experiment with ideas and learn how systems behave in the real world.
@@ -277,7 +277,7 @@ export default function Page() {
       
       <div className="relative z-10 max-w-4xl px-6 text-center space-y-6">
         <h2 className="text-5xl font-semibold leading-tight sm:text-6xl lg:text-7xl">
-          Let's Build Something Together
+          Let&apos;s Build Something Together
         </h2>
         <p className="text-xl text-zinc-200 sm:text-2xl lg:text-3xl">
           Ready to turn ideas into reality ?
@@ -316,7 +316,7 @@ export default function Page() {
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Philosophy</p>
           <blockquote className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl italic">
-            "We are what we repeatedly do. Excellence, then, is not an act but a habit."
+            &quot;We are what we repeatedly do. Excellence, then, is not an act but a habit.&quot;
           </blockquote>
           <p className="text-base text-zinc-300 sm:text-lg">
             — Aristotle
