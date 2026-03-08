@@ -312,3 +312,50 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     animation: none;
   }
 }
+
+/* Landing page scrollbar style (applies only while / is mounted) */
+html.landing-scroll,
+body.landing-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff rgba(10, 10, 10, 1);
+}
+
+html.landing-scroll::-webkit-scrollbar,
+body.landing-scroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+html.landing-scroll::-webkit-scrollbar-track,
+body.landing-scroll::-webkit-scrollbar-track {
+  width: 2px;
+  background: linear-gradient(
+    to right,
+    transparent calc(50% - 0.3px),
+    rgba(10, 10, 10, 1) calc(50% - 0.3px),
+    rgba(10, 10, 10, 1) calc(50% + 0.3px),
+    transparent calc(50% + 0.3px)
+  );
+}
+
+html.landing-scroll::-webkit-scrollbar-thumb,
+body.landing-scroll::-webkit-scrollbar-thumb {
+  border: none;
+  width: 10px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 1) 0 36%,
+    rgba(255, 255, 255, 0.86) 37% 58%,
+    rgba(255, 255, 255, 0) 56%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+html.landing-scroll::-webkit-scrollbar-thumb:hover,
+body.landing-scroll::-webkit-scrollbar-thumb:hover {
+  background-size: 12px 12px;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.6);
+}
