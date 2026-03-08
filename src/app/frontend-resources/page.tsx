@@ -44,25 +44,25 @@ export default function Page() {
   return (
     <div className="max-w-3xl mx-auto py-8 mt-4 md:mt-0">
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-semibold">Frontend Resources</h1>
-        <p className="text-sm text-muted-foreground">
+        <h1 className="text-2xl font-semibold text-zinc-100">Frontend Resources</h1>
+        <p className="text-sm text-zinc-300">
           Source repo:{" "}
           <a
             href="https://github.com/Aditya-Dawadikar/FrontEnd_Engneer_2025"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline"
+            className="underline text-zinc-100 hover:text-white"
           >
             Aditya-Dawadikar/FrontEnd_Engneer_2025
           </a>
         </p>
       </div>
 
-      <article className="prose prose-lg dark:prose-invert bg-panel p-6 rounded">
+      <article className="prose prose-lg max-w-none rounded-2xl border border-white/10 bg-black/50 p-6 text-zinc-300 prose-headings:text-zinc-100 prose-p:text-zinc-300 prose-strong:text-zinc-100 prose-li:text-zinc-300 prose-a:text-zinc-100 prose-code:text-zinc-100 prose-pre:bg-black/70">
         {readme ? (
           <ReactMarkdown components={globalComponents as any}>{readme}</ReactMarkdown>
         ) : (
-          <p>Loading...</p>
+          <p className="text-zinc-300">Loading...</p>
         )}
       </article>
     </div>

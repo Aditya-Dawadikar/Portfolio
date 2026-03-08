@@ -43,9 +43,9 @@ export default function Page() {
 
   return (
     <div className="space-y-6 mt-4 md:mt-0">
-      <h1 className="text-3xl font-bold">Hackathons</h1>
-      <p>One of the things I love most about San Francisco is the incredible frequency of hackathons. Almost every month there’s an opportunity to build something new, collaborate with talented people, and experiment with ideas that might never appear in day-to-day work. I enjoy the intensity of these short build cycles — going from a rough idea to a working prototype in 24–48 hours is both challenging and energizing. Over time these hackathons have become a space where I test new technologies, push my creativity, and occasionally walk away with a win as well.</p>
-      <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+      <h1 className="text-3xl font-bold text-zinc-100">Hackathons</h1>
+      <p className="text-base text-zinc-300 leading-relaxed">One of the things I love most about San Francisco is the incredible frequency of hackathons. Almost every month there’s an opportunity to build something new, collaborate with talented people, and experiment with ideas that might never appear in day-to-day work. I enjoy the intensity of these short build cycles - going from a rough idea to a working prototype in 24-48 hours is both challenging and energizing. Over time these hackathons have become a space where I test new technologies, push my creativity, and occasionally walk away with a win as well.</p>
+      <ul className="mb-4 ml-4 divide-y divide-dashed divide-white/10 border-l border-white/20">
         {sorted.map((event) => (
           <li key={event.title + event.dates} className="py-4">
             <HackathonCard

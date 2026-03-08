@@ -1,5 +1,4 @@
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
@@ -59,10 +58,7 @@ export default function RootLayout({
       <body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            <PageWrapper>
-              {children}
-            </PageWrapper>
-            <Navbar />
+            <PageWrapper>{children}</PageWrapper>
           </TooltipProvider>
         </ThemeProvider>
       </body>

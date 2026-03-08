@@ -17,7 +17,7 @@ export default function Page() {
     return (
         <div className="space-y-6 mt-4 md:mt-0">
             <h1 className="text-3xl font-bold">Stories</h1>
-            <p>
+            <p className="text-base text-zinc-300">
                 Over the past few years, I’ve worked on systems that operate at real production 
                 scale — from real-time dashboards and AI processing pipelines to distributed 
                 backend services and cost-optimized data platforms. Many of the most valuable 

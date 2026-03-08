@@ -67,13 +67,13 @@ export default function Page() {
   });
 
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10 overflow-x-hidden">
+    <main className="flex min-h-[100dvh] flex-col space-y-10 overflow-x-hidden text-zinc-100">
       <section id="hero" className="mt-4 md:mt-0">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">{`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}</h1>
-              <p className="max-w-[600px] md:text-xl">{DATA.description}</p>
+              <p className="max-w-[600px] text-zinc-300 md:text-xl">{DATA.description}</p>
             </div>
             <Avatar className="size-28 border">
               <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
@@ -83,8 +83,8 @@ export default function Page() {
         </div>
       </section>
       <section id="about">
-        <h2 className="text-xl font-bold">About</h2>
-        <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+        <h2 className="text-2xl font-bold">About</h2>
+        <Markdown className="prose max-w-full text-pretty text-base text-zinc-300 prose-headings:text-zinc-100 prose-p:text-zinc-300 prose-strong:text-zinc-100 prose-a:text-zinc-100">
           {DATA.summary}
         </Markdown>
         <br />
@@ -95,7 +95,7 @@ export default function Page() {
               alt="Medium"
               width={iconSize}
               height={iconSize}
-              className="hover:opacity-80"
+              className="brightness-0 invert hover:opacity-80"
             />
           </a>
           <a href="https://linkedin.com/in/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
@@ -104,7 +104,7 @@ export default function Page() {
               alt="LinkedIn"
               width={iconSize}
               height={iconSize}
-              className="hover:opacity-80"
+              className="brightness-0 invert hover:opacity-80"
             />
           </a>
           <a href="https://github.com/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
@@ -113,14 +113,14 @@ export default function Page() {
               alt="GitHub"
               width={iconSize}
               height={iconSize}
-              className="hover:opacity-80"
+              className="brightness-0 invert hover:opacity-80"
             />
           </a>
         </div>
       </section>
       <section id="interests">
-        <h2 className="text-xl font-bold">Interests</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h2 className="text-2xl font-bold">Interests</h2>
+        <p className="mt-1 text-base text-zinc-300">
           Areas I am actively exploring and building in.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -188,7 +188,7 @@ export default function Page() {
       </section> */}
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Work Experience</h2>
+          <h2 className="text-2xl font-bold">Work Experience</h2>
           {DATA.work.map((work) => (
             <ResumeCard
               key={work.company}
@@ -206,7 +206,7 @@ export default function Page() {
       </section>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Education</h2>
+          <h2 className="text-2xl font-bold">Education</h2>
           {DATA.education.map((education) => (
             <ResumeCard
               key={education.school}
@@ -222,24 +222,41 @@ export default function Page() {
       </section>
       <section id="explore">
         <div className="mx-auto w-full max-w-4xl">
-          <h2 className="text-xl font-bold mb-4">Explore</h2>
+          <h2 className="text-2xl font-bold mb-4">Explore</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <FeatureCard title="My Hackathons" description="View past hackathons and results" href="/hackathons">
+            <FeatureCard title="My Skills" description="All the tech that I even explored" href="/skills" backgroundImage="/geekgod/skilled.png">
             </FeatureCard>
 
-            <FeatureCard title="My Blogs" description="Read featured and recent blog posts" href="/blog">
+            <FeatureCard title="My Projects" description="Explore projects and demos" href="/projects" backgroundImage="/geekgod/builder.png">
             </FeatureCard>
 
-            <FeatureCard title="My Projects" description="Explore projects and demos" href="/projects">
+            <FeatureCard title="My Hackathons" description="View past hackathons and results" href="/hackathons" backgroundImage="/geekgod/winner.png">
             </FeatureCard>
 
-            <FeatureCard title="Resources | System Design" description="System Design Interview Preparation Kit" href="/system-design-library">
+            <FeatureCard title="My Blogs" description="Read featured and recent blog posts" href="/blog" backgroundImage="/geekgod/writer.png">
             </FeatureCard>
 
-            <FeatureCard title="Resources | Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources">
+            <FeatureCard title="My Research" description="Checkout my research interests" href="/papers" backgroundImage="/geekgod/innovator.png">
             </FeatureCard>
 
-            <FeatureCard title="Resources | AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering">
+            <FeatureCard title="My Stories" description="Lessons from my work" href="/stories" backgroundImage="/geekgod/teacher.png">
+            </FeatureCard>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="explore">
+        <div className="mx-auto w-full max-w-4xl">
+          <h2 className="text-2xl font-bold mb-4">Resources</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <FeatureCard title="System Design" description="System Design Interview Preparation Kit" href="/system-design-library" backgroundImage="/geekgod/resources.png">
+            </FeatureCard>
+
+            <FeatureCard title="Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources" backgroundImage="/geekgod/resources.png">
+            </FeatureCard>
+
+            <FeatureCard title="AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering" backgroundImage="/geekgod/resources.png">
             </FeatureCard>
           </div>
         </div>
