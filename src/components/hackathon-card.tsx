@@ -48,10 +48,10 @@ export function HackathonCard({
             {/* <div className="w-px h-24 bg-border mt-2"></div> */}
           </div>
           <div className="flex flex-col text-left">
-            <div className="text-sm md:text-base font-semibold text-slate-800 dark:text-slate-200 break-words leading-tight">
+            <div className="text-sm md:text-base font-semibold text-zinc-100 break-words leading-tight">
               {month}
             </div>
-            <div className="text-xs md:text-sm text-slate-700 dark:text-slate-300">
+            <div className="text-xs md:text-sm text-zinc-400">
               {year}
             </div>
           </div>
@@ -59,12 +59,12 @@ export function HackathonCard({
       </div>
       <div className="flex flex-1 flex-col justify-start gap-1">
         {/* date shown on timeline */}
-        <h2 className="font-semibold leading-none">{title}</h2>
+        <h2 className="font-semibold leading-none text-zinc-100">{title}</h2>
         {location && (
-          <p className="text-sm text-muted-foreground">{location}</p>
+          <p className="text-sm text-zinc-400">{location}</p>
         )}
         {description && (
-          <span className="prose dark:prose-invert text-sm text-muted-foreground">
+          <span className="text-sm leading-relaxed text-zinc-300">
             {description}
           </span>
         )}
@@ -86,7 +86,7 @@ export function HackathonCard({
             ⭐ Winner
           </Badge>
         ) : result === "participant" ? (
-          <Badge className="bg-slate-100 text-slate-800">Participant</Badge>
+          <Badge className="border border-white/20 bg-white/10 text-zinc-100">Participant</Badge>
         ) : null}
       </div>
     </li>

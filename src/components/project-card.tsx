@@ -52,7 +52,7 @@ export function ProjectCard({
   return (
     <Card
       className={cn(
-        "flex flex-col overflow-hidden border bg-card/90 hover:shadow-lg transition-all duration-300 ease-out p-2",
+        "flex flex-col overflow-hidden border border-white/15 bg-black/45 p-2 text-zinc-100 transition-all duration-300 ease-out hover:shadow-lg",
         className,
       )}
     >
@@ -119,28 +119,30 @@ export function ProjectCard({
       </Link>
       <CardHeader className="px-2 py-2">
         <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <time className="font-sans text-xs">{dates}</time>
+          <CardTitle className="mt-1 text-base text-zinc-100">{title}</CardTitle>
+          <time className="text-xs text-zinc-400">{dates}</time>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
 
           <input id={descriptionToggleId} type="checkbox" className="peer sr-only" />
-          <div className="relative">
-            <div className="max-h-16 overflow-hidden text-pretty font-sans text-xs text-muted-foreground transition-all duration-300 peer-checked:max-h-96">
-              <Markdown className="prose prose-sm max-w-full dark:prose-invert">
-                {description}
-              </Markdown>
-            </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-background to-transparent peer-checked:hidden" />
+          <div className="relative max-h-16 overflow-hidden text-pretty text-xs text-zinc-300 transition-all duration-300 peer-checked:max-h-96">
+            <Markdown className="prose prose-sm max-w-full text-zinc-300 prose-headings:text-zinc-100 prose-p:text-zinc-300 prose-strong:text-zinc-100 prose-a:text-zinc-100">
+              {description}
+            </Markdown>
           </div>
 
           <label
             htmlFor={descriptionToggleId}
-            className="inline-flex cursor-pointer select-none text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+            className="inline-flex cursor-pointer select-none text-xs font-medium text-zinc-300 underline underline-offset-2 hover:text-zinc-100 peer-checked:hidden"
           >
-            <span className="peer-checked:hidden">Read more</span>
-            <span className="hidden peer-checked:inline">Read less</span>
+            Read more
+          </label>
+          <label
+            htmlFor={descriptionToggleId}
+            className="hidden cursor-pointer select-none text-xs font-medium text-zinc-300 underline underline-offset-2 hover:text-zinc-100 peer-checked:inline-flex"
+          >
+            Read less
           </label>
         </div>
       </CardHeader>

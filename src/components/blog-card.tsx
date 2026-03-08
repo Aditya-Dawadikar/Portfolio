@@ -12,15 +12,15 @@ type Props = {
 
 export default function BlogCard({ title, href, date, category, className }: Props) {
   return (
-    <Card className={`flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full ${className ?? ""}`}>
+    <Card className={`flex h-full flex-col overflow-hidden border border-white/15 bg-black/45 text-zinc-100 transition-all duration-300 ease-out hover:shadow-lg ${className ?? ""}`}>
       <CardHeader className="px-2">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base">
-            <Link href={href} target="_blank" className="hover:underline">
+            <Link href={href} target="_blank" className="text-zinc-100 hover:underline">
               {title}
             </Link>
           </CardTitle>
-          {date && <time className="font-sans text-xs">{date}</time>}
+          {date && <time className="text-xs text-zinc-400">{date}</time>}
         </div>
       </CardHeader>
 
@@ -33,8 +33,8 @@ export default function BlogCard({ title, href, date, category, className }: Pro
             <Badge
               className={`px-2 py-1 text-[10px] ${
                 category === "project"
-                  ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                  : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                  ? "border border-blue-400/30 bg-blue-500/20 text-blue-200"
+                  : "border border-emerald-400/30 bg-emerald-500/20 text-emerald-200"
               }`}
             >
               {category === "project" ? "Project" : "Knowledge"}

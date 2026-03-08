@@ -84,14 +84,15 @@ export default function Page() {
     {/* Skills Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="skills" />
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/skilled.png"
-          alt="Skills"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/skilled.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
-        <div className="landing-image-vignette" aria-hidden="true" />
       </div>
       <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
@@ -132,12 +133,14 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/builder.png"
-          alt="Projects"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/builder.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
@@ -146,12 +149,14 @@ export default function Page() {
     {/* Hackathons Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="hackathons" />
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/winner.png"
-          alt="Hackathons"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/winner.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
@@ -192,12 +197,14 @@ export default function Page() {
             View Blogs
           </Link>        </div>
       </div>
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/writer.png"
-          alt="Blogs"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/writer.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
@@ -206,12 +213,14 @@ export default function Page() {
     {/* Publications Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="publications" />
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/innovator.png"
-          alt="Publications"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/innovator.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
@@ -255,12 +264,14 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div className="relative flex items-center justify-center overflow-hidden">
-        <img
-          src="/geekgod/teacher.png"
-          alt="Stories"
-          className="max-h-screen w-auto object-contain"
-        />
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(/geekgod/teacher.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>

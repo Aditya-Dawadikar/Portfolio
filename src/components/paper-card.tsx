@@ -33,23 +33,23 @@ export function PaperCard({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Card className="flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full">
+    <Card className="flex h-full flex-col overflow-hidden border border-white/15 bg-black/45 text-zinc-100 transition-all duration-300 ease-out hover:shadow-lg">
       <CardHeader className="px-2">
         <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <p className="font-sans text-xs text-muted-foreground">{authors}</p>
-          <p className="font-sans text-xs text-muted-foreground">{venue}</p>
-          <time className="font-sans text-xs">{date}</time>
+          <CardTitle className="mt-1 text-base text-zinc-100">{title}</CardTitle>
+          <p className="text-xs text-zinc-300">{authors}</p>
+          <p className="text-xs text-zinc-300">{venue}</p>
+          <time className="text-xs text-zinc-400">{date}</time>
         </div>
       </CardHeader>
       {description && (
-        <CardContent className="px-2 text-pretty font-sans text-xs text-muted-foreground">
+        <CardContent className="px-2 text-pretty text-xs text-zinc-300">
           <p className={!isExpanded ? "line-clamp-1" : ""}>
             Description: {description}
           </p>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="font-semibold hover:underline cursor-pointer text-xs"
+            className="cursor-pointer text-xs font-semibold text-zinc-300 hover:text-zinc-100 hover:underline"
           >
             {isExpanded ? "Show less" : "Read more..."}
           </button>

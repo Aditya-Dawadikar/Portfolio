@@ -21,17 +21,17 @@ export function StoryCard({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Card className="flex flex-col overflow-hidden border hover:shadow-lg transition-shadow p-3">
+    <Card className="flex flex-col overflow-hidden border border-white/15 bg-black/45 p-3 text-zinc-100 transition-shadow hover:shadow-lg">
       <CardHeader>
         <div className="space-y-2">
-          <CardTitle className="text-lg">{title}</CardTitle>
-          <CardDescription className="text-xs font-medium">{company}</CardDescription>
-          <div className="text-xs text-muted-foreground">{date}</div>
+          <CardTitle className="text-lg text-zinc-100">{title}</CardTitle>
+          <CardDescription className="text-xs font-medium text-zinc-300">{company}</CardDescription>
+          <div className="text-xs text-zinc-400">{date}</div>
         </div>
       </CardHeader>
       <CardContent className="flex-1 space-y-4">
         <p 
-          className={`text-sm text-muted-foreground leading-relaxed ${
+          className={`text-sm leading-relaxed text-zinc-300 ${
             isExpanded ? "" : "line-clamp-3"
           }`}
         >
@@ -50,7 +50,7 @@ export function StoryCard({
           variant="ghost"
           size="sm"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full h-auto py-1 text-xs font-medium"
+          className="h-auto w-full py-1 text-xs font-medium text-zinc-300 underline hover:text-zinc-100"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </Button>

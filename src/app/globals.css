@@ -153,6 +153,15 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
 
+/* Enforce one inherited font across wrapped page content. */
+.font-consistent * {
+  font-family: inherit;
+}
+
+.font-consistent :is(code, pre, kbd, samp) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 /* Scrolling skills marquee */
 .skill-marquee {
   position: relative;
@@ -252,7 +261,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   );
   opacity: 0.9;
   transform-origin: 18% 36%;
-  animation: landing-glow-drift 6s ease-in-out infinite;
 }
 
 .landing-video-wash {
@@ -290,27 +298,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 .landing-bottom-fade-tall {
   height: 14rem;
-}
-
-@keyframes landing-glow-drift {
-  0% {
-    transform: translate3d(-3%, -3%, 0) scale(0.95);
-    opacity: 0.72;
-  }
-  50% {
-    transform: translate3d(4%, 2%, 0) scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-3%, -3%, 0) scale(0.95);
-    opacity: 0.72;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .landing-page-glow {
-    animation: none;
-  }
 }
 
 /* Landing page scrollbar style (applies only while / is mounted) */
