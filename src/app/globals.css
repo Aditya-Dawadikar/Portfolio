@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+}
+
 @layer base {
     :root {
       --background: 0 0% 100%;
@@ -227,4 +237,78 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 .flip-card .skill-card {
   min-height: 6.5rem;
+}
+
+/* Landing page visual layers */
+.landing-page-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    20% 50% at 20% 40%,
+    rgba(255, 216, 140, 0.24) 0%,
+    rgba(255, 204, 120, 0.10) 34%,
+    rgba(0, 0, 0, 0) 66%
+  );
+  opacity: 0.9;
+  transform-origin: 18% 36%;
+  animation: landing-glow-drift 6s ease-in-out infinite;
+}
+
+.landing-video-wash {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 1, 1, 0.15);
+}
+
+.landing-video-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px rgba(1, 1, 1, 0.72);
+}
+
+.landing-image-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px rgba(1, 1, 1, 1);
+  background: linear-gradient(to top, rgba(1, 1, 1, 1) 0%, rgba(1, 1, 1, 0.95) 10%, rgba(1, 1, 1, 0) 70%);
+}
+
+.landing-bottom-fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, #010101 0%, rgba(1, 1, 1, 0.95) 45%, rgba(1, 1, 1, 0) 100%);
+}
+
+.landing-bottom-fade-short {
+  height: 5rem;
+}
+
+.landing-bottom-fade-tall {
+  height: 14rem;
+}
+
+@keyframes landing-glow-drift {
+  0% {
+    transform: translate3d(-3%, -3%, 0) scale(0.95);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate3d(4%, 2%, 0) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-3%, -3%, 0) scale(0.95);
+    opacity: 0.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-page-glow {
+    animation: none;
+  }
 }

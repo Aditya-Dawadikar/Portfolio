@@ -14,11 +14,17 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Don't show navbar on landing page
+  if (pathname === "/") {
+    return null;
+  }
 
   const handleNavigation = (href: string) => {
     setIsMenuOpen(false);

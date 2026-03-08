@@ -1,3 +1,4 @@
+import "./globals.css";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,7 +7,6 @@ import { cn } from "@/lib/utils";
 import SideNav from "@/components/side-nav";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -56,15 +56,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+      <body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            <div className="max-w-7xl mx-auto py-12 sm:py-24 px-6">
-              <div className="flex gap-8">
-                <SideNav />
-                <main className="flex-1">{children}</main>
-              </div>
-            </div>
+            {children}
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
