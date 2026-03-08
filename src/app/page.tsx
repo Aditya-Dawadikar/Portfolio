@@ -1,265 +1,338 @@
-import { HackathonCard } from "@/components/hackathon-card";
-// removed BlurFade animations per request
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import type { Metadata } from "next";
+import { Cormorant_Garamond } from "next/font/google";
+import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-import Markdown from "react-markdown";
-import FeatureCard from "@/components/feature-card";
-import Marquee from "react-fast-marquee";
+import { CommitPath } from "../components/commit-path";
+import LandingScrollbarStyle from "@/components/landing-scrollbar-style";
 
-// blur animation removed
-const iconSize = 30;
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+});
 
-const SKILL_LOGO_SLUGS: Record<string, string> = {
-  Python: "python",
-  Javascript: "javascript",
-  Typescript: "typescript",
-  Java: "openjdk",
-  "C++": "cplusplus",
-  HTML: "html5",
-  CSS: "css3",
-  SQL: "sqlite",
-  FastAPI: "fastapi",
-  ExpressJs: "express",
-  SpringBoot: "springboot",
-  React: "react",
-  Angular: "angular",
-  PostgreSQL: "postgresql",
-  MongoDB: "mongodb",
-  Redis: "redis",
-  Docker: "docker",
-  Kubernetes: "kubernetes",
-  Git: "git",
-  AWS: "amazonaws",
-  GCP: "googlecloud",
+export const metadata: Metadata = {
+  title: "Landing Page",
+  description: "A cinematic black landing page with autoplay background video.",
 };
 
-function getSkillLogo(skill: string) {
-  const slug = SKILL_LOGO_SLUGS[skill];
-  return slug
-    ? `https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${slug}.svg`
-    : null;
-}
-
-const SKILL_CARDS = [
-  { keys: ["programmingLanguages"], label: "Languages" },
-  { keys: ["frontend"], label: "Frontend" },
-  { keys: ["backend"], label: "Backend" },
-  { keys: ["database"], label: "Database" },
-  { keys: ["testing"], label: "Testing" },
-  { keys: ["cicd"], label: "CI / CD" },
-  { keys: ["cloud"], label: "Cloud" },
-  { keys: ["dataprocessing"], label: "Data" },
-  { keys: ["tools"], label: "Tools" },
-  { keys: ["genAIskills"], label: "Generative AI" },
-  { keys: ["mlResearchSkills"], label: "ML Research" },
+const landingNavLinks = [
+  { href: "/home", label: "Home" },
+  { href: "/skills", label: "Skills" },
+  { href: "/projects", label: "Projects" },
+  { href: "/hackathons", label: "Hackathons" },
+  { href: "/blog", label: "Blogs" },
+  { href: "/papers", label: "Publications" },
+  { href: "/stories", label: "Stories" }
 ];
 
 export default function Page() {
-  const topSkills = DATA.topSkills;
-  const rowCount = 1;
-  const skillRows = Array.from({ length: rowCount }, () => [] as string[]);
-  topSkills.forEach((skill, index) => {
-    skillRows[index % rowCount].push(skill);
-  });
-
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10 overflow-x-hidden">
-      <section id="hero" className="mt-4 md:mt-0">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-2 flex justify-between">
-            <div className="flex-col flex flex-1 space-y-1.5">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">{`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}</h1>
-              <p className="max-w-[600px] md:text-xl">{DATA.description}</p>
-            </div>
-            <Avatar className="size-28 border">
-              <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-              <AvatarFallback>{DATA.initials}</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-      </section>
-      <section id="about">
-        <h2 className="text-xl font-bold">About</h2>
-        <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-          {DATA.summary}
-        </Markdown>
-        <br />
-        <div className="flex items-center gap-4">
-          <a href="https://medium.com/@aditya-dawadikar" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/medium.svg"
-              alt="Medium"
-              width={iconSize}
-              height={iconSize}
-              className="hover:opacity-80"
-            />
-          </a>
-          <a href="https://linkedin.com/in/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-              alt="LinkedIn"
-              width={iconSize}
-              height={iconSize}
-              className="hover:opacity-80"
-            />
-          </a>
-          <a href="https://github.com/aditya-dawadikar" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-              alt="GitHub"
-              width={iconSize}
-              height={iconSize}
-              className="hover:opacity-80"
-            />
-          </a>
-        </div>
-      </section>
-      <section id="interests">
-        <h2 className="text-xl font-bold">Interests</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Areas I am actively exploring and building in.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {DATA.interests.map((interest) => (
-            <Badge key={interest} variant="secondary" className="px-2.5 py-1 text-xs">
-              {interest}
-            </Badge>
+    <>
+      <LandingScrollbarStyle />
+      <header className={`fixed inset-x-0 top-0 z-[9999] border-b border-white/10 bg-black/35 backdrop-blur-md ${cormorant.className}`}>
+        <nav className="mx-auto flex h-14 max-w-7xl items-center justify-center gap-2 overflow-x-auto px-4 sm:px-6 lg:px-8">
+          {landingNavLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-full border border-white/15 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-zinc-100 transition-colors hover:border-white/40 hover:text-white"
+            >
+              {item.label}
+            </Link>
           ))}
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className={`relative grid h-screen grid-cols-1 bg-[#010101] pt-14 text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="hero" />
+      <div className="relative flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className={`relative z-10 max-w-xl space-y-5 ${cormorant.className}`}>
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Hello</p>
+          <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            I am Aditya Dawadikar
+          </h1>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Exploring the Craft of Building Software.
+          </p>
         </div>
-      </section>
-      {/* <section id="top-skills" className=" min-w-0 overflow-hidden">
-        <h2 className="text-xl font-bold">Top Skills</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Core technologies I use the most.
-        </p>
-        <div className="mt-3 w-full max-w-full min-w-0 space-y-2 overflow-hidden rounded-lg bg-background/40">
-          {skillRows.map((row, rowIndex) => {
-            if (row.length === 0) return null;
+      </div>
 
-            const maxItemsPerRow = 5;
-            const limitedRow = row.slice(0, maxItemsPerRow);
-            if (limitedRow.length === 0) return null;
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <video
+          className="max-h-[calc(100vh-4.5rem)] w-auto object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/geekgod/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Soft black wash over the video for contrast against hero text. */}
+        <div className="landing-video-wash" aria-hidden="true" />
+        {/* Inset vignette to blend video edges into the black background. */}
+        <div className="landing-video-vignette" aria-hidden="true" />
+      </div>
 
-            return (
-              <div key={`skill-row-${rowIndex}`} className="relative w-full max-w-full min-w-0 overflow-hidden rounded-md">
-                <Marquee
-                  // autoFill={true}
-                  gradient={false}
-                  loop={0}
-                  speed={32 + rowIndex * 8}
-                  direction={rowIndex % 2 === 1 ? "right" : "left"}
-                >
-                  {limitedRow.map((skill, index) => {
-                    const logo = getSkillLogo(skill);
-                    return (
-                      <div
-                        key={`${skill}-${rowIndex}-${index}`}
-                        className="mr-3 flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 whitespace-nowrap"
-                      >
-                        {logo ? (
-                          <img
-                            src={logo}
-                            alt={`${skill} logo`}
-                            width={14}
-                            height={14}
-                            className="h-3.5 w-3.5"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full border text-[8px] leading-none">
-                            {skill.charAt(0).toUpperCase()}
-                          </span>
-                        )}
-                        <span className="text-xs font-medium">{skill}</span>
-                      </div>
-                    );
-                  })}
-                </Marquee>
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-background to-transparent" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent" />
-              </div>
-            );
-          })}
+      {/* Bottom fade to merge page content into the black base. */}
+      <div className="landing-bottom-fade landing-bottom-fade-tall" aria-hidden="true" />
+    </section>
+
+    {/* Skills Section - Image left, Text right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="skills" />
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/skilled.png"
+          alt="Skills"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Skills</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Tools of the Craft
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Languages, frameworks, and systems that help me turn ideas into working software.
+          </p>
+          <Link
+            href="/skills"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Skills
+          </Link>
         </div>
-      </section> */}
-      <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Work Experience</h2>
-          {DATA.work.map((work) => (
-            <ResumeCard
-              key={work.company}
-              logoUrl={work.logoUrl}
-              altText={work.company}
-              title={work.company}
-              subtitle={work.title}
-              href={work.href}
-              badges={work.badges}
-              period={`${work.start} - ${work.end ?? "Present"}`}
-              description={work.description}
-            />
-          ))}
+      </div>
+    </section>
+
+    {/* Projects Section - Text left, Image right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="projects" />
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Projects</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Things I&apos;ve Built
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Projects where I experiment with ideas and learn how systems behave in the real world.
+          </p>
+          <Link
+            href="/projects"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Projects
+          </Link>
         </div>
-      </section>
-      <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Education</h2>
-          {DATA.education.map((education) => (
-            <ResumeCard
-              key={education.school}
-              href={education.href}
-              logoUrl={education.logoUrl}
-              altText={education.school}
-              title={education.school}
-              subtitle={education.degree}
-              period={`${education.start} - ${education.end}`}
-            />
-          ))}
+      </div>
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/builder.png"
+          alt="Projects"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+    </section>
+
+    {/* Hackathons Section - Image left, Text right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="hackathons" />
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/winner.png"
+          alt="Hackathons"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Hackathons</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Experiments Under Pressure
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Short bursts of building where ideas move quickly from concept to prototype.
+          </p>
+          <Link
+            href="/hackathons"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Hackathons
+          </Link>
         </div>
-      </section>
-      <section id="explore">
-        <div className="mx-auto w-full max-w-4xl">
-          <h2 className="text-xl font-bold mb-4">Explore</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <FeatureCard title="My Hackathons" description="View past hackathons and results" href="/hackathons">
-            </FeatureCard>
+      </div>
+    </section>
 
-            <FeatureCard title="My Blogs" description="Read featured and recent blog posts" href="/blog">
-            </FeatureCard>
+    {/* Blogs Section - Text left, Image right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="blogs" />
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Blogs</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Writing to Understand, <br/> Writing to Share
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Thoughts and explanations from things I’m learning while building software.
+          </p>          <Link
+            href="/blog"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Blogs
+          </Link>        </div>
+      </div>
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/writer.png"
+          alt="Blogs"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+    </section>
 
-            <FeatureCard title="My Projects" description="Explore projects and demos" href="/projects">
-            </FeatureCard>
-
-            <FeatureCard title="Resources | System Design" description="System Design Interview Preparation Kit" href="/system-design-library">
-            </FeatureCard>
-
-            <FeatureCard title="Resources | Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources">
-            </FeatureCard>
-
-            <FeatureCard title="Resources | AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering">
-            </FeatureCard>
-          </div>
+    {/* Publications Section - Image left, Text right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="publications" />
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/innovator.png"
+          alt="Publications"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Publications</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Research
+            <br/> and <br/> Deeper Questions
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Exploring ideas that sit at the intersection of systems, learning, and intelligence.
+          </p>
+          <Link
+            href="/papers"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Publications
+          </Link>
         </div>
-      </section>
+      </div>
+    </section>
+
+    {/* Stories Section - Text left, Image right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="stories" />
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Stories</p>
+          <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Lessons Along the Way
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            Experiences that shaped how I think about engineering and building systems.
+          </p>
+          <Link
+            href="/stories"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Stories
+          </Link>
+        </div>
+      </div>
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/teacher.png"
+          alt="Stories"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+    </section>
+
+    {/* Collaborate Section - Full width with centered text */}
+    <section className={`relative flex h-screen items-center justify-center bg-[#010101] text-white snap-start ${cormorant.className}`}>
+      <img
+        src="/geekgod/collaborate.png"
+        alt="Collaborate"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
       
-      
-      {/* <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-            </div>
-          </BlurFade>
+      <div className="relative z-10 max-w-4xl px-6 text-center space-y-6">
+        <h2 className="text-5xl font-semibold leading-tight sm:text-6xl lg:text-7xl">
+          Let&apos;s Build Something Together
+        </h2>
+        <p className="text-xl text-zinc-200 sm:text-2xl lg:text-3xl">
+          Ready to turn ideas into reality ?
+        </p>
+        
+        <div className="flex items-center justify-center gap-6 pt-4">
+          <Link
+            href={DATA.contact.social.LinkedIn.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-300 hover:text-white transition-colors"
+          >
+            <Icons.linkedin className="w-8 h-8 sm:w-10 sm:h-10" />
+          </Link>
+          <Link
+            href={DATA.contact.social.GitHub.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-300 hover:text-white transition-colors"
+          >
+            <Icons.github className="w-8 h-8 sm:w-10 sm:h-10" />
+          </Link>
+          <a
+            href={`mailto:${DATA.contact.email}`}
+            className="text-zinc-300 hover:text-white transition-colors"
+          >
+            <Icons.email className="w-8 h-8 sm:w-10 sm:h-10" />
+          </a>
         </div>
-      </section> */}
-    </main>
+      </div>
+    </section>
+
+    {/* Aristotle Quote Section - Text left, Image right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Philosophy</p>
+          <blockquote className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl italic">
+            &quot;We are what we repeatedly do. Excellence, then, is not an act but a habit.&quot;
+          </blockquote>
+          <p className="text-base text-zinc-300 sm:text-lg">
+            — Aristotle
+          </p>
+        </div>
+      </div>
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/aristotle.png"
+          alt="Aristotle"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
+      </div>
+    </section>
+    </>
   );
 }
