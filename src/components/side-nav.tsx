@@ -7,6 +7,11 @@ export default function SideNav() {
         <ul className="flex flex-col">
           <li>
             <Link href="/" className="block px-3 py-2 rounded hover:bg-muted">
+              Landing
+            </Link>
+          </li>
+          <li>
+            <Link href="/home" className="block px-3 py-2 rounded hover:bg-muted">
               Home
             </Link>
           </li>

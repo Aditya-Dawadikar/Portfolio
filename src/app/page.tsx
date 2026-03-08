@@ -4,6 +4,7 @@ import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { CommitPath } from "../components/commit-path";
+import LandingScrollbarStyle from "@/components/landing-scrollbar-style";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,11 +17,36 @@ export const metadata: Metadata = {
   description: "A cinematic black landing page with autoplay background video.",
 };
 
+const landingNavLinks = [
+  { href: "/home", label: "Home" },
+  { href: "/skills", label: "Skills" },
+  { href: "/projects", label: "Projects" },
+  { href: "/hackathons", label: "Hackathons" },
+  { href: "/blog", label: "Blogs" },
+  { href: "/papers", label: "Publications" },
+  { href: "/stories", label: "Stories" }
+];
+
 export default function Page() {
   return (
     <>
+      <LandingScrollbarStyle />
+      <header className={`fixed inset-x-0 top-0 z-[9999] border-b border-white/10 bg-black/35 backdrop-blur-md ${cormorant.className}`}>
+        <nav className="mx-auto flex h-14 max-w-7xl items-center justify-center gap-2 overflow-x-auto px-4 sm:px-6 lg:px-8">
+          {landingNavLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-full border border-white/15 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-zinc-100 transition-colors hover:border-white/40 hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </header>
+
       {/* Hero Section */}
-      <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <section className={`relative grid h-screen grid-cols-1 bg-[#010101] pt-14 text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="hero" />
       <div className="relative flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className={`relative z-10 max-w-xl space-y-5 ${cormorant.className}`}>
@@ -36,7 +62,7 @@ export default function Page() {
 
       <div className="relative flex items-center justify-center overflow-hidden">
         <video
-          className="max-h-screen w-auto object-contain"
+          className="max-h-[calc(100vh-4.5rem)] w-auto object-contain"
           autoPlay
           loop
           muted
