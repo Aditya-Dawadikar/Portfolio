@@ -3,6 +3,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
+import { CommitPath } from "../components/commit-path";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -18,15 +19,17 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
+      {/* Hero Section */}
       <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="hero" />
       <div className="relative flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className={`relative z-10 max-w-xl space-y-5 ${cormorant.className}`}>
-          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Aditya Dawadikar</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Hello</p>
           <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-            Exploring the Craft of Building
+            I am Aditya Dawadikar
           </h1>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
-            Learning how systems are built, one project at a time.
+            Exploring the Craft of Building Software.
           </p>
         </div>
       </div>
@@ -54,6 +57,7 @@ export default function Page() {
 
     {/* Skills Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="skills" />
       <div className="relative flex items-center justify-center overflow-hidden">
         <img
           src="/geekgod/skilled.png"
@@ -72,12 +76,19 @@ export default function Page() {
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Languages, frameworks, and systems that help me turn ideas into working software.
           </p>
+          <Link
+            href="/skills"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Skills
+          </Link>
         </div>
       </div>
     </section>
 
     {/* Projects Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="projects" />
       <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Projects</p>
@@ -87,6 +98,12 @@ export default function Page() {
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Projects where I experiment with ideas and learn how systems behave in the real world.
           </p>
+          <Link
+            href="/projects"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Projects
+          </Link>
         </div>
       </div>
       <div className="relative flex items-center justify-center overflow-hidden">
@@ -102,6 +119,7 @@ export default function Page() {
 
     {/* Hackathons Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="hackathons" />
       <div className="relative flex items-center justify-center overflow-hidden">
         <img
           src="/geekgod/winner.png"
@@ -120,22 +138,33 @@ export default function Page() {
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Short bursts of building where ideas move quickly from concept to prototype.
           </p>
+          <Link
+            href="/hackathons"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Hackathons
+          </Link>
         </div>
       </div>
     </section>
 
     {/* Blogs Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="blogs" />
       <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Blogs</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-            Writing to Understand, Writing to Share.
+            Writing to Understand, <br/> Writing to Share
           </h2>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Thoughts and explanations from things I’m learning while building software.
-          </p>
-        </div>
+          </p>          <Link
+            href="/blog"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Blogs
+          </Link>        </div>
       </div>
       <div className="relative flex items-center justify-center overflow-hidden">
         <img
@@ -150,6 +179,7 @@ export default function Page() {
 
     {/* Publications Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="publications" />
       <div className="relative flex items-center justify-center overflow-hidden">
         <img
           src="/geekgod/innovator.png"
@@ -163,17 +193,25 @@ export default function Page() {
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Publications</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-            Research and Deeper Questions
+            Research
+            <br/> and <br/> Deeper Questions
           </h2>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Exploring ideas that sit at the intersection of systems, learning, and intelligence.
           </p>
+          <Link
+            href="/papers"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Publications
+          </Link>
         </div>
       </div>
     </section>
 
     {/* Stories Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <CommitPath side="left" sectionId="stories" />
       <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Stories</p>
@@ -183,6 +221,12 @@ export default function Page() {
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
             Experiences that shaped how I think about engineering and building systems.
           </p>
+          <Link
+            href="/stories"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
+          >
+            View Stories
+          </Link>
         </div>
       </div>
       <div className="relative flex items-center justify-center overflow-hidden">
@@ -237,6 +281,30 @@ export default function Page() {
             <Icons.email className="w-8 h-8 sm:w-10 sm:h-10" />
           </a>
         </div>
+      </div>
+    </section>
+
+    {/* Aristotle Quote Section - Text left, Image right */}
+    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+        <div className="max-w-xl space-y-5">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Philosophy</p>
+          <blockquote className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl italic">
+            "We are what we repeatedly do. Excellence, then, is not an act but a habit."
+          </blockquote>
+          <p className="text-base text-zinc-300 sm:text-lg">
+            — Aristotle
+          </p>
+        </div>
+      </div>
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <img
+          src="/geekgod/aristotle.png"
+          alt="Aristotle"
+          className="max-h-screen w-auto object-contain"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="landing-image-vignette" aria-hidden="true" />
       </div>
     </section>
     </>
