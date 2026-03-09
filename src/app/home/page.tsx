@@ -9,6 +9,7 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import FeatureCard from "@/components/feature-card";
 import Marquee from "react-fast-marquee";
+import { MyActivity } from "@/components/my-activity";
 
 // blur animation removed
 const iconSize = 30;
@@ -218,6 +219,12 @@ export default function Page() {
               period={`${education.start} - ${education.end}`}
             />
           ))}
+        </div>
+      </section>
+      <section id="education">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <h2 className="text-2xl font-bold">My Activity</h2>
+          <MyActivity />
         </div>
       </section>
       <section id="explore">
