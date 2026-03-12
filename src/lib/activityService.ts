@@ -256,7 +256,7 @@ async function fetchGithubActivity(username: string): Promise<GithubResult> {
         byDate.set(day.date, day);
     }
 
-    const daysAll = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
+    const daysAll = Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
     const days = daysAll.filter((day) => day.date >= fromStr && day.date <= toStr);
 
     if (!days.length) {
@@ -382,7 +382,7 @@ function mergeDailyActivity(
         }
     }
 
-    return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
+    return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
 }
 
 function computeLevelsForDays(
