@@ -49,8 +49,6 @@ interface ActivityErrorResponse {
 
 type ActivityDataResponse = ActivityResponse | ActivityErrorResponse;
 
-const ACTIVITY_API_BASE_URL = process.env.NEXT_PUBLIC_ACTIVITY_API_BASE_URL?.replace(/\/$/, "") ?? "";
-
 const getColorForMerged = (count: number, maxCount: number): string => {
     if (count === 0) return "bg-zinc-700/50";
     const ratio = count / maxCount;
@@ -76,11 +74,8 @@ export function MyActivity({
         const fetchActivity = async () => {
             try {
                 setLoading(true);
-                const activityUrl = ACTIVITY_API_BASE_URL
-                    ? `${ACTIVITY_API_BASE_URL}/activity?githubUsername=${githubUsername}&leetcodeUsername=${leetcodeUsername}`
-                    : `/activity?githubUsername=${githubUsername}&leetcodeUsername=${leetcodeUsername}`;
                 const response = await fetch(
-                    activityUrl
+                    `/api/activity?githubUsername=${githubUsername}&leetcodeUsername=${leetcodeUsername}`
                 );
                 const json = await response.json();
                 if (response.ok) {
@@ -104,7 +99,6 @@ export function MyActivity({
     if (loading) {
         return (
             <div className="rounded-lg border border-white/15 bg-black/45 p-6">
-                <h3 className="text-lg font-semibold text-zinc-100 mb-4">My Activity</h3>
                 <div className="flex items-center justify-center h-32">
                     <p className="text-zinc-400">Loading activity data...</p>
                 </div>
@@ -126,7 +120,6 @@ export function MyActivity({
     if (!data.ok) {
         return (
             <div className="rounded-lg border border-white/15 bg-black/45 p-6">
-                <h3 className="text-lg font-semibold text-zinc-100 mb-4">My Activity</h3>
                 <div className="space-y-2">
                     <p className="text-zinc-300">Unable to fetch some activity data:</p>
                     <ul className="text-sm text-zinc-400 space-y-1 ml-4">

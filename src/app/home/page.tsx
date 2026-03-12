@@ -221,7 +221,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="education">
+      <section id="my-activity">
         <div className="flex min-h-0 flex-col gap-y-3">
           <h2 className="text-2xl font-bold">My Activity</h2>
           <MyActivity />
@@ -253,7 +253,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="explore">
+      <section id="explore-2">
         <div className="mx-auto w-full max-w-4xl">
           <h2 className="text-2xl font-bold mb-4">Resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
