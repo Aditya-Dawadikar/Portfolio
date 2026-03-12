@@ -25,7 +25,7 @@ export async function GET(request: Request) {
 
         if (!data.sources.github.ok && !data.sources.leetcode.ok) {
             return NextResponse.json(
-                { ok: false, error: "Failed to fetch activity from both sources.", ...data },
+                { ...data, ok: false, error: "Failed to fetch activity from both sources." },
                 { status: 502 }
             );
         }
