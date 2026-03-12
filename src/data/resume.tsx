@@ -582,20 +582,20 @@ export const DATA = {
         },
       ],
     },
-    // {
-    //   title: "Activation-Guided Layer Selection for LoRA",
-    //   authors: "Aditya Dawadikar, Pooja Shyamsundar, Rashmi Vishwanath Bhat, Navrati Saxena",
-    //   venue: "MDPI Information, Modeling in the Era of Generative AI",
-    //   date: "May 2026",
-    //   description: "Low-Rank Adaptation (LoRA) has become a widely adopted parameter-efficient fine-tuning (PEFT) technique for large language models (LLMs). LoRA's benefits stem from its light weight and modular adapters. Standard LoRA applies adapters uniformly across all Transformer layers, implicitly assuming that each layer contributes equally to task adaptation. However, LLMs are found to have internal substructures that contribute in a disproportionate manner. In this work, we provide a theoretical analysis of how LoRA weight updates are influenced by a layer's activation magnitude. We propose Act-LoRA, a simple activation-guided layer selection strategy for selective Low-Rank Adaptation. We evaluate this strategy for both encoder-only and decoder-only architectures using the GLUE benchmark. Our method achieved a 20% GPUh saving with a 1% drop in GLUE score using DeBERTaV3-Base on a single-instance GPU with 50% less LoRA parameters. It also achieved 2% GPUh savings with a less than 0.15% drop in GLUE score with the Llama-3.1-8B model in Distributed Data Parallel mode with 25% fewer LoRA parameters. Our experiments and analysis show that the compute and memory requirements of LoRA adapters increase linearly with the number of selected layers. We further compare activation-guided selection against gradient-guided importance metrics and show that activation norms yield more stable and reproducible layer rankings across seeds and datasets. Overall, our results demonstrate that activation-guided layer selection is a practical and effective way to improve the efficiency of LoRA fine-tuning, making it immediately compatible with some existing PEFT techniques and distributed training frameworks.",
-    //   links: [
-    //     {
-    //       type: "Paper",
-    //       href: "#",
-    //       icon: <Icons.globe className="size-3" />,
-    //     },
-    //   ],
-    // },
+    {
+      title: "Activation-Guided Layer Selection for LoRA",
+      authors: "Aditya Dawadikar, Pooja Shyamsundar, Rashmi Vishwanath Bhat, Navrati Saxena",
+      venue: "MDPI Information, Modeling in the Era of Generative AI",
+      date: "May 2026",
+      description: "Low-Rank Adaptation (LoRA) has become a widely adopted parameter-efficient fine-tuning (PEFT) technique for large language models (LLMs). LoRA's benefits stem from its light weight and modular adapters. Standard LoRA applies adapters uniformly across all Transformer layers, implicitly assuming that each layer contributes equally to task adaptation. However, LLMs are found to have internal substructures that contribute in a disproportionate manner. In this work, we provide a theoretical analysis of how LoRA weight updates are influenced by a layer's activation magnitude. We propose Act-LoRA, a simple activation-guided layer selection strategy for selective Low-Rank Adaptation. We evaluate this strategy for both encoder-only and decoder-only architectures using the GLUE benchmark. Our method achieved a 20% GPUh saving with a 1% drop in GLUE score using DeBERTaV3-Base on a single-instance GPU with 50% less LoRA parameters. It also achieved 2% GPUh savings with a less than 0.15% drop in GLUE score with the Llama-3.1-8B model in Distributed Data Parallel mode with 25% fewer LoRA parameters. Our experiments and analysis show that the compute and memory requirements of LoRA adapters increase linearly with the number of selected layers. We further compare activation-guided selection against gradient-guided importance metrics and show that activation norms yield more stable and reproducible layer rankings across seeds and datasets. Overall, our results demonstrate that activation-guided layer selection is a practical and effective way to improve the efficiency of LoRA fine-tuning, making it immediately compatible with some existing PEFT techniques and distributed training frameworks.",
+      links: [
+        {
+          type: "Paper",
+          href: "https://www.mdpi.com/2078-2489/17/3/283",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    },
   ],
   stories: [
     {
