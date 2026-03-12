@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { CommitPath } from "../components/commit-path";
 import LandingScrollbarStyle from "@/components/landing-scrollbar-style";
+import LandingNavbar from "@/components/landing-navbar";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -17,52 +18,30 @@ export const metadata: Metadata = {
   description: "A cinematic black landing page with autoplay background video.",
 };
 
-const landingNavLinks = [
-  { href: "/home", label: "Home" },
-  { href: "/skills", label: "Skills" },
-  { href: "/projects", label: "Projects" },
-  { href: "/hackathons", label: "Hackathons" },
-  { href: "/blog", label: "Blogs" },
-  { href: "/papers", label: "Publications" },
-  { href: "/stories", label: "Stories" }
-];
-
 export default function Page() {
   return (
     <>
       <LandingScrollbarStyle />
-      <header className={`fixed inset-x-0 top-0 z-[9999] border-b border-white/10 bg-black/35 backdrop-blur-md ${cormorant.className}`}>
-        <nav className="mx-auto flex h-14 max-w-7xl items-center justify-center gap-2 overflow-x-auto px-4 sm:px-6 lg:px-8">
-          {landingNavLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="whitespace-nowrap rounded-full border border-white/15 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-zinc-100 transition-colors hover:border-white/40 hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </header>
+      <LandingNavbar />
 
       {/* Hero Section */}
       <section className={`relative grid h-screen grid-cols-1 bg-[#010101] pt-14 text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="hero" />
-      <div className="relative flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className={`relative z-10 max-w-xl space-y-5 ${cormorant.className}`}>
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Hello</p>
           <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
             I am Aditya Dawadikar
           </h1>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
-            Exploring the Craft of Building Software.
+            A Software Developer, Exploring the Craft of Building Software.
           </p>
         </div>
       </div>
 
-      <div className="relative flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden md:relative md:flex md:items-center md:justify-center">
         <video
-          className="max-h-[calc(100vh-4.5rem)] w-auto object-contain"
+          className="h-full w-full object-cover md:h-auto md:max-h-[calc(100vh-4.5rem)] md:w-auto md:object-contain"
           autoPlay
           loop
           muted
@@ -71,6 +50,8 @@ export default function Page() {
         >
           <source src="/geekgod/hero.mp4" type="video/mp4" />
         </video>
+        {/* Mobile dim overlay */}
+        <div className="absolute inset-0 bg-black/75 md:hidden" aria-hidden="true" />
         {/* Soft black wash over the video for contrast against hero text. */}
         <div className="landing-video-wash" aria-hidden="true" />
         {/* Inset vignette to blend video edges into the black background. */}
@@ -84,8 +65,12 @@ export default function Page() {
     {/* Skills Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="skills" />
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/skilled.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/skilled.png)`,
           backgroundPosition: 'center',
@@ -94,7 +79,7 @@ export default function Page() {
         }}>
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
       </div>
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Skills</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -116,7 +101,11 @@ export default function Page() {
     {/* Projects Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="projects" />
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/builder.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Projects</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -133,8 +122,8 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/builder.png)`,
           backgroundPosition: 'center',
@@ -149,8 +138,12 @@ export default function Page() {
     {/* Hackathons Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="hackathons" />
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/winner.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/winner.png)`,
           backgroundPosition: 'center',
@@ -160,7 +153,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Hackathons</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -182,23 +175,29 @@ export default function Page() {
     {/* Blogs Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="blogs" />
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/writer.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Blogs</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Writing to Understand, <br/> Writing to Share
           </h2>
           <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
-            Thoughts and explanations from things I’m learning while building software.
-          </p>          <Link
+            Thoughts and explanations from things I&apos;m learning while building software.
+          </p>
+          <Link
             href="/blog"
             className="inline-block text-sm uppercase tracking-[0.3em] text-white hover:text-zinc-300 transition-colors border-b border-white hover:border-zinc-300 pb-1"
           >
             View Blogs
-          </Link>        </div>
+          </Link>
+        </div>
       </div>
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/writer.png)`,
           backgroundPosition: 'center',
@@ -213,8 +212,12 @@ export default function Page() {
     {/* Publications Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="publications" />
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/innovator.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/innovator.png)`,
           backgroundPosition: 'center',
@@ -224,7 +227,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Publications</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -247,7 +250,11 @@ export default function Page() {
     {/* Stories Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="stories" />
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/teacher.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Stories</p>
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -264,8 +271,8 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div 
-        className="relative flex items-center justify-center overflow-hidden"
+      <div
+        className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden"
         style={{
           backgroundImage: `url(/geekgod/teacher.png)`,
           backgroundPosition: 'center',
@@ -323,7 +330,11 @@ export default function Page() {
 
     {/* Aristotle Quote Section - Text left, Image right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
-      <div className="flex items-center px-6 py-12 sm:px-10 lg:px-16">
+      {/* Mobile section background */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/aristotle.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+      </div>
+      <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">Philosophy</p>
           <blockquote className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl italic">
@@ -334,7 +345,7 @@ export default function Page() {
           </p>
         </div>
       </div>
-      <div className="relative flex items-center justify-center overflow-hidden">
+      <div className="hidden md:relative md:flex md:items-center md:justify-center md:overflow-hidden">
         <img
           src="/geekgod/aristotle.png"
           alt="Aristotle"
