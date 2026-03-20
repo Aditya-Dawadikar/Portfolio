@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Cache
 .cache/*
+
+# Claude Artifacts
+*/settings.local.json

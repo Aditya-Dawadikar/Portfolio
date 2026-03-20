@@ -1,6 +1,3 @@
-import { HackathonCard } from "@/components/hackathon-card";
-// removed BlurFade animations per request
-import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -8,65 +5,11 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import FeatureCard from "@/components/feature-card";
-import Marquee from "react-fast-marquee";
 import { MyActivity } from "@/components/my-activity";
 
-// blur animation removed
 const iconSize = 30;
 
-const SKILL_LOGO_SLUGS: Record<string, string> = {
-  Python: "python",
-  Javascript: "javascript",
-  Typescript: "typescript",
-  Java: "openjdk",
-  "C++": "cplusplus",
-  HTML: "html5",
-  CSS: "css3",
-  SQL: "sqlite",
-  FastAPI: "fastapi",
-  ExpressJs: "express",
-  SpringBoot: "springboot",
-  React: "react",
-  Angular: "angular",
-  PostgreSQL: "postgresql",
-  MongoDB: "mongodb",
-  Redis: "redis",
-  Docker: "docker",
-  Kubernetes: "kubernetes",
-  Git: "git",
-  AWS: "amazonaws",
-  GCP: "googlecloud",
-};
-
-function getSkillLogo(skill: string) {
-  const slug = SKILL_LOGO_SLUGS[skill];
-  return slug
-    ? `https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${slug}.svg`
-    : null;
-}
-
-const SKILL_CARDS = [
-  { keys: ["programmingLanguages"], label: "Languages" },
-  { keys: ["frontend"], label: "Frontend" },
-  { keys: ["backend"], label: "Backend" },
-  { keys: ["database"], label: "Database" },
-  { keys: ["testing"], label: "Testing" },
-  { keys: ["cicd"], label: "CI / CD" },
-  { keys: ["cloud"], label: "Cloud" },
-  { keys: ["dataprocessing"], label: "Data" },
-  { keys: ["tools"], label: "Tools" },
-  { keys: ["genAIskills"], label: "Generative AI" },
-  { keys: ["mlResearchSkills"], label: "ML Research" },
-];
-
 export default function Page() {
-  const topSkills = DATA.topSkills;
-  const rowCount = 1;
-  const skillRows = Array.from({ length: rowCount }, () => [] as string[]);
-  topSkills.forEach((skill, index) => {
-    skillRows[index % rowCount].push(skill);
-  });
-
   return (
     <main className="flex min-h-[100dvh] flex-col space-y-10 overflow-x-hidden text-zinc-100">
       <section id="hero" className="mt-4 md:mt-0">
@@ -132,61 +75,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-      {/* <section id="top-skills" className=" min-w-0 overflow-hidden">
-        <h2 className="text-xl font-bold">Top Skills</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Core technologies I use the most.
-        </p>
-        <div className="mt-3 w-full max-w-full min-w-0 space-y-2 overflow-hidden rounded-lg bg-background/40">
-          {skillRows.map((row, rowIndex) => {
-            if (row.length === 0) return null;
-
-            const maxItemsPerRow = 5;
-            const limitedRow = row.slice(0, maxItemsPerRow);
-            if (limitedRow.length === 0) return null;
-
-            return (
-              <div key={`skill-row-${rowIndex}`} className="relative w-full max-w-full min-w-0 overflow-hidden rounded-md">
-                <Marquee
-                  // autoFill={true}
-                  gradient={false}
-                  loop={0}
-                  speed={32 + rowIndex * 8}
-                  direction={rowIndex % 2 === 1 ? "right" : "left"}
-                >
-                  {limitedRow.map((skill, index) => {
-                    const logo = getSkillLogo(skill);
-                    return (
-                      <div
-                        key={`${skill}-${rowIndex}-${index}`}
-                        className="mr-3 flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 whitespace-nowrap"
-                      >
-                        {logo ? (
-                          <img
-                            src={logo}
-                            alt={`${skill} logo`}
-                            width={14}
-                            height={14}
-                            className="h-3.5 w-3.5"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full border text-[8px] leading-none">
-                            {skill.charAt(0).toUpperCase()}
-                          </span>
-                        )}
-                        <span className="text-xs font-medium">{skill}</span>
-                      </div>
-                    );
-                  })}
-                </Marquee>
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-background to-transparent" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent" />
-              </div>
-            );
-          })}
-        </div>
-      </section> */}
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <h2 className="text-2xl font-bold">Work Experience</h2>
@@ -270,20 +158,6 @@ export default function Page() {
       </section>
 
 
-      {/* <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-            </div>
-          </BlurFade>
-        </div>
-      </section> */}
     </main>
   );
 }
