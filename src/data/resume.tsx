@@ -1,12 +1,10 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+
 
 export const DATA = {
   name: "Aditya Dawadikar",
   initials: "AD",
   url: "http://localhost:3000",
-  location: "San Jose, CA",
-  locationLink: "https://maps.app.goo.gl/3Wd2cdFZQkRpkBJc8",
   description:
     "Exploring the Craft of Building Software",
   summary:
@@ -27,14 +25,7 @@ export const DATA = {
   topSkills: ["Python", "Javascript", "Typescript", "HTML", "CSS", "SQL",
     "FastAPI", "ExpressJs", "React", "Angular", "PostgreSQL", "MongoDB", "Redis", "Figma",
     "Docker", "Kubernetes", "Git", "AWS", "GCP", "Java", "C++", "Kafka", "Prometheus", "Grafana"],
-  skills: ["Python", "Javascript", "Typescript", "Java", "C++", "HTML", "CSS", "SQL",
-    "FastAPI", "ExpressJs", "SpringBoot", "React", "Angular", "Tailwind CSS", "Bootstrap",
-    "PostgreSQL", "MySQL", "Oracle SQL", "MongoDB", "Redis", "Firestore", "BigQuery", "Pinecone",
-    "Cloud Functions", "PubSub", "Cloud Run", "GKE", "Cloud Storage", "Kafka", "Elastic Search", "Docker", "Kubernetes",
-    "Junit", "Pytest", "Jest", "Selenium", "Behave",
-    "Git", "Figma", "Postman", "Dbeaver", "Canva", "Jira"
-  ],
-  programmingLanguages: ["Python", "Javascript", "Typescript", "Go", "Java", "C++", , "SQL"],
+  programmingLanguages: ["Python", "Javascript", "Typescript", "Go", "Java", "C++", "SQL"],
   frontend: ["React", "Redux", "Zustand", "Angular", "Tailwind CSS", "Bootstrap", "HTML", "CSS"],
   backend: ["FastAPI", "ExpressJs", "Fastify", "SpringBoot"],
   database: ["PostgreSQL", "MySQL", "Oracle SQL", "MongoDB", "Redis", "Firestore", "BigQuery", "Pinecone"],
@@ -46,13 +37,8 @@ export const DATA = {
   genAIskills: ["LangChain", "LangGraph", "RAG", "AgenticAI", "LLMs", "Prompt Engineering", "Context Engineering", "Image Generation", "Voice Generation"],
   mlResearchSkills: ["TensorFlow", "PyTorch", "Transformers", "Huggingface", "Fine Tuning", "Distributed Data Parallelism", "Tensor Parallelism", "AI workload deployment"],
   mlBasics: ["Scikit-learn", "Keras", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
-  ],
   contact: {
     email: "mail.aditya.dawadikar@gmail.com",
-    tel: "+14085924630",
     social: {
       GitHub: {
         name: "GitHub",
