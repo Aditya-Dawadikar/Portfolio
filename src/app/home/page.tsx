@@ -1,6 +1,7 @@
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import BLOG_LINKS from "@/data/blog-links";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -10,6 +11,34 @@ import { MyActivity } from "@/components/my-activity";
 const iconSize = 30;
 
 export default function Page() {
+  const projectList = DATA.projects;
+  const winningHackathons = DATA.hackathons.filter((hackathon) => hackathon.result === "winner");
+  const publicationList = DATA.papers;
+  const blogList = BLOG_LINKS;
+
+  const dashboardMetrics = [
+    {
+      label: "Cool Projects",
+      value: projectList.length,
+      href: "/projects",
+    },
+    {
+      label: "Hackathons Won",
+      value: winningHackathons.length,
+      href: "/hackathons",
+    },
+    {
+      label: "Publications",
+      value: publicationList.length,
+      href: "/papers",
+    },
+    {
+      label: "Blogs",
+      value: blogList.length,
+      href: "/blog",
+    },
+  ];
+
   return (
     <main className="flex min-h-[100dvh] flex-col space-y-10 overflow-x-hidden text-zinc-100">
       <section id="hero" className="mt-4 md:mt-0">
@@ -107,6 +136,27 @@ export default function Page() {
               period={`${education.start} - ${education.end}`}
             />
           ))}
+        </div>
+      </section>
+      <section id="stonks">
+        <h2 className="text-2xl font-bold">My Stonks</h2>
+        <div className="mx-auto w-full max-w-6xl rounded-[2rem]  p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] md:p-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {dashboardMetrics.map((metric) => (
+              <Link
+                key={metric.label}
+                href={metric.href}
+                className="group rounded-[1.5rem] p-5 transition-all duration-300 hover:bg-black/45 hover:shadow-[0_18px_45px_rgba(0,0,0,0.28)]"
+              >
+                <div className="flex min-h-32 flex-col justify-center gap-3 rounded-[1.2rem] bg-gradient-to-br from-white/[0.05] to-transparent p-1">
+                  <div className="text-[11px] m-2 uppercase tracking-[0.28em] text-zinc-400">{metric.label}</div>
+                  <div className="text-5xl m-2 font-semibold tracking-tight text-white transition-transform duration-300 group-hover:translate-y-[-2px] md:text-6xl">
+                    {metric.value}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
       <section id="my-activity">
