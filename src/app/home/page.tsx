@@ -203,6 +203,9 @@ export default function Page() {
 
             <FeatureCard title="AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering" backgroundImage="/geekgod/resources.png">
             </FeatureCard>
+
+            <FeatureCard title="Computer Networks" description="Computer Networks Practical Interview Preparation Kit" href="/computer-networks-resources" backgroundImage="/geekgod/resources.png">
+            </FeatureCard>
           </div>
         </div>
       </section>

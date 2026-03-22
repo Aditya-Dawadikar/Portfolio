@@ -26,6 +26,7 @@ const NAV_LINKS = [
   { href: "/system-design-library", label: "System Design" },
   { href: "/frontend-resources", label: "Frontend Resources" },
   { href: "/ai-engineering", label: "AI Engineering" },
+  { href: "/computer-networks-resources", label: "Computer Networks" },
 ];
 
 export default function Navbar() {
