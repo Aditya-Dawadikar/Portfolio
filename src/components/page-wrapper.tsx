@@ -28,6 +28,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     "/system-design-library": "resources.png",
     "/frontend-resources": "resources.png",
     "/ai-engineering": "resources.png",
+    "/computer-networks-resources": "resources.png",
   };
 
   const currentMedia = imageMap[pathname] || "skilled.png";
@@ -45,6 +46,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/system-design-library", label: "System Design" },
     { href: "/frontend-resources", label: "Frontend Engineering" },
     { href: "/ai-engineering", label: "AI Engineering" },
+    { href: "/computer-networks-resources", label: "Computer Networks" },
   ];
 
   if (isLandingPage) {

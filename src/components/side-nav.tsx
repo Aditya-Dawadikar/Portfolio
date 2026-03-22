@@ -63,6 +63,11 @@ export default function SideNav() {
                   AI Engineering
                 </Link>
               </li>
+              <li>
+                <Link href="/computer-networks-resources" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-300 transition-colors hover:border-white/25 hover:text-white">
+                  Computer Networks
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
