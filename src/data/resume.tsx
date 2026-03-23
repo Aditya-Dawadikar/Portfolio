@@ -152,6 +152,32 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "System Design Simulator",
+      href: "https://system-design-simulator-blond.vercel.app/",
+      dates: "March 2026",
+      active: false,
+      team: false,
+      hackathonWinner: false,
+      description:
+        "A System design Simulation Tool",
+      technologies: [
+        "NextJs",
+        "Claude",
+        "Github CoPilot",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/System-Design-Simulator",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "/sys_design_sim.gif",
+      video:
+        "",
+    },
+    {
       title: "KT - AI-Powered Podcast Generator",
       href: "https://cf-ai-podcast-generator.pages.dev/",
       dates: "December 2025",
