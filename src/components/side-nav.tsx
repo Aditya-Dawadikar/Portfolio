@@ -40,11 +40,11 @@ export default function SideNav() {
               Research Publication
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/stories" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
               Stories
             </Link>
-          </li>
+          </li> */}
           <li className="mt-1 px-3 py-2">
             <div className="mb-2 text-[11px] uppercase tracking-[0.28em] text-zinc-400">Resources</div>
             <ul className="flex flex-col ml-2">
