@@ -248,9 +248,8 @@ export default function Page() {
     </section>
 
     {/* Stories Section - Text left, Image right */}
-    <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
+    {/* <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="left" sectionId="stories" />
-      {/* Mobile section background */}
       <div className="absolute inset-0 md:hidden" style={{ backgroundImage: `url(/geekgod/teacher.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
         <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
       </div>
@@ -282,7 +281,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="landing-image-vignette" aria-hidden="true" />
       </div>
-    </section>
+    </section> */}
 
     {/* Collaborate Section - Full width with centered text */}
     <section className={`relative flex h-screen items-center justify-center bg-[#010101] text-white snap-start ${cormorant.className}`}>
