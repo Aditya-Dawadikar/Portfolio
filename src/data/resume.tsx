@@ -152,6 +152,36 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Agent Negotiation Platform",
+      href: "https://github.com/Aditya-Dawadikar/HarnessEngineeringHackathon",
+      dates: "June 2026",
+      active: false,
+      team: true,
+      hackathonWinner: true,
+      description:
+        "what if two AI agents could handle the entire negotiation loop in seconds, and then execute the payment without a human ever touching the keyboard?",
+      technologies: [
+        "React",
+        "FastAPI",
+        "Clickhouse",
+        "LangChain",
+        "Langgraph",
+        "Claude",
+        "Github CoPilot",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Aditya-Dawadikar/HarnessEngineeringHackathon",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image:
+        "#",
+      video:
+        "https://youtu.be/BGejL8APONw?si=X7iSRazVd7ZrJ3rS",
+    },
+    {
       title: "System Design Simulator",
       href: "https://system-design-simulator-blond.vercel.app/",
       dates: "March 2026",
@@ -611,6 +641,13 @@ export const DATA = {
   ],
   stories: [
     {
+      title: "Why we moved from Tornado to FastAPI",
+      company: "Quantiphi Analytics",
+      date: "2023",
+      description: "While building a Learning Management System serving more than 4,000 concurrent users and processing over 10,000 learning-content updates daily, we needed a scalable way to host thousands of static HTML learning modules stored in cloud buckets. The initial architecture assumed these files could be served directly from storage using signed URLs or a CDN. However, as we approached the UAT phase we discovered a critical issue: the HTML learning modules contained multiple relative imports (CSS, JavaScript, images). A single signed URL could not authorize all dependent assets, and generating signed URLs for every imported file would have been computationally expensive and difficult to maintain. Integrating a CDN at that stage would also have required significant architectural changes and ongoing operational cost while the system was close to release. We needed a solution that could be integrated quickly into the existing architecture, remain secure because the learning material was copyrighted, and require minimal maintenance. I designed a REST-based virtual file system layer where cloud storage buckets were mounted as volumes on our application servers, allowing HTML files to be served locally so relative imports resolved naturally. To keep the application stateless while still managing access efficiently, we used our existing Redis cluster to cache signed URLs and file metadata such as age and expiry. Authentication was enforced through secure cookies so only authorized learners could access the content. This solution allowed us to deliver the feature before UAT, support thousands of concurrent learners, and avoid the complexity and cost of introducing a CDN late in the development cycle.",
+      tags: ["Python", "Backend", "Concurrency"]
+    },
+    {
       title: "Designing a Secure and Cost-Efficient Static Content Hosting Layer for an LMS",
       company: "Quantiphi Analytics",
       date: "2023",
@@ -654,6 +691,28 @@ export const DATA = {
     }
   ],
   hackathons: [
+    {
+      title: "Agent Negotiation Platform, Harness Engineering Hackathon 2026",
+      dates: "June, 2026",
+      location: "AWS Builder Loft, San Francisco, California, USA",
+      result: "winner",
+      description:
+        "what if two AI agents could handle the entire negotiation loop in seconds, and then execute the payment without a human ever touching the keyboard?",
+      image:
+        "#",
+      links: [
+        {
+          title: "Source",
+          href: "https://github.com/Aditya-Dawadikar/HarnessEngineeringHackathon",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          title: "Demo",
+          href: "https://youtu.be/BGejL8APONw?si=X7iSRazVd7ZrJ3rS",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    },
     {
       title: "SAGE-AI, Calhacks 2025",
       dates: "June, 2025",
