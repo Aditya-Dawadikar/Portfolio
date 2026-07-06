@@ -184,8 +184,8 @@ export default function Page() {
             <FeatureCard title="My Research" description="Checkout my research interests" href="/papers" backgroundImage="/geekgod/innovator.png">
             </FeatureCard>
 
-            <FeatureCard title="My Stories" description="Lessons from my work" href="/stories" backgroundImage="/geekgod/teacher.png">
-            </FeatureCard>
+            {/* <FeatureCard title="My Stories" description="Lessons from my work" href="/stories" backgroundImage="/geekgod/teacher.png">
+            </FeatureCard> */}
 
           </div>
         </div>
