@@ -11,6 +11,18 @@ export type BlogLink = {
 
 export const BLOG_LINKS: BlogLink[] = [
   {
+    title: "Evaluating Planning Agents with LLM-as-a-Judge",
+    href: "https://medium.com/@aditya-dawadikar/evaluating-planning-agents-with-llm-as-a-judge-095fd0d46c56",
+    date: "May 30, 2026",
+    category: "knowledge",
+  },
+  {
+    title: "Evaluating Tool Calling in AI Agents with OpenEvals",
+    href: "https://medium.com/@aditya-dawadikar/evaluating-tool-calling-in-ai-agents-with-openevals-d1125c925930",
+    date: "May 29, 2026",
+    category: "knowledge",
+  },
+  {
     title: "CellCraft-AI: How I built the POC",
     href: "https://medium.com/@aditya-dawadikar/cellcraft-ai-how-i-built-the-poc-5ee3d8ad029e",
     date: "Jul 6, 2025",
