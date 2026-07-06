@@ -18,7 +18,7 @@ const landingNavLinks = [
   { href: "/hackathons", label: "Hackathons" },
   { href: "/blog", label: "Blogs" },
   { href: "/papers", label: "Publications" },
-  { href: "/stories", label: "Stories" },
+  // { href: "/stories", label: "Stories" },
 ];
 
 export default function LandingNavbar() {
