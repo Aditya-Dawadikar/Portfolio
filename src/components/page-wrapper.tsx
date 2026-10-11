@@ -39,6 +39,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/home", label: "Home" },
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
+    { href: "/atlas", label: "GitHub Atlas" },
     { href: "/hackathons", label: "Hackathons" },
     { href: "/blog", label: "Blogs" },
     { href: "/papers", label: "Research Publication" },
@@ -49,7 +50,8 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/computer-networks-resources", label: "Computer Networks" },
   ];
 
-  if (isLandingPage) {
+  // The atlas pages (map and field guide) carry their own full-bleed chrome.
+  if (isLandingPage || pathname === "/atlas" || pathname.startsWith("/atlas/")) {
     return <>{children}</>;
   }
 
