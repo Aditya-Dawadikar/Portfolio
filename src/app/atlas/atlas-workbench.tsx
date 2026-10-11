@@ -289,7 +289,7 @@ export function AtlasWorkbench({ data, username }: { data: WorldMapData; usernam
     <div className="flex h-[100dvh] flex-col bg-[#070d17] text-[#f2ede2]">
       <header className="flex h-12 shrink-0 items-center justify-between gap-3 border-b border-[#f2ede2]/10 px-4">
         <div className="flex min-w-0 items-center gap-4">
-          <Link href="/home" className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#a59e92] hover:text-[#e2c89c]">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#a59e92] hover:text-[#e2c89c]">
             <ArrowLeft className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Portfolio</span>
           </Link>
           <h1 className={cn(marbleStyles.display, "truncate text-[19px] font-semibold uppercase tracking-[0.18em]")}>GitHub Atlas</h1>

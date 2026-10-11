@@ -12,11 +12,6 @@ export default function SideNav() {
         <ul className="flex flex-col">
           <li>
             <Link href="/" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
-              Landing
-            </Link>
-          </li>
-          <li>
-            <Link href="/home" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
               Home
             </Link>
           </li>
@@ -43,6 +38,16 @@ export default function SideNav() {
           <li>
             <Link href="/blog" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
               Blogs
+            </Link>
+          </li>
+          <li>
+            <Link href="/linkedin" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
+              LinkedIn Posts
+            </Link>
+          </li>
+          <li>
+            <Link href="/youtube" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
+              YouTube
             </Link>
           </li>
           <li>

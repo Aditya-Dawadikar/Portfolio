@@ -12,12 +12,13 @@ const cormorant = Cormorant_Garamond({
 });
 
 const landingNavLinks = [
-  { href: "/home", label: "Home" },
   { href: "/skills", label: "Skills" },
   { href: "/projects", label: "Projects" },
   { href: "/atlas", label: "GitHub Atlas" },
   { href: "/hackathons", label: "Hackathons" },
   { href: "/blog", label: "Blogs" },
+  { href: "/linkedin", label: "LinkedIn" },
+  { href: "/youtube", label: "YouTube" },
   { href: "/papers", label: "Publications" },
   // { href: "/stories", label: "Stories" },
 ];
