@@ -49,8 +49,8 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/computer-networks-resources", label: "Computer Networks" },
   ];
 
-  // The atlas pages carry their own full-bleed chrome.
-  if (isLandingPage || pathname === "/test" || pathname === "/atlas") {
+  // The atlas pages (map and field guide) carry their own full-bleed chrome.
+  if (isLandingPage || pathname === "/test" || pathname === "/atlas" || pathname.startsWith("/atlas/")) {
     return <>{children}</>;
   }
 

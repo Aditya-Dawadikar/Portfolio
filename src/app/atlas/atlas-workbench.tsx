@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Check, Copy, Dices, Github, RotateCcw, SlidersHorizontal, X } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, Copy, Dices, Github, RotateCcw, SlidersHorizontal, X } from "lucide-react";
 import type { WorldMapData } from "@/world-map/types";
 import { PortfolioWorldMap } from "@/world-map/components/map/PortfolioWorldMap";
 import { MarbleButton, MarbleDivider, MarbleIconButton, MarblePanel, marbleStyles } from "@/world-map/components/primitives";
@@ -295,6 +295,9 @@ export function AtlasWorkbench({ data, username }: { data: WorldMapData; usernam
           <h1 className={cn(marbleStyles.display, "truncate text-[19px] font-semibold uppercase tracking-[0.18em]")}>GitHub Atlas</h1>
         </div>
         <div className="flex shrink-0 items-center gap-3">
+          <Link href="/atlas/guide" className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#a59e92] hover:text-[#e2c89c]">
+            <BookOpen className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Field guide</span>
+          </Link>
           <a href={`https://github.com/${username}`} target="_blank" rel="noreferrer" className="hidden items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#a59e92] hover:text-[#e2c89c] sm:inline-flex">
             <Github className="h-3.5 w-3.5" /> {data.repositories.length} repositories
           </a>
