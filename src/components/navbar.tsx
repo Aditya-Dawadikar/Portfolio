@@ -4,6 +4,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
+import { STUDY_RESOURCE_PATHS, useStudyResourcesEnabled } from "@/lib/use-study-resources";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -33,6 +34,10 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const showResources = useStudyResourcesEnabled();
+  const navLinks = showResources
+    ? NAV_LINKS
+    : NAV_LINKS.filter((item) => !STUDY_RESOURCE_PATHS.has(item.href));
 
   // Don't show navbar on landing page
   if (pathname === "/") {
@@ -58,7 +63,7 @@ export default function Navbar() {
             >
               Landing
             </Link>
-            {NAV_LINKS.map((item) => (
+            {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -131,7 +136,7 @@ export default function Navbar() {
                 Landing
               </button>
 
-              {NAV_LINKS.map((item) => (
+              {navLinks.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => handleNavigation(item.href)}
