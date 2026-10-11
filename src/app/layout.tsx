@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import PageWrapper from "@/components/page-wrapper";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { VercelToolbar } from "@vercel/toolbar/next";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -61,6 +62,8 @@ export default function RootLayout({
             <PageWrapper>{children}</PageWrapper>
           </TooltipProvider>
         </ThemeProvider>
+        {/* On Vercel the toolbar is auto-injected in previews; this covers local dev. */}
+        {process.env.NODE_ENV === "development" && <VercelToolbar />}
       </body>
     </html>
   );
