@@ -17,6 +17,7 @@ const landingNavLinks = [
   { href: "/atlas", label: "GitHub Atlas" },
   { href: "/hackathons", label: "Hackathons" },
   { href: "/blog", label: "Blogs" },
+  { href: "/linkedin", label: "LinkedIn" },
   { href: "/papers", label: "Publications" },
   // { href: "/stories", label: "Stories" },
 ];
