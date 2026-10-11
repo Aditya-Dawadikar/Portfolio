@@ -294,12 +294,14 @@ export default async function Page() {
                 <ChapterHeader command="git checkout projects" title="Things I've Built" subtitle={`A few favourites from ${DATA.projects.length} projects on the branch. Still open.`} />
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                   {projects.map(({ project, id }, i) => {
-                    const media = publicAsset(project.image) ?? youtubeThumbnail(project.video);
+                    // Not every project has a video, so read it defensively.
+                    const video = "video" in project ? project.video : undefined;
+                    const media = publicAsset(project.image) ?? youtubeThumbnail(video);
                     return (
                       <BlurFade key={id} inView delay={0.1 * i} yOffset={18} className="h-full">
                         <Spotlight className="h-full rounded-2xl">
                           <article id={id} data-commit={cardSha(id)} className="story-card flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0c]">
-                            <a href={project.video || project.href} target="_blank" rel="noopener noreferrer" className="relative block aspect-video overflow-hidden bg-white/[0.03]">
+                            <a href={video || project.href} target="_blank" rel="noopener noreferrer" className="relative block aspect-video overflow-hidden bg-white/[0.03]">
                               {media ? (
                                 <img src={media} alt={project.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
                               ) : (
