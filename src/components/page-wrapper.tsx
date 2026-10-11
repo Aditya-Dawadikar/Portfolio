@@ -20,7 +20,6 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const showResources = useStudyResourcesEnabled();
 
   const imageMap: { [key: string]: string } = {
-    "/home": "hero.mp4",
     "/skills": "skilled.png",
     "/projects": "builder.png",
     "/hackathons": "winner.png",
@@ -37,8 +36,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const isVideo = currentMedia.endsWith(".mp4");
 
   const allNavLinks = [
-    { href: "/", label: "Landing" },
-    { href: "/home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/atlas", label: "GitHub Atlas" },

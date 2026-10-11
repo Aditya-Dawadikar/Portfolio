@@ -17,7 +17,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 const NAV_LINKS = [
-  { href: "/home", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/skills", label: "Skills" },
   { href: "/projects", label: "Projects" },
   { href: "/hackathons", label: "Hackathons" },
