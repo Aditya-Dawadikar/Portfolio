@@ -1,0 +1,108 @@
+.panel {
+  /* Positioning comes from utilities (relative/absolute) so callers can override it. */
+  color: #f2ede2;
+  background:
+    radial-gradient(120% 80% at 15% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+    linear-gradient(140deg, rgba(34, 36, 42, 0.96), rgba(18, 20, 26, 0.96) 55%, rgba(24, 25, 30, 0.96));
+  border: 1px solid rgba(242, 237, 226, 0.22);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  isolation: isolate;
+}
+
+/* Marble veining: anisotropic turbulence, screened at low opacity. */
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.045' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.translucent {
+  background:
+    radial-gradient(120% 80% at 15% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+    linear-gradient(140deg, rgba(26, 30, 38, 0.8), rgba(14, 17, 24, 0.76));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.engraved::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  border: 1px solid rgba(176, 141, 87, 0.38);
+  pointer-events: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(176, 141, 87, 0.8);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.55), transparent);
+}
+
+.engravedLabel {
+  color: #2a2622;
+  text-shadow:
+    0 0 2px #ebe7df,
+    0 0 4px #ebe7df,
+    0 0 8px rgba(235, 231, 223, 0.9);
+  font-variant: small-caps;
+}
+
+@keyframes wm-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeIn {
+  animation: wm-fade-in 120ms ease-out both;
+}
+
+@keyframes wm-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.drawStroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: wm-draw 2.6s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn,
+  .drawStroke {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+.display {
+  font-family: var(--font-wm-display), "Cormorant Garamond", Georgia, serif;
+}
