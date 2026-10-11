@@ -8,7 +8,7 @@ export const DATA = {
   description:
     "Exploring the Craft of Building Software",
   summary:
-    "My journey as a builder started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](projects), experimenting with new technologies, and continuously refining my [skills](skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise. I learn, I teach, I collaborate, I compete & I build...",
+    "I’m a software engineer who likes turning messy, real-world problems into systems people can rely on. I’ve built full-stack products and AI-powered workflows, from responsive React interfaces and backend APIs to data pipelines and agentic systems. In previous roles, I helped cut a years-long processing backlog to 32 hours and reduced a BigQuery operation from minutes to milliseconds. I recently completed my master’s in computer science at San José State University, and I’m continuing to build, learn, and collaborate across software and AI. Explore my [projects](projects), [skills](skills), and experience below.",
   interests: [
     "Frontend Engineering",
     "Backend Engineering",
@@ -71,6 +71,18 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "Department of Computer Science, San Jose State University",
+      href: "https://www.sjsu.edu/cs/",
+      badges: [],
+      location: "San Jose, CA",
+      title: "Research Assistant",
+      logoUrl: "/sjsu.png",
+      start: "Aug 2025",
+      end: "Dec 2026",
+      description:
+        "Built automated, reproducible workflows for deploying and evaluating machine learning models on GPU infrastructure. Applied post-training methods including knowledge distillation and LoRA, and co-authored research on Act-LoRA, an activation-guided approach to selecting model layers for adaptation.",
+    },
     {
       company: "PlanetBee",
       href: "https://www.planetbee.org/",
@@ -152,6 +164,40 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Agentic Job Discovery",
+      href: "https://projectycjobs.buildwithadi.dev/#/welcome", // Replace with the live app URL
+      dates: "May 2026",
+      active: true,
+      team: false,
+      hackathonWinner: false,
+      description:
+        "Built an AI-powered job discovery platform that researches YC-backed roles, matches them to a candidate’s profile, and generates grounded application materials. Added observability, retries, and prompt versioning to support reliable production workflows; attracted 500+ organic unique visitors in one month.",
+      technologies: [
+        "React",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis Streams",
+        "Docker",
+        "PostHog",
+        "MLFlow",
+        "Prometheus",
+        "Grafana"
+      ],
+      links: [
+        {
+          type: "Live Demo",
+          href: "https://projectycjobs.buildwithadi.dev/#/welcome",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/aditya-dawadikar/FatherOfProjects",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/project_yc_jobs.gif",
+    },
+    {
       title: "Agent Negotiation Platform",
       href: "https://github.com/Aditya-Dawadikar/HarnessEngineeringHackathon",
       dates: "June 2026",
@@ -179,7 +225,7 @@ export const DATA = {
       image:
         "#",
       video:
-        "https://youtu.be/BGejL8APONw?si=X7iSRazVd7ZrJ3rS",
+        "https://www.youtube.com/embed/BGejL8APONw?si=N_knk7JWTgPyP3Kt",
     },
     {
       title: "System Design Simulator",
