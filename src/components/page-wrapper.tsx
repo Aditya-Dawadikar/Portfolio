@@ -49,7 +49,8 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/computer-networks-resources", label: "Computer Networks" },
   ];
 
-  if (isLandingPage) {
+  // The atlas pages carry their own full-bleed chrome.
+  if (isLandingPage || pathname === "/test" || pathname === "/atlas") {
     return <>{children}</>;
   }
 
