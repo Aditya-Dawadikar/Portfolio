@@ -6,6 +6,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import SideNav from "./side-nav";
+import { STUDY_RESOURCE_PATHS, useStudyResourcesEnabled } from "@/lib/use-study-resources";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,6 +17,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const isLandingPage = pathname === "/";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const showResources = useStudyResourcesEnabled();
 
   const imageMap: { [key: string]: string } = {
     "/home": "hero.mp4",
@@ -34,7 +36,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const currentMedia = imageMap[pathname] || "skilled.png";
   const isVideo = currentMedia.endsWith(".mp4");
 
-  const navLinks = [
+  const allNavLinks = [
     { href: "/", label: "Landing" },
     { href: "/home", label: "Home" },
     { href: "/skills", label: "Skills" },
@@ -49,6 +51,9 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/ai-engineering", label: "AI Engineering" },
     { href: "/computer-networks-resources", label: "Computer Networks" },
   ];
+  const navLinks = showResources
+    ? allNavLinks
+    : allNavLinks.filter((item) => !STUDY_RESOURCE_PATHS.has(item.href));
 
   // The atlas pages (map and field guide) carry their own full-bleed chrome.
   if (isLandingPage || pathname === "/atlas" || pathname.startsWith("/atlas/")) {

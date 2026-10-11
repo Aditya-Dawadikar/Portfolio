@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import BLOG_LINKS from "@/data/blog-links";
 import { DATA } from "@/data/resume";
+import StudyResourcesGate from "@/components/study-resources-gate";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import FeatureCard from "@/components/feature-card";
@@ -194,24 +195,26 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="explore-2">
-        <div className="mx-auto w-full max-w-4xl">
-          <h2 className="text-2xl font-bold mb-4">Resources</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <FeatureCard title="System Design" description="System Design Interview Preparation Kit" href="/system-design-library" backgroundImage="/geekgod/resources.png">
-            </FeatureCard>
+      <StudyResourcesGate>
+        <section id="explore-2">
+          <div className="mx-auto w-full max-w-4xl">
+            <h2 className="text-2xl font-bold mb-4">Resources</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <FeatureCard title="System Design" description="System Design Interview Preparation Kit" href="/system-design-library" backgroundImage="/geekgod/resources.png">
+              </FeatureCard>
 
-            <FeatureCard title="Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources" backgroundImage="/geekgod/resources.png">
-            </FeatureCard>
+              <FeatureCard title="Frontend Engineeing" description="Frontend Engineering Interview Preparation Kit" href="/frontend-resources" backgroundImage="/geekgod/resources.png">
+              </FeatureCard>
 
-            <FeatureCard title="AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering" backgroundImage="/geekgod/resources.png">
-            </FeatureCard>
+              <FeatureCard title="AI Engineeing" description="AI Engineering Must Read Papers" href="/ai-engineering" backgroundImage="/geekgod/resources.png">
+              </FeatureCard>
 
-            <FeatureCard title="Computer Networks" description="Computer Networks Practical Interview Preparation Kit" href="/computer-networks-resources" backgroundImage="/geekgod/resources.png">
-            </FeatureCard>
+              <FeatureCard title="Computer Networks" description="Computer Networks Practical Interview Preparation Kit" href="/computer-networks-resources" backgroundImage="/geekgod/resources.png">
+              </FeatureCard>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </StudyResourcesGate>
 
 
     </main>
