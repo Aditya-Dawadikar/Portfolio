@@ -18,6 +18,7 @@ const landingNavLinks = [
   { href: "/hackathons", label: "Hackathons" },
   { href: "/blog", label: "Blogs" },
   { href: "/linkedin", label: "LinkedIn" },
+  { href: "/youtube", label: "YouTube" },
   { href: "/papers", label: "Publications" },
   // { href: "/stories", label: "Stories" },
 ];

@@ -46,6 +46,11 @@ export default function SideNav() {
             </Link>
           </li>
           <li>
+            <Link href="/youtube" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
+              YouTube
+            </Link>
+          </li>
+          <li>
             <Link href="/papers" className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white">
               Research Publication
             </Link>
