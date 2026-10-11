@@ -23,6 +23,7 @@ const NAV_LINKS = [
   { href: "/hackathons", label: "Hackathons" },
   { href: "/blog", label: "Blogs" },
   { href: "/linkedin", label: "LinkedIn Posts" },
+  { href: "/youtube", label: "YouTube" },
   { href: "/papers", label: "Publications" },
   // { href: "/stories", label: "Stories" },
   { href: "/system-design-library", label: "System Design" },
