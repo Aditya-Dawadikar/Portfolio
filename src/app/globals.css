@@ -5,11 +5,6 @@
 /* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-
-body {
-  scroll-snap-type: y mandatory;
 }
 
 @layer base {
@@ -300,7 +295,22 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   height: 14rem;
 }
 
+/* Story cards light up while the commit graph points at them (see TimelineProvider). */
+.story-card {
+  transition: border-color 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.story-card[data-active] {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
 /* Landing page scrollbar style (applies only while / is mounted) */
+/* The landing page moves one full-screen slide per scroll gesture. */
+html.landing-scroll {
+  scroll-snap-type: y mandatory;
+}
+
 html.landing-scroll,
 body.landing-scroll {
   scrollbar-width: thin;
