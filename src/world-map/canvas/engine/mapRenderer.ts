@@ -1,6 +1,5 @@
 import type {
   Ctx2D,
-  DebugOverlayFlags,
   DrawContext,
   GeneratedWorld,
   MapTheme,
@@ -17,7 +16,6 @@ import {
   drawCoastline,
   drawCompassRose,
   drawConnectionThread,
-  drawDebugOverlays,
   drawForestCluster,
   drawHills,
   drawLake,
@@ -136,11 +134,10 @@ interface FrameState {
   stateFor: (s: Settlement) => Partial<SettlementVisualState>;
   highlightedIds: Set<string>;
   selectedId: string | null;
-  debug?: Partial<DebugOverlayFlags>;
   showFog: boolean;
 }
 
-/** Composites one frame: cached static terrain, then dynamic routes, settlements, effects, fog, debug, compass. */
+/** Composites one frame: cached static terrain, then dynamic routes, settlements, effects, fog, compass. */
 export function renderFrame(ctx: CanvasRenderingContext2D, f: FrameState) {
   const { viewport: v, size, world, theme } = f;
   const dpr = size.devicePixelRatio;
@@ -189,7 +186,6 @@ export function renderFrame(ctx: CanvasRenderingContext2D, f: FrameState) {
     const exclusion = world.settlements.filter((s) => f.highlightedIds.has(s.repositoryId)).map((s) => s.position);
     drawCloudsAndFog(dc, { bounds: world.bounds, exclusion });
   }
-  if (f.debug && Object.values(f.debug).some(Boolean)) drawDebugOverlays(dc, { world, flags: f.debug });
 
   // Screen-space compass rose (top-right).
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

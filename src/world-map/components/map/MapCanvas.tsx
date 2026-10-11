@@ -2,7 +2,6 @@
 
 import { type MutableRefObject, useEffect, useRef, useState } from "react";
 import type {
-  DebugOverlayFlags,
   GeneratedWorld,
   MapTarget,
   MapTheme,
@@ -34,7 +33,6 @@ export interface MapCanvasProps {
   pulseActive: boolean;
   reducedMotion: boolean;
   showFog?: boolean;
-  debug?: Partial<DebugOverlayFlags>;
   active: boolean;
   ariaLabel: string;
   onPan: (dx: number, dy: number) => void;
@@ -142,7 +140,6 @@ export function MapCanvas(props: MapCanvasProps) {
           stateFor: p.stateFor,
           highlightedIds: p.highlightedIds,
           selectedId: p.selectedId,
-          debug: p.debug,
           showFog: p.showFog ?? true,
         });
       }

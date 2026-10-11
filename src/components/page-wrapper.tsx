@@ -51,7 +51,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   ];
 
   // The atlas pages (map and field guide) carry their own full-bleed chrome.
-  if (isLandingPage || pathname === "/test" || pathname === "/atlas" || pathname.startsWith("/atlas/")) {
+  if (isLandingPage || pathname === "/atlas" || pathname.startsWith("/atlas/")) {
     return <>{children}</>;
   }
 

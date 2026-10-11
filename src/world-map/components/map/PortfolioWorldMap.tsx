@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import type {
-  DebugOverlayFlags,
   GeneratedWorld,
   MapTarget,
   MapTheme,
@@ -41,7 +40,6 @@ import { TerritoryLabelLayer } from "./TerritoryLabelLayer";
 export interface PortfolioWorldMapProps {
   data: WorldMapData;
   theme?: MapTheme;
-  debug?: Partial<DebugOverlayFlags>;
   height?: string;
   showMinimap?: boolean;
   showLegend?: boolean;
@@ -70,7 +68,6 @@ function rememberWorld(key: string, world: GeneratedWorld) {
 export function PortfolioWorldMap({
   data,
   theme = midnightMarbleTheme,
-  debug,
   height = "100dvh",
   showMinimap = true,
   showLegend = true,
@@ -365,7 +362,6 @@ export function PortfolioWorldMap({
             pulseActive={!!pulse}
             reducedMotion={reducedMotion}
             showFog={showFog}
-            debug={debug}
             active={active}
             ariaLabel={`Atlas of ${repoList.length} repositories across ${territoryList.length} territories. Use the settlement buttons, or the repository list, to explore.`}
             onPan={cam.panBy}
