@@ -10,7 +10,6 @@ export * from "./atmosphere";
 export * from "./beaches";
 export * from "./coastline";
 export * from "./decorations";
-export * from "./debug";
 export * from "./forests";
 export * from "./landmarks";
 export * from "./marbleTexture";

@@ -435,10 +435,3 @@ export interface MapFilters {
   query: string;
 }
 
-export interface DebugOverlayFlags {
-  territoryPolygons: boolean;
-  hitRegions: boolean;
-  paths: boolean;
-  anchors: boolean;
-  spatialIndex: boolean;
-}

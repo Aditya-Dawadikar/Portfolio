@@ -1,7 +1,7 @@
 import type { Repository } from "../types";
 
 /**
- * Fictional repositories for the demo world and the /test gallery.
+ * Fictional repositories for the demo world (used to render the field guide plates).
  * None of these exist; the org name is a placeholder.
  */
 const GH = "https://github.com/example-cartographer";

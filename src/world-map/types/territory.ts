@@ -57,7 +57,7 @@ export interface TerritoryRegion {
   cell: WorldPolygon;
   /** Satellite islands owned by this territory. */
   islandIds: string[];
-  /** Cell plus owned island polygons (debug drawing). */
+  /** Cell plus owned island polygons. */
   polygons: WorldPolygon[];
   bounds: WorldBounds;
   centroid: WorldPoint;

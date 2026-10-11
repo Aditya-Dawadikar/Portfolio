@@ -162,7 +162,7 @@ export function MarbleDivider({ ornament = true, className }: { ornament?: boole
 /* ------------------------------------------------------------------ */
 
 /** Lightweight CSS tooltip (hover + focus-within), restyled for the atlas. */
-export function MarbleTooltip({ content, side = "top", children }: { content: ReactNode; side?: "left" | "right" | "top" | "bottom"; children: ReactNode }) {
+function MarbleTooltip({ content, side = "top", children }: { content: ReactNode; side?: "left" | "right" | "top" | "bottom"; children: ReactNode }) {
   return (
     <span className="group/tt relative inline-flex">
       {children}
@@ -180,64 +180,6 @@ export function MarbleTooltip({ content, side = "top", children }: { content: Re
         {content}
       </span>
     </span>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-
-export function MarbleModal({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const titleId = useId();
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.activeElement as HTMLElement | null;
-    ref.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "Tab" && ref.current) {
-        const f = ref.current.querySelectorAll<HTMLElement>("button, a, input, select, [tabindex]:not([tabindex='-1'])");
-        if (!f.length) return;
-        const first = f[0];
-        const last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      prev?.focus();
-    };
-  }, [open, onClose]);
-  if (!open) return null;
-  return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-[#05080e]/60 p-4" onClick={onClose}>
-      <MarblePanel
-        ref={ref}
-        engraved
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
-        tabIndex={-1}
-        className={cn(styles.fadeIn, "max-h-full w-full max-w-md overflow-auto p-5 outline-none")}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="mb-3 flex items-center justify-between">
-          <h2 id={titleId} className={cn(styles.display, "text-xl tracking-[0.12em] uppercase")}>
-            {title}
-          </h2>
-          <MarbleIconButton label="Close" onClick={onClose} tooltipSide="bottom">
-            <X className="h-4 w-4" />
-          </MarbleIconButton>
-        </div>
-        {children}
-      </MarblePanel>
-    </div>
   );
 }
 

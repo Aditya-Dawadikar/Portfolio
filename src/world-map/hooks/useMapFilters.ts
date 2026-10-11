@@ -3,9 +3,9 @@
 import { useCallback, useMemo, useState } from "react";
 import type { MapFilters, ScoredRepository } from "../types";
 
-export const EMPTY_FILTERS: MapFilters = { territories: [], statuses: [], technologies: [], majorOnly: false, query: "" };
+const EMPTY_FILTERS: MapFilters = { territories: [], statuses: [], technologies: [], majorOnly: false, query: "" };
 
-export function repositoryMatches(r: ScoredRepository, f: MapFilters): boolean {
+function repositoryMatches(r: ScoredRepository, f: MapFilters): boolean {
   if (f.territories.length && !f.territories.includes(r.category)) return false;
   if (f.statuses.length && !f.statuses.includes(r.status)) return false;
   if (f.technologies.length && !f.technologies.some((t) => r.technologies.includes(t))) return false;
