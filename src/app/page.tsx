@@ -4,8 +4,8 @@ import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
-import BLOG_LINKS from "@/data/blog-links";
 import { buildTimeline, projectTarget, shortName, type Commit } from "@/lib/timeline";
+import { getBlogPosts } from "@/lib/medium";
 import LandingScrollbarStyle from "@/components/landing-scrollbar-style";
 import LandingNavbar from "@/components/landing-navbar";
 import BlurFade from "@/components/magicui/blur-fade";
@@ -48,8 +48,9 @@ const linkClass =
 /** How many of the newest Medium posts fit on their slide; the rest are on /blog. */
 const POSTS_ON_SLIDE = 6;
 
-export default function Page() {
-  const timeline = buildTimeline();
+export default async function Page() {
+  const blogPosts = await getBlogPosts();
+  const timeline = buildTimeline(blogPosts);
   const { branches } = timeline;
   const colorOf = (id: string) => branches.find((b) => b.id === id)!.color;
   const bySha = new Map(timeline.commits.map((c) => [c.sha, c]));
@@ -69,7 +70,7 @@ export default function Page() {
     .map((project) => ({ project, id: projectTarget(project.title) }))
     .sort((a, b) => rowOf(a.id) - rowOf(b.id));
   const papers = DATA.papers.map((paper, index) => ({ paper, id: `paper-${index}` })).sort((a, b) => rowOf(a.id) - rowOf(b.id));
-  const posts = BLOG_LINKS.map((post, index) => ({ post, id: `post-${index}` }))
+  const posts = blogPosts.map((post, index) => ({ post, id: `post-${index}` }))
     .sort((a, b) => rowOf(a.id) - rowOf(b.id))
     .slice(0, POSTS_ON_SLIDE);
 
@@ -78,7 +79,7 @@ export default function Page() {
     { label: "Projects Built", value: DATA.projects.length, href: "/projects" },
     { label: "Hackathons Won", value: DATA.hackathons.filter((h) => h.result === "winner").length, href: "/hackathons" },
     { label: "Papers Published", value: DATA.papers.length, href: "/papers" },
-    { label: "Blogs Written", value: BLOG_LINKS.length, href: "/blog" },
+    { label: "Blogs Written", value: blogPosts.length, href: "/blog" },
   ];
 
   const socials = [
@@ -401,7 +402,7 @@ export default function Page() {
 
               {/* ── Medium ────────────────────────────────────────────── */}
               <Slide id="medium" branches="medium,publications">
-                <ChapterHeader command="git checkout publications/medium" title="Writing" subtitle={`The latest from ${BLOG_LINKS.length} posts on Medium.`} />
+                <ChapterHeader command="git checkout publications/medium" title="Writing" subtitle={`The latest from ${blogPosts.length} posts on Medium.`} />
                 <ul className="divide-y divide-white/10 border-y border-white/10">
                   {posts.map(({ post, id }, i) => {
                     const commit = commitsFor(id)[0];

@@ -1,8 +1,8 @@
 import { DATA } from "@/data/resume";
-import BLOG_LINKS from "@/data/blog-links";
+import type { BlogPost } from "@/lib/medium";
 
 /**
- * Turns the dated items in `resume.tsx` and `blog-links.ts` into a git history:
+ * Turns the dated items in `resume.tsx` and the Medium posts into a git history:
  * every branch means something, and every commit is a real event placed by its date.
  *
  *   main ── education (merges back on graduation)
@@ -169,7 +169,8 @@ function hrefsOf(item: { href?: string; links?: readonly { href: string }[] }) {
   return new Set([item.href, ...(item.links ?? []).map((link) => link.href)].filter(Boolean) as string[]);
 }
 
-export function buildTimeline(): Timeline {
+/** `posts` are the Medium posts (see getBlogPosts); post commits target `post-<index in posts>`. */
+export function buildTimeline(blogPosts: BlogPost[]): Timeline {
   const drafts: Draft[] = [];
   const add = (draft: Omit<Draft, "seq" | "tags" | "isMerge"> & Partial<Pick<Draft, "tags" | "isMerge">>) => {
     drafts.push({ tags: [], isMerge: false, ...draft, seq: drafts.length });
@@ -303,7 +304,7 @@ export function buildTimeline(): Timeline {
 
   // ── publications → papers & medium ──────────────────────────────────────
   const papers = DATA.papers.map((paper, index) => ({ paper, index, when: parseWhen(paper.date, "start") }));
-  const posts = BLOG_LINKS.map((post, index) => ({ post, index, when: parseWhen(post.date ?? "", "start") }));
+  const posts = blogPosts.map((post, index) => ({ post, index, when: parseWhen(post.date, "start") }));
   const firstPublished = Math.min(...papers.map((p) => p.when.key), ...posts.map((p) => p.when.key));
   const firstPublishedLabel = [...papers, ...posts].find((p) => p.when.key === firstPublished)!.when.label;
   add({ branch: "publications", era: "publications", type: "chore", scope: "publications", subject: "start publishing research & writing", key: firstPublished - 1, dateLabel: firstPublishedLabel, targets: ["publications"] });

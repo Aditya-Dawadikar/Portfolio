@@ -6,11 +6,12 @@ type Props = {
   title: string;
   href: string;
   date?: string;
-  category?: "project" | "knowledge";
+  /** Medium tags; the first few are shown. */
+  tags?: string[];
   className?: string;
 };
 
-export default function BlogCard({ title, href, date, category, className }: Props) {
+export default function BlogCard({ title, href, date, tags = [], className }: Props) {
   return (
     <Card className={`flex h-full flex-col overflow-hidden border border-white/15 bg-black/45 text-zinc-100 transition-all duration-300 ease-out hover:shadow-lg ${className ?? ""}`}>
       <CardHeader className="px-2">
@@ -25,21 +26,15 @@ export default function BlogCard({ title, href, date, category, className }: Pro
       </CardHeader>
 
       <CardFooter className="px-2 pb-2 mt-auto">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link href={href} target="_blank">
             <Badge className="px-2 py-1 text-[10px]">Read on Medium</Badge>
           </Link>
-          {category && (
-            <Badge
-              className={`px-2 py-1 text-[10px] ${
-                category === "project"
-                  ? "border border-blue-400/30 bg-blue-500/20 text-blue-200"
-                  : "border border-emerald-400/30 bg-emerald-500/20 text-emerald-200"
-              }`}
-            >
-              {category === "project" ? "Project" : "Knowledge"}
+          {tags.slice(0, 3).map((tag) => (
+            <Badge key={tag} className="border border-white/15 bg-white/5 px-2 py-1 text-[10px] text-zinc-300">
+              {tag}
             </Badge>
-          )}
+          ))}
         </div>
       </CardFooter>
     </Card>
