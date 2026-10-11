@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useStudyResourcesEnabled } from "@/lib/use-study-resources";
 
 export default function SideNav() {
+  const showResources = useStudyResourcesEnabled();
+
   return (
     <aside className="hidden md:block w-60 shrink-0">
       <nav className="sticky top-24 rounded-2xl border border-white/15 bg-black/45 p-3 backdrop-blur-md">
@@ -50,6 +55,7 @@ export default function SideNav() {
               Stories
             </Link>
           </li> */}
+          {showResources && (
           <li className="mt-1 px-3 py-2">
             <div className="mb-2 text-[11px] uppercase tracking-[0.28em] text-zinc-400">Resources</div>
             <ul className="flex flex-col ml-2">
@@ -75,6 +81,7 @@ export default function SideNav() {
               </li>
             </ul>
           </li>
+          )}
         </ul>
       </nav>
     </aside>
