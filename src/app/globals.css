@@ -295,6 +295,28 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   height: 14rem;
 }
 
+/*
+ * Hero git tree: fades out toward the video column (right) and away from the navbar and
+ * the bottom edge, so it never sits behind the video.
+ */
+.hero-graph-mask {
+  -webkit-mask-image: linear-gradient(to right, #000 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, #000 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Open branches stream upward past their newest commit. */
+.hero-graph-flow {
+  animation: hero-graph-flow 1.2s linear infinite;
+}
+
+@keyframes hero-graph-flow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
 /* Story cards light up while the commit graph points at them (see TimelineProvider). */
 .story-card {
   transition: border-color 0.4s ease-out, box-shadow 0.4s ease-out;
