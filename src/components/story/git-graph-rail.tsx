@@ -3,6 +3,7 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { branchColor, commitHeader } from "@/lib/commit-format";
+import { graphEdges } from "@/lib/graph-geometry";
 import type { BranchId, Commit } from "@/lib/timeline";
 import { useTimeline } from "./timeline-context";
 
@@ -10,8 +11,6 @@ const YEAR_COLUMN = 34;
 const LANE = 16;
 const PAD_Y = 10;
 const DRAW_SECONDS = 1.8;
-
-type Edge = { id: string; d: string; branch: BranchId; lowerRow: number };
 
 /**
  * The whole life history as one `git log --graph`, pinned beside the content.
@@ -42,35 +41,12 @@ export function GitGraphRail() {
   const x = (c: Commit) => YEAR_COLUMN + LANE / 2 + laneOf.get(c.branch)! * LANE;
   const y = (c: Commit) => PAD_Y + c.row * rowHeight;
 
-  const edges = useMemo<Edge[]>(() => {
-    if (!rowHeight) return [];
-    const list: Edge[] = [];
-    for (const child of commits) {
-      child.parents.forEach((parentSha, index) => {
-        const parent = bySha.get(parentSha)!;
-        const [xc, yc, xp, yp] = [x(child), y(child), x(parent), y(parent)];
-        const bend = Math.min(rowHeight * 1.6, yp - yc);
-        let d: string;
-        let branch: BranchId;
-        if (xc === xp) {
-          d = `M ${xp} ${yp} L ${xc} ${yc}`;
-          branch = child.branch;
-        } else if (child.isMerge && index > 0) {
-          // Merge: run up the merged branch's lane, then curve into the merge commit.
-          d = `M ${xp} ${yp} L ${xp} ${yc + bend} C ${xp} ${yc + bend * 0.45} ${xc} ${yc + bend * 0.55} ${xc} ${yc}`;
-          branch = parent.branch;
-        } else {
-          // Fork: curve out of the parent commit, then run up the new branch's lane.
-          d = `M ${xp} ${yp} C ${xp} ${yp - bend * 0.55} ${xc} ${yp - bend * 0.45} ${xc} ${yp - bend} L ${xc} ${yc}`;
-          branch = child.branch;
-        }
-        list.push({ id: `${child.sha}-${parentSha}`, d, branch, lowerRow: parent.row });
-      });
-    }
-    return list;
+  const edges = useMemo(
+    () => graphEdges(commits, (c) => ({ x: x(c), y: y(c) }), rowHeight),
     // x and y only depend on rowHeight and the lane map.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [commits, bySha, rowHeight, laneOf]);
+    [commits, rowHeight, laneOf],
+  );
 
   const yearTicks = useMemo(() => {
     const ticks: { year: string; row: number }[] = [];

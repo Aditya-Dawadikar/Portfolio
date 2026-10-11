@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { HeroGitTree } from "./hero-git-tree";
 
 /** The opening screen: the name rises in letter by letter beside the hero video. */
 export function Hero({ name, tagline, videoSrc }: { name: string; tagline: string; videoSrc: string }) {
@@ -16,6 +17,7 @@ export function Hero({ name, tagline, videoSrc }: { name: string; tagline: strin
 
   return (
     <section className="relative grid h-[100svh] snap-start snap-always grid-cols-1 overflow-hidden bg-[#010101] pt-14 text-white md:grid-cols-2">
+      <HeroGitTree />
       <div className="relative z-10 flex items-center px-6 py-12 sm:px-10 lg:px-16">
         <div className="max-w-xl space-y-5">
           <motion.p {...rise(0.1)} className="text-xs uppercase tracking-[0.4em] text-zinc-400">
