@@ -6,6 +6,8 @@ export type BlogPost = {
   /** e.g. "Jul 8, 2026" */
   date: string;
   tags: string[];
+  /** The post's cover image (its first image), when there is one. */
+  image?: string;
 };
 
 const FEED_URL = "https://medium.com/feed/@aditya-dawadikar";
@@ -54,13 +56,21 @@ function titleKey(title: string) {
     .trim();
 }
 
+/** First real image in the post body; Medium also embeds a tracking pixel, which is skipped. */
+function coverImage(item: string) {
+  const body = readTag(item, "content:encoded") ?? "";
+  return Array.from(body.matchAll(/<img[^>]*\ssrc="([^"]+)"/g))
+    .map((m) => m[1])
+    .find((src) => !src.includes("/_/stat"));
+}
+
 export function parseMediumFeed(xml: string): BlogPost[] {
   return Array.from(xml.matchAll(/<item>([\s\S]*?)<\/item>/g)).flatMap(([, item]) => {
     const title = readTag(item, "title");
     const link = readTag(item, "link");
     const pubDate = readTag(item, "pubDate");
     if (!title || !link || !pubDate || Number.isNaN(Date.parse(pubDate))) return [];
-    return [{ title, href: cleanUrl(link), date: formatDate(new Date(pubDate)), tags: readAllTags(item, "category") }];
+    return [{ title, href: cleanUrl(link), date: formatDate(new Date(pubDate)), tags: readAllTags(item, "category"), image: coverImage(item) }];
   });
 }
 
@@ -91,6 +101,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     href: post.href,
     date: post.date!,
     tags: post.tags ?? [],
+    image: post.image,
   }));
 
   return [...feed, ...archived].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
