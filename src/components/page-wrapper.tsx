@@ -39,6 +39,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     { href: "/home", label: "Home" },
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
+    { href: "/atlas", label: "GitHub Atlas" },
     { href: "/hackathons", label: "Hackathons" },
     { href: "/blog", label: "Blogs" },
     { href: "/papers", label: "Research Publication" },

@@ -62,6 +62,51 @@ export default function Page() {
       <div className="landing-bottom-fade landing-bottom-fade-tall" aria-hidden="true" />
     </section>
 
+    {/* GitHub Atlas - full-bleed feature section */}
+    <section className={`relative flex h-screen items-end overflow-hidden bg-[#070d17] text-white snap-start md:items-center ${cormorant.className}`}>
+      <CommitPath side="right" sectionId="atlas" />
+      <img
+        src="/atlas/atlas-preview.webp"
+        alt="A marble archipelago of islands, each covered in settlements, forests and mountains, joined by dotted sea routes"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+      />
+      {/* Darken toward the text and blend the edges into the page's black. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#010101] via-[#010101]/70 to-[#010101]/10 md:bg-gradient-to-r md:from-[#010101]/95 md:via-[#010101]/60 md:to-transparent" aria-hidden="true" />
+      <div className="absolute inset-0 shadow-[inset_0_0_160px_rgba(1,1,1,1)]" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#010101] to-transparent" aria-hidden="true" />
+
+      <div className="relative z-10 w-full px-6 pb-16 sm:px-10 md:pb-0 lg:px-16">
+        <div className="max-w-xl space-y-6">
+          <p className="text-xs uppercase tracking-[0.4em] text-zinc-400">
+            The GitHub Atlas
+          </p>
+          <h2 className="text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-7xl">
+            Every Repository,
+            <br /> a Place on the Map
+          </h2>
+          <p className="max-w-lg text-base text-zinc-300 sm:text-lg">
+            All of my public GitHub work, charted as a hand-engraved marble archipelago. Each discipline is an island, landmarks rise
+            for the projects that matter most, live systems glow blue, and old experiments weather into ruins.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-2">
+            <Link
+              href="/atlas"
+              className="inline-flex items-center rounded-full border border-white/40 px-6 py-3 text-sm uppercase tracking-[0.3em] text-white transition-colors hover:border-white hover:bg-white/10"
+            >
+              Explore the Atlas
+            </Link>
+            <Link
+              href="/atlas/guide"
+              className="inline-block border-b border-white pb-1 text-sm uppercase tracking-[0.3em] text-white transition-colors hover:border-zinc-300 hover:text-zinc-300"
+            >
+              Read the Field Guide
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
     {/* Skills Section - Image left, Text right */}
     <section className={`relative grid h-screen grid-cols-1 bg-[#010101] text-white md:grid-cols-2 snap-start ${cormorant.className}`}>
       <CommitPath side="right" sectionId="skills" />

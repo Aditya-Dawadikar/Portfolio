@@ -175,6 +175,9 @@ export default function Page() {
             <FeatureCard title="My Projects" description="Explore projects and demos" href="/projects" backgroundImage="/geekgod/builder.png">
             </FeatureCard>
 
+            <FeatureCard title="GitHub Atlas" description="Every repository, charted as a marble world" href="/atlas" backgroundImage="/atlas/atlas-preview.webp">
+            </FeatureCard>
+
             <FeatureCard title="My Hackathons" description="View past hackathons and results" href="/hackathons" backgroundImage="/geekgod/winner.png">
             </FeatureCard>
 
