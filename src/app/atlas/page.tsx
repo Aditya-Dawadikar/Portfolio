@@ -37,7 +37,7 @@ export default async function Page() {
       <p className="font-[family-name:var(--font-wm-display)] text-[24px]">The atlas could not be charted right now.</p>
       <p className="text-[13px] text-[#a59e92]">{result.error}</p>
       <div className="flex gap-4 text-[13px]">
-        <Link href="/home" className="inline-flex items-center gap-1 text-[#a59e92] hover:text-[#e2c89c]">
+        <Link href="/" className="inline-flex items-center gap-1 text-[#a59e92] hover:text-[#e2c89c]">
           <ArrowLeft className="h-3.5 w-3.5" /> Portfolio
         </Link>
         <a href={profile} target="_blank" rel="noreferrer" className="text-[#e2c89c] underline underline-offset-4">

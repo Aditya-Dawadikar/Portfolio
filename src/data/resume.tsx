@@ -8,7 +8,7 @@ export const DATA = {
   description:
     "Exploring the Craft of Building Software",
   summary:
-    "My journey as a builder started back in 2016 as a 10th grader, when I first discovered my passion for writing code and solving problems. Since then, I’ve been [building projects for fun](projects), experimenting with new technologies, and continuously refining my [skills](skills). Over time, what started as curiosity turned into an ambition—to work in the Silicon Valley, and learn from the best minds in the industry. Now, as a [master’s student](#education) with [2 years of professional software development experience](#work), I focus on building scalable applications, designing robust architectures, and tackling real-world engineering challenges while continuously expanding my expertise. I learn, I teach, I collaborate, I compete & I build...",
+    "I’m a software engineer who likes turning messy, real-world problems into systems people can rely on. I’ve built full-stack products and AI-powered workflows, from responsive React interfaces and backend APIs to data pipelines and agentic systems. In previous roles, I helped cut a years-long processing backlog to 32 hours and reduced a BigQuery operation from minutes to milliseconds. I recently completed my master’s in computer science at San José State University, and I’m continuing to build, learn, and collaborate across software and AI. Explore my [projects](projects), [skills](skills), and experience below.",
   interests: [
     "Frontend Engineering",
     "Backend Engineering",
@@ -71,6 +71,18 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "Department of Computer Science, San Jose State University",
+      href: "https://www.sjsu.edu/cs/",
+      badges: [],
+      location: "San Jose, CA",
+      title: "Research Assistant",
+      logoUrl: "/sjsu.png",
+      start: "Aug 2025",
+      end: "Dec 2026",
+      description:
+        "Built automated, reproducible workflows for deploying and evaluating machine learning models on GPU infrastructure. Applied post-training methods including knowledge distillation and LoRA, and co-authored research on Act-LoRA, an activation-guided approach to selecting model layers for adaptation.",
+    },
     {
       company: "PlanetBee",
       href: "https://www.planetbee.org/",
@@ -139,7 +151,7 @@ export const DATA = {
       degree: "Master's Degree of Computer Science (Ms CS)",
       logoUrl: "/sjsu.png",
       start: "2024",
-      end: "2026 (expected)",
+      end: "2026",
     },
     {
       school: "Savitribai Phule Pune University",
@@ -151,6 +163,40 @@ export const DATA = {
     },
   ],
   projects: [
+    {
+      title: "Agentic Job Discovery",
+      href: "https://projectycjobs.buildwithadi.dev/#/welcome", // Replace with the live app URL
+      dates: "May 2026",
+      active: true,
+      team: false,
+      hackathonWinner: false,
+      description:
+        "Built an AI-powered job discovery platform that researches YC-backed roles, matches them to a candidate’s profile, and generates grounded application materials. Added observability, retries, and prompt versioning to support reliable production workflows; attracted 500+ organic unique visitors in one month.",
+      technologies: [
+        "React",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis Streams",
+        "Docker",
+        "PostHog",
+        "MLFlow",
+        "Prometheus",
+        "Grafana"
+      ],
+      links: [
+        {
+          type: "Live Demo",
+          href: "https://projectycjobs.buildwithadi.dev/#/welcome",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/aditya-dawadikar/FatherOfProjects",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/project_yc_jobs.gif",
+    },
     {
       title: "Agent Negotiation Platform",
       href: "https://github.com/Aditya-Dawadikar/HarnessEngineeringHackathon",
@@ -179,10 +225,11 @@ export const DATA = {
       image:
         "#",
       video:
-        "https://youtu.be/BGejL8APONw?si=X7iSRazVd7ZrJ3rS",
+        "https://www.youtube.com/embed/BGejL8APONw?si=N_knk7JWTgPyP3Kt",
     },
     {
       title: "System Design Simulator",
+      featured: true,
       href: "https://system-design-simulator-blond.vercel.app/",
       dates: "March 2026",
       active: false,
@@ -323,6 +370,7 @@ export const DATA = {
     },
     {
       title: "RayFlux",
+      featured: true,
       href: "https://github.com/Aditya-Dawadikar/RayFlux",
       dates: "July 2025",
       active: true,
@@ -434,6 +482,7 @@ export const DATA = {
     },
     {
       title: "CellCraft-AI",
+      featured: true,
       href: "https://github.com/Aditya-Dawadikar/cell-craft-ai",
       dates: "June 2025",
       active: false,
@@ -600,6 +649,7 @@ export const DATA = {
     {
       title: "Survey of Techniques for Pulmonary Disease Classification using Deep Learning",
       authors: "A. Dawadikar, A. Srivastava, N. Shelar, G. Gaikwad and A. Pawar",
+      venueShort: "IEEE I2CT 2022",
       venue: "2022 IEEE 7th International conference for Convergence in Technology (I2CT), Mumbai, India, 2022, pp. 1-5, doi: 10.1109/I2CT54291.2022.9824879",
       date: "07-09 April 2022",
       description: "The field of medical science is getting more effective with emerging trends of computer science technologies like AI, ML, and DL. The area where these technologies play an important role is the detection or recognition of diseases. This paper discusses existing methodologies and various steps involved in the process of detection/recognition of pulmonary diseases using lung sound. The paper is divided into 4 sections. These sections include general steps of any recognition system using lung sound and study of existing methods. The paper helps to overview the different approaches/experiments and build new and effective ones which can give better accuracy.",
@@ -613,6 +663,7 @@ export const DATA = {
     }, {
       title: "Three Feature Based Ensemble Deep Learning Model for Pulmonary Disease Classification",
       authors: "Aditya Dawadikar, Anshu Srivastava, Neha Shelar, Gaurav Gaikwad, Prof. Atul Pawar",
+      venueShort: "IRJET",
       venue: "International Research Journal of Engineering and Technology (IRJET), Volume: 10 Issue: 02",
       date: "Feb 2023",
       description: "In recent years there has been a rise in the number of patients suffering from acute and chronic pulmonary diseases because of varying reasons like pollution, lung damage, or infections. The following research is regarding a Neural Network based solution for the recognition of the abnormality and possible disease based on lung auscultation. The following paper depicts that RNN-LSTM and CNN were the best-performing techniques. Although a higher percentage of noise while capturing the auscultation audio and limited data leads to a saturation point for the models to improve. The dataset had over 5000 breathing cycles for COPD, whereas only about 100 breathing cycles for LRTI and URTI. This unbalanced data made it difficult for the models to perform well on test audio clips because of the bias introduced by the large count of COPD samples. We adopted a filter-based audio augmentation to rebalance the dataset. To get the most out of the data we had, we utilized multiple features like MFCC, Chromagram, and Spectrogram extracted from the same audio clip. Since these extracted features are not fathomable to humans, we used convolutional neural networks to perform primary feature extraction. Likewise, dedicated CNN models acted as feature extractors whereas the dense neural network served as the actual classifier. We developed multiple versions of the models with fine-tuned parameters. The ML models based on a single feature were considered the benchmark for evaluating more complex, multi-feature DL models.",
@@ -627,6 +678,7 @@ export const DATA = {
     {
       title: "Activation-Guided Layer Selection for LoRA",
       authors: "Aditya Dawadikar, Pooja Shyamsundar, Rashmi Vishwanath Bhat, Navrati Saxena",
+      venueShort: "MDPI Information",
       venue: "MDPI Information, Modeling in the Era of Generative AI",
       date: "May 2026",
       description: "Low-Rank Adaptation (LoRA) has become a widely adopted parameter-efficient fine-tuning (PEFT) technique for large language models (LLMs). LoRA's benefits stem from its light weight and modular adapters. Standard LoRA applies adapters uniformly across all Transformer layers, implicitly assuming that each layer contributes equally to task adaptation. However, LLMs are found to have internal substructures that contribute in a disproportionate manner. In this work, we provide a theoretical analysis of how LoRA weight updates are influenced by a layer's activation magnitude. We propose Act-LoRA, a simple activation-guided layer selection strategy for selective Low-Rank Adaptation. We evaluate this strategy for both encoder-only and decoder-only architectures using the GLUE benchmark. Our method achieved a 20% GPUh saving with a 1% drop in GLUE score using DeBERTaV3-Base on a single-instance GPU with 50% less LoRA parameters. It also achieved 2% GPUh savings with a less than 0.15% drop in GLUE score with the Llama-3.1-8B model in Distributed Data Parallel mode with 25% fewer LoRA parameters. Our experiments and analysis show that the compute and memory requirements of LoRA adapters increase linearly with the number of selected layers. We further compare activation-guided selection against gradient-guided importance metrics and show that activation norms yield more stable and reproducible layer rankings across seeds and datasets. Overall, our results demonstrate that activation-guided layer selection is a practical and effective way to improve the efficiency of LoRA fine-tuning, making it immediately compatible with some existing PEFT techniques and distributed training frameworks.",
@@ -693,6 +745,8 @@ export const DATA = {
   hackathons: [
     {
       title: "Agent Negotiation Platform, Harness Engineering Hackathon 2026",
+      event: "Harness Engineering Hackathon 2026",
+      project: "Agent Negotiation Platform",
       dates: "June, 2026",
       location: "AWS Builder Loft, San Francisco, California, USA",
       result: "winner",
@@ -715,6 +769,8 @@ export const DATA = {
     },
     {
       title: "SAGE-AI, Calhacks 2025",
+      event: "CalHacks 2025",
+      project: "SAGE-AI",
       dates: "June, 2025",
       location: "UC Berkeley, California, USA",
       result: "participant",
@@ -732,6 +788,8 @@ export const DATA = {
     },
     {
       title: "SFHacks 2026",
+      event: "SFHacks 2026",
+      project: "EVBnB",
       description:
         "We built a platform for renting private EV charging stations, with features like real-time availability, booking, and AI-powered recommendations. The system was designed for rapid prototyping with a focus on user experience and seamless integration of AI capabilities.",
       dates: "February, 2026",
@@ -748,6 +806,8 @@ export const DATA = {
       ],
     }, {
       title: "Pump.co",
+      event: "Pump.co Hackathon",
+      project: "KT Podcast Generator",
       description:
         "We developed an AI-powered content creation platform to help onboard new employees at Pump.co. The system uses LLMs to generate personalized onboarding materials, interactive tutorials, and a Q&A assistant to facilitate a smooth transition for new hires. It was designed for rapid prototyping with a focus on user experience and seamless integration of AI capabilities.",
       dates: "November, 2025",
@@ -764,6 +824,8 @@ export const DATA = {
       ],
     }, {
       title: "A10 Hackathon Project",
+      event: "A10 Hackathon",
+      project: "a prompt-injection shield",
       dates: "October, 2025",
       location: "A10 HQ, Santa Clara, California, USA",
       result: "participant",
@@ -780,6 +842,8 @@ export const DATA = {
       ],
     }, {
       title: "Axiado — BMC Management Agentic System",
+      event: "Axiado Hackathon",
+      project: "BMC Management Agentic System",
       dates: "September, 2025",
       location: "Remote",
       result: "winner",
@@ -796,6 +860,8 @@ export const DATA = {
       ],
     }, {
       title: "AWS MCP Hackathon — BotTalk",
+      event: "AWS MCP Hackathon",
+      project: "BotTalk",
       description:
         "BotTalk is an AI-powered podcast generation system built using multi-agent orchestration. It simulates structured conversations between a host and guest using LLM-driven planning, flow control, and script refinement, enabling automated content generation pipelines.",
       dates: "August, 2025",
@@ -812,6 +878,8 @@ export const DATA = {
       ],
     }, {
       title: "PCCOE Hackathon — Pulmonary Disease Classification",
+      event: "PCCOE Hackathon",
+      project: "Pulmonary Disease Classification",
       description:
         "A machine learning classification system for pulmonary diseases, designed as a rapid-build hackathon project. It focuses on ingesting medical imaging data, extracting features, and applying predictive modeling to assist in early disease indication.",
       dates: "March, 2022",

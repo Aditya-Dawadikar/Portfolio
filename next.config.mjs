@@ -3,6 +3,10 @@ import createWithVercelToolbar from "@vercel/toolbar/plugins/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    // The landing page and /home were merged into a single page at /.
+    return [{ source: "/home", destination: "/", permanent: true }];
+  },
   webpack(config, { isServer }) {
     // @vercel/flags-core optionally imports this module, which only exists when Vercel
     // embeds flag definitions at build time. Leave it to a runtime require so webpack

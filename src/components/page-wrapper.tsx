@@ -20,11 +20,12 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const showResources = useStudyResourcesEnabled();
 
   const imageMap: { [key: string]: string } = {
-    "/home": "hero.mp4",
     "/skills": "skilled.png",
     "/projects": "builder.png",
     "/hackathons": "winner.png",
     "/blog": "writer.png",
+    "/linkedin": "writer.png",
+    "/youtube": "teacher.png",
     "/papers": "innovator.png",
     "/stories": "teacher.png",
     "/system-design-library": "resources.png",
@@ -37,13 +38,14 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   const isVideo = currentMedia.endsWith(".mp4");
 
   const allNavLinks = [
-    { href: "/", label: "Landing" },
-    { href: "/home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/atlas", label: "GitHub Atlas" },
     { href: "/hackathons", label: "Hackathons" },
     { href: "/blog", label: "Blogs" },
+    { href: "/linkedin", label: "LinkedIn Posts" },
+    { href: "/youtube", label: "YouTube" },
     { href: "/papers", label: "Research Publication" },
     { href: "/stories", label: "Stories" },
     { href: "/system-design-library", label: "System Design" },

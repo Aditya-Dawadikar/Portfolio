@@ -9,6 +9,11 @@ export type BlogLink = {
   category?: "project" | "knowledge";
 };
 
+/**
+ * Archive of Medium posts. The live list comes from the Medium RSS feed (src/lib/medium.ts),
+ * which only carries the latest 10 posts; anything here fills in the older ones.
+ * When a post you care about drops out of the feed, make sure it is listed here.
+ */
 export const BLOG_LINKS: BlogLink[] = [
   {
     title: "Evaluating Planning Agents with LLM-as-a-Judge",
