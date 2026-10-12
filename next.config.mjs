@@ -1,3 +1,4 @@
+import { withSentryConfig } from "@sentry/nextjs/config";
 import createWithVercelToolbar from "@vercel/toolbar/plugins/next";
 
 /** @type {import('next').NextConfig} */
@@ -19,4 +20,19 @@ const nextConfig = {
 };
 
 const withVercelToolbar = createWithVercelToolbar();
-export default withVercelToolbar(nextConfig);
+
+// SENTRY_ORG, SENTRY_PROJECT and SENTRY_AUTH_TOKEN are provided by the Vercel Sentry integration.
+export default withSentryConfig(withVercelToolbar(nextConfig), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // Upload a larger set of source maps for prettier stack traces
+  widenClientFileUpload: true,
+
+  // Route browser events through the app so ad blockers don't drop them
+  tunnelRoute: "/sentry-tunnel",
+
+  // Only print logs for uploading source maps in CI
+  silent: !process.env.CI,
+});

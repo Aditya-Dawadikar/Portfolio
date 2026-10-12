@@ -17,6 +17,7 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@sentry/nextjs": "^11.6.0",
     "@types/mdx": "^2.0.13",
     "@vercel/toolbar": "^0.2.7",
     "class-variance-authority": "^0.7.0",
