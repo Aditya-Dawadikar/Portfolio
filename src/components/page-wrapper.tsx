@@ -1,12 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Cormorant_Garamond } from "next/font/google";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import SideNav from "./side-nav";
-import { STUDY_RESOURCE_PATHS, useStudyResourcesEnabled } from "@/lib/use-study-resources";
+import LandingNavbar from "./landing-navbar";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,8 +12,6 @@ const cormorant = Cormorant_Garamond({
 export default function PageWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLandingPage = pathname === "/";
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const showResources = useStudyResourcesEnabled();
 
   const imageMap: { [key: string]: string } = {
     "/skills": "skilled.png",
@@ -36,26 +30,6 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
 
   const currentMedia = imageMap[pathname] || "skilled.png";
   const isVideo = currentMedia.endsWith(".mp4");
-
-  const allNavLinks = [
-    { href: "/", label: "Home" },
-    { href: "/skills", label: "Skills" },
-    { href: "/projects", label: "Projects" },
-    { href: "/atlas", label: "GitHub Atlas" },
-    { href: "/hackathons", label: "Hackathons" },
-    { href: "/blog", label: "Blogs" },
-    { href: "/linkedin", label: "LinkedIn Posts" },
-    { href: "/youtube", label: "YouTube" },
-    { href: "/papers", label: "Research Publication" },
-    { href: "/stories", label: "Stories" },
-    { href: "/system-design-library", label: "System Design" },
-    { href: "/frontend-resources", label: "Frontend Engineering" },
-    { href: "/ai-engineering", label: "AI Engineering" },
-    { href: "/computer-networks-resources", label: "Computer Networks" },
-  ];
-  const navLinks = showResources
-    ? allNavLinks
-    : allNavLinks.filter((item) => !STUDY_RESOURCE_PATHS.has(item.href));
 
   // The atlas pages (map and field guide) carry their own full-bleed chrome.
   if (isLandingPage || pathname === "/atlas" || pathname.startsWith("/atlas/")) {
@@ -80,43 +54,11 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
           className="pointer-events-none fixed right-0 top-0 h-auto max-h-screen w-auto opacity-60 hidden lg:block"
         />
       )}
-      <div className="fixed right-4 top-4 z-50 md:hidden">
-        <button
-          type="button"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          className="rounded-full border border-white/20 bg-black/70 p-2 text-zinc-100 backdrop-blur-md transition-colors hover:border-white/40 hover:text-white"
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="fixed inset-x-4 top-16 z-50 rounded-2xl border border-white/15 bg-black/90 p-3 backdrop-blur-md md:hidden">
-          <nav>
-            <ul className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto">
-              {navLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="block rounded-lg border border-transparent px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200 transition-colors hover:border-white/25 hover:text-white"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+      <LandingNavbar />
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-24 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-black/35 p-4 backdrop-blur-md sm:p-6 lg:p-8">
-          <div className="flex gap-8">
-            <SideNav />
-            <main className="min-w-0 flex-1">{children}</main>
-          </div>
+          <main className="min-w-0">{children}</main>
         </div>
       </div>
     </div>

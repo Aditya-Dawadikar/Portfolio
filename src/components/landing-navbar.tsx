@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Cormorant_Garamond } from "next/font/google";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -25,6 +26,8 @@ const landingNavLinks = [
 
 export default function LandingNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  // Inner pages share this bar, so they also need a way back to the landing page.
+  const navLinks = usePathname() === "/" ? landingNavLinks : [{ href: "/", label: "Home" }, ...landingNavLinks];
 
   return (
     <header
@@ -32,7 +35,7 @@ export default function LandingNavbar() {
     >
       {/* Desktop nav — pill links centered */}
       <nav className="mx-auto hidden h-14 max-w-7xl items-center justify-center gap-2 px-4 sm:flex sm:px-6 lg:px-8">
-        {landingNavLinks.map((item) => (
+        {navLinks.map((item) => (
           <Link
             key={item.href}
             href={item.href}
@@ -61,7 +64,7 @@ export default function LandingNavbar() {
       {isOpen && (
         <div className="border-t border-white/10 bg-black/90 px-4 pb-4 pt-2 sm:hidden">
           <ul className="flex flex-col gap-1">
-            {landingNavLinks.map((item) => (
+            {navLinks.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
