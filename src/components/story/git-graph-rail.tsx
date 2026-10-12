@@ -201,11 +201,13 @@ function CommitPanel({ commit }: { commit: Commit }) {
   const color = branchColor(timeline.branches, commit.branch);
 
   return (
-    <div className="mt-4 rounded-xl border border-white/10 bg-black/60 p-3 text-[11px] leading-relaxed backdrop-blur-md">
-      <div className="flex flex-wrap items-baseline gap-x-1.5">
-        <span className="text-amber-300">commit {commit.sha}</span>
+    // Every row has a fixed height: if the panel grew or shrank with the focused commit, the graph
+    // above it would rescale, slide the hovered dot out from under the cursor, and flicker.
+    <div className="mt-4 shrink-0 rounded-xl border border-white/10 bg-black/60 p-3 text-[11px] leading-relaxed backdrop-blur-md">
+      <div className="flex items-baseline gap-x-1.5 overflow-hidden whitespace-nowrap">
+        <span className="shrink-0 text-amber-300">commit {commit.sha}</span>
         {refs.length > 0 && (
-          <span className="text-zinc-400">
+          <span className="truncate text-zinc-400">
             (
             {refs.map((r, i) => (
               <span key={r.branch} style={{ color: branchColor(timeline.branches, r.branch) }}>
@@ -220,17 +222,17 @@ function CommitPanel({ commit }: { commit: Commit }) {
       <div className="text-zinc-500">Date: {commit.dateLabel}</div>
       <div className="mt-1.5 flex gap-2">
         <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-        <span className="text-zinc-200">{commitHeader(commit)}</span>
+        <span className="line-clamp-2 h-[3.25em] text-zinc-200" title={commitHeader(commit)}>
+          {commitHeader(commit)}
+        </span>
       </div>
-      {commit.tags.length > 0 && (
-        <div className="mt-1.5 flex flex-wrap gap-1">
-          {commit.tags.map((tag) => (
-            <span key={tag} className="rounded border border-white/15 px-1.5 text-[10px] text-zinc-300">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
+      <div className="mt-1.5 flex h-5 gap-1 overflow-hidden">
+        {commit.tags.map((tag) => (
+          <span key={tag} className="h-fit shrink-0 rounded border border-white/15 px-1.5 text-[10px] text-zinc-300">
+            {tag}
+          </span>
+        ))}
+      </div>
       <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 border-t border-white/10 pt-2 text-[10px] text-zinc-500">
         {timeline.branches.map((b) => (
           <span key={b.id} className="flex items-center gap-1.5">
