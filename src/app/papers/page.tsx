@@ -53,7 +53,7 @@ export default function Page() {
           <p className="text-muted-foreground">Work In Progress, Coming Soon!</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sortedPapers.map((paper:any) => (
             <PaperCard
               key={paper.title}
@@ -63,6 +63,8 @@ export default function Page() {
               date={paper.date}
               description={paper.description}
               links={paper.links}
+              pdf={paper.pdf}
+              image={paper.image}
             />
           ))}
         </div>
