@@ -118,7 +118,6 @@ export default async function Page() {
           <AboutSlide
             summary={DATA.summary}
             avatarUrl={DATA.avatarUrl}
-            videoSrc="/geekgod/hero.mp4"
             footer={
               <div className="space-y-5">
                 <div className="flex items-center gap-5">

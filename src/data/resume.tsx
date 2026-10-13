@@ -21,7 +21,7 @@ export const DATA = {
     "Tech Blogs",
     "Teaching & Mentorship",
   ],
-  avatarUrl: "/me.png",
+  avatarUrl: "/CinematicPortrait1.png",
   topSkills: ["Python", "Javascript", "Typescript", "HTML", "CSS", "SQL",
     "FastAPI", "ExpressJs", "React", "Angular", "PostgreSQL", "MongoDB", "Redis", "Figma",
     "Docker", "Kubernetes", "Git", "AWS", "GCP", "Java", "C++", "Kafka", "Prometheus", "Grafana"],
