@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { Fragment } from "react";
 import { HeroGitTree } from "./hero-git-tree";
 
 /** The opening screen: the name rises in letter by letter beside the hero video. */
@@ -24,11 +25,22 @@ export function Hero({ name, tagline, videoSrc }: { name: string; tagline: strin
             Hello
           </motion.p>
           <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl" aria-label={`I am ${name}`}>
-            {`I am ${name}`.split("").map((char, i) => (
-              <motion.span key={i} aria-hidden className="inline-block whitespace-pre" {...rise(0.25 + i * 0.035)}>
-                {char}
-              </motion.span>
-            ))}
+            {/* Letters are grouped per word so lines only break between words. */}
+            {`I am ${name}`.split(" ").map((word, w, words) => {
+              const offset = words.slice(0, w).join(" ").length + (w ? 1 : 0);
+              return (
+                <Fragment key={w}>
+                  <span aria-hidden className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, i) => (
+                      <motion.span key={i} className="inline-block" {...rise(0.25 + (offset + i) * 0.035)}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                  {w < words.length - 1 && " "}
+                </Fragment>
+              );
+            })}
           </h1>
           <motion.p {...rise(1)} className="max-w-lg text-base text-zinc-300 sm:text-lg">
             {tagline}
