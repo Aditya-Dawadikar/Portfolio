@@ -1,9 +1,8 @@
 "use client";
 
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useMediaQuery } from "./use-media-query";
+import { useMemo, useRef } from "react";
 
 type Token = { word: string; href?: string };
 
@@ -23,94 +22,33 @@ function tokenize(markdown: string): Token[] {
   return tokens;
 }
 
-const MORPH_SECONDS = 1.2;
 const WORD_STAGGER = 0.014;
 
-/**
- * Arriving on this screen, the hero video closes into a circle and becomes the avatar,
- * then the About text lights up word by word.
- */
+/** The portrait fills the right half of the screen while the About text lights up word by word. */
 export function AboutSlide({
   summary,
   avatarUrl,
-  videoSrc,
   footer,
 }: {
   summary: string;
   avatarUrl: string;
-  videoSrc: string;
   /** Socials and the root commit, shown once the text has been read in. */
   footer: React.ReactNode;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const mediaRef = useRef<HTMLDivElement>(null);
   const reduceMotion = !!useReducedMotion();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   const inView = useInView(sectionRef, { once: true, amount: 0.6 });
-  const [box, setBox] = useState({ w: 0, h: 0 });
   const tokens = useMemo(() => tokenize(summary), [summary]);
 
-  useEffect(() => {
-    const media = mediaRef.current;
-    if (!media) return;
-    const observer = new ResizeObserver(([entry]) => setBox({ w: entry.contentRect.width, h: entry.contentRect.height }));
-    observer.observe(media);
-    return () => observer.disconnect();
-  }, []);
-
-  // Centre of the circle: middle of the right half on desktop, upper part of the screen on phones.
-  const cx = box.w / 2;
-  const cy = isDesktop ? box.h / 2 : box.h * 0.2;
-  const fullRadius = Math.hypot(Math.max(cx, box.w - cx), Math.max(cy, box.h - cy)) + 2;
-  const avatarRadius = isDesktop ? Math.min(box.w, box.h) * 0.26 : Math.min(box.w * 0.24, box.h * 0.11);
-
-  const radius = useMotionValue(0);
-  const avatarOpacity = useMotionValue(0);
-  const clipPath = useTransform(radius, (r) => (box.w ? `circle(${r}px at ${cx}px ${cy}px)` : "none"));
-  const ringOpacity = useTransform(radius, (r) => (r <= avatarRadius * 1.05 ? 1 : 0));
-
-  useEffect(() => {
-    if (!box.w) return;
-    if (!inView) {
-      radius.set(fullRadius);
-      return;
-    }
-    if (reduceMotion) {
-      radius.set(avatarRadius);
-      avatarOpacity.set(1);
-      return;
-    }
-    const morph = animate(radius, avatarRadius, { duration: MORPH_SECONDS, ease: [0.65, 0, 0.35, 1] });
-    const fade = animate(avatarOpacity, 1, { duration: 0.5, delay: MORPH_SECONDS * 0.8 });
-    return () => {
-      morph.stop();
-      fade.stop();
-    };
-  }, [inView, box.w, fullRadius, avatarRadius, reduceMotion, radius, avatarOpacity]);
-
-  const textStart = reduceMotion ? 0 : MORPH_SECONDS * 0.7;
-  const footerDelay = reduceMotion ? 0 : textStart + tokens.length * WORD_STAGGER;
+  const footerDelay = reduceMotion ? 0 : tokens.length * WORD_STAGGER;
 
   return (
     <section ref={sectionRef} id="about" data-branches="main" className="relative grid h-[100svh] snap-start snap-always grid-cols-1 overflow-hidden bg-[#010101] pt-14 text-white md:grid-cols-2">
-      <div ref={mediaRef} className="absolute inset-0 md:left-1/2">
-        <motion.div className="absolute inset-0 flex items-center justify-center" style={{ clipPath }}>
-          <video className="h-full w-full object-cover md:h-auto md:max-h-full md:w-auto md:object-contain" autoPlay loop muted playsInline preload="metadata">
-            <source src={videoSrc} type="video/mp4" />
-          </video>
-          <motion.img
-            src={avatarUrl}
-            alt=""
-            aria-hidden
-            className="absolute object-cover"
-            style={{ opacity: avatarOpacity, left: cx - avatarRadius, top: cy - avatarRadius, width: avatarRadius * 2, height: avatarRadius * 2 }}
-          />
-        </motion.div>
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25 shadow-[0_0_60px_rgba(255,216,140,0.15)] transition-opacity duration-500"
-          style={{ left: cx, top: cy, width: avatarRadius * 2 + 16, height: avatarRadius * 2 + 16, opacity: ringOpacity }}
-        />
+      <div className="absolute inset-0 md:left-1/2">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={avatarUrl} alt="" aria-hidden className="h-full w-full object-cover" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(1,1,1,0.85)_100%)]" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#010101] via-[#010101]/60 to-transparent md:hidden" />
       </div>
 
       <div className="relative z-10 flex items-end px-6 pb-10 sm:px-10 md:items-center md:pb-0 lg:px-16">
@@ -118,7 +56,7 @@ export function AboutSlide({
           <motion.p
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={inView ? { opacity: 1 } : undefined}
-            transition={{ delay: textStart }}
+            transition={{ delay: 0 }}
             className="text-xs uppercase tracking-[0.4em] text-zinc-400"
           >
             About
@@ -130,7 +68,7 @@ export function AboutSlide({
                   className="text-zinc-100"
                   initial={reduceMotion ? false : { opacity: 0.12 }}
                   animate={inView ? { opacity: 1 } : undefined}
-                  transition={{ duration: 0.3, delay: textStart + i * WORD_STAGGER }}
+                  transition={{ duration: 0.3, delay: i * WORD_STAGGER }}
                 >
                   {token.href ? (
                     <Link href={token.href} className="underline decoration-white/30 underline-offset-4 hover:decoration-white">
